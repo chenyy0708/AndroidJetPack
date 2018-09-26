@@ -1,0 +1,29 @@
+ext {
+
+    android = [ // 配置信息
+                compileSdkVersion: 27,
+                buildToolsVersion: "27.1.1",
+                minSdkVersion    : 19,
+                targetSdkVersion : 27,
+                versionCode      : 1,
+                versionName      : "1.0.0"
+    ]
+
+    // 依赖第三方库版本
+    supportVersion = "27.1.1"
+    multidexVersion = "1.0.3"
+    statusBarUtilVersion = "1.5.1"
+    retrofitVersion = "2.3.0"
+    okhttp3Version = "3.9.1"
+    rxjavaVersion = "2.1.8"
+    rxkotlin = "2.2.0"
+    rxandroidVersion = "2.0.2"
+    gsonVersion = "2.8.2"
+    refreshLayoutVersion = "1.0.5.1"
+    butterknifeVersion = "8.8.1"
+    butterknifecompiler = "8.5.1"
+    superTextView = "2.1.7"
+    logginginterceptor = "3.8.0"
+    baseRecyclerViewAdapterHelper = "2.9.40"
+    anko_version = "0.10.5"
+}

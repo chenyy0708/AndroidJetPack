@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tv_home" type="id" />
+    <item name="container" type="id" />
+    <item name="bottom_navigation" type="id" />
+</resources>
