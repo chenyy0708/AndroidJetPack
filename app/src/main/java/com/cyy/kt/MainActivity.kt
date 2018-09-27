@@ -12,6 +12,7 @@ import com.cyy.kt.mvp.TestModel
 import com.cyy.kt.mvp.TestPresenter
 import org.jetbrains.anko.find
 import org.jetbrains.anko.setContentView
+import org.jetbrains.anko.toast
 
 class MainActivity : BaseActivity<TestPresenter>(), TestContract.View {
 

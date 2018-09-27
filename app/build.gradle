@@ -1,7 +1,4 @@
-//ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
-//apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
 apply plugin: 'com.android.application'
-
 
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
@@ -36,10 +33,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    api "com.jakewharton:butterknife:$butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifecompiler"
     implementation project(':base')
-    implementation 'com.ncapdevi:frag-nav:2.4.0'
     implementation "com.github.lygttpod:SuperTextView:$superTextView"
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$baseRecyclerViewAdapterHelper"
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$refreshLayoutVersion"
