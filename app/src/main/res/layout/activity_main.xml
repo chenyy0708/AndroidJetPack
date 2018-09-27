@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="user"
-            type="com.cyy.kt.model.data.Test" />
+            name="vm"
+            type="com.cyy.kt.viewmodel.TestViewModel" />
 
     </data>
 
@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.name}"
+            android:text="@{vm.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

@@ -32,6 +32,7 @@ android {
     dataBinding {
         enabled = true
     }
+
 }
 
 dependencies {
@@ -44,5 +45,9 @@ dependencies {
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$baseRecyclerViewAdapterHelper"
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$refreshLayoutVersion"
 
+
     kapt "com.google.dagger:dagger-compiler:$dagger"
+    kapt "android.arch.lifecycle:compiler:$lifecycle_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
+    kapt "com.android.databinding:compiler:3.1.4"
 }

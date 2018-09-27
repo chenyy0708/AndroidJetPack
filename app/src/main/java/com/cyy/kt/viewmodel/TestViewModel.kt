@@ -13,4 +13,8 @@ class TestViewModel : ViewModel() {
     val name = ObservableField<String>()
 
 
+    fun getData() {
+        name.set("S")
+    }
+
 }

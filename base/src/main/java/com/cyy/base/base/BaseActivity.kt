@@ -32,7 +32,6 @@ abstract class BaseActivity : AppCompatActivity(), Presenter {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutRes())
         initData(savedInstanceState)
     }
 
