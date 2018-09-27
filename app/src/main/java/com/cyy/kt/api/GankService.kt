@@ -1,6 +1,6 @@
 package com.cyy.kt.api
 
-import com.cyy.kt.bean.MeizhiData
+import com.cyy.kt.model.data.MeizhiData
 import com.cyy.kt.net.UrlConstanct
 import io.reactivex.Observable
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager.DOMAIN_NAME_HEADER

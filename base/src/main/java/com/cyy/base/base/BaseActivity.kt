@@ -1,12 +1,13 @@
 package com.cyy.base.base
 
-import android.app.Activity
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
-import com.cyy.base.mvp.BasePresenter
-import com.cyy.base.mvp.IModel
-import com.cyy.base.mvp.IView
+import com.cyy.base.view.click.Presenter
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -15,9 +16,14 @@ import io.reactivex.disposables.CompositeDisposable
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-abstract class BaseActivity<P : BasePresenter<*, *>> : AppCompatActivity(), IView {
+abstract class BaseActivity : AppCompatActivity(), Presenter {
 
-    lateinit var mPresenter: P
+//    protected lateinit var mBinding: VB
+
+    protected lateinit var mContext: Context
+
+
+    lateinit var factory: ViewModelProvider.Factory
 
     /**
      * 管理RxJava 订阅
@@ -27,42 +33,27 @@ abstract class BaseActivity<P : BasePresenter<*, *>> : AppCompatActivity(), IVie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutRes())
-        mPresenter = getP()
-        mPresenter.attachView(this, getM())
         initData(savedInstanceState)
     }
-
-    /**
-     * M层
-     */
-    abstract fun getM(): IModel
 
     /**
      * 初始化数据
      */
     abstract fun initData(savedInstanceState: Bundle?)
 
-    /**
-     * 初始化P
-     */
-    abstract fun getP(): P
-
     @LayoutRes
     abstract fun getLayoutRes(): Int
+
+    fun <T : ViewModel> getInjectViewModel(modelClass: Class<T>) = ViewModelProviders.of(this, factory).get(modelClass)
 
     /**
      * 释放资源
      */
     override fun onDestroy() {
-        mPresenter.detachView()
         // 取消执行的订阅
         if (!compositeDisposable.isDisposed) {
             compositeDisposable.clear()
         }
         super.onDestroy()
-    }
-
-    override fun getContext(): Activity {
-        return this
     }
 }

@@ -43,4 +43,6 @@ dependencies {
     implementation "com.github.lygttpod:SuperTextView:$superTextView"
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$baseRecyclerViewAdapterHelper"
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$refreshLayoutVersion"
+
+    kapt "com.google.dagger:dagger-compiler:$dagger"
 }
