@@ -2,6 +2,7 @@ package com.cyy.base.base
 
 import android.app.Activity
 import android.os.Bundle
+import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
 import com.cyy.base.mvp.BasePresenter
 import com.cyy.base.mvp.IModel
@@ -25,7 +26,7 @@ abstract class BaseActivity<P : BasePresenter<*, *>> : AppCompatActivity(), IVie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getLayoutRes()
+        setContentView(getLayoutRes())
         mPresenter = getP()
         mPresenter.attachView(this, getM())
         initData(savedInstanceState)
@@ -46,7 +47,8 @@ abstract class BaseActivity<P : BasePresenter<*, *>> : AppCompatActivity(), IVie
      */
     abstract fun getP(): P
 
-    abstract fun getLayoutRes()
+    @LayoutRes
+    abstract fun getLayoutRes(): Int
 
     /**
      * 释放资源
