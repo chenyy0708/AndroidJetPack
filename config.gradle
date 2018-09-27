@@ -9,7 +9,6 @@ ext {
                 versionName      : "1.0.0"
     ]
 
-    // 依赖第三方库版本
     supportVersion = "27.1.1"
     multidexVersion = "1.0.3"
     statusBarUtilVersion = "1.5.1"
@@ -20,10 +19,10 @@ ext {
     rxandroidVersion = "2.0.2"
     gsonVersion = "2.8.2"
     refreshLayoutVersion = "1.0.5.1"
-    butterknifeVersion = "8.8.1"
-    butterknifecompiler = "8.5.1"
     superTextView = "2.1.7"
     logginginterceptor = "3.8.0"
     baseRecyclerViewAdapterHelper = "2.9.40"
     anko_version = "0.10.5"
+    lifecycle_version = "1.1.1"
+    room_version = "1.1.1"
 }

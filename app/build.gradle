@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
 def config = rootProject.ext.android // 配置
 
 android {
@@ -25,6 +26,11 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    // dataBinding
+    dataBinding {
+        enabled = true
     }
 }
 

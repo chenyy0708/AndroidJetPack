@@ -24,8 +24,8 @@ class NetManager private constructor() {
      */
     private val CONNECT_TIME_OUT: Long = 1000 * 10
     private var mRetrofit: Retrofit
-    private lateinit var mDouban: DouBanService
-    private lateinit var mGank: GankService
+    private var mDouban: DouBanService
+    private var mGank: GankService
 
     init {
         val loggingInterceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

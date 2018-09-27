@@ -17,7 +17,6 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class MainActivityUI : AnkoComponent<MainActivity> {
     lateinit var tv_home: TextView
-
     override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
         relativeLayout {
             button("Left") {
