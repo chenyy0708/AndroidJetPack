@@ -18,7 +18,7 @@ import java.util.*
 @Aspect
 class SingleClickAspect {
 
-    @Pointcut("execution(@com.ditclear.paonet.aop.annotation.SingleClick * *(..))") //方法切入点
+    @Pointcut("execution(@com.cyy.base.aop.annotation.SingleClick * *(..))") //方法切入点
     fun methodAnnotated() {
 
     }
@@ -50,7 +50,7 @@ class SingleClickAspect {
     companion object {
 
         val TAG = "SingleClickAspect"
-        val MIN_CLICK_DELAY_TIME = 500
+        val MIN_CLICK_DELAY_TIME = 1000
         internal var TIME_TAG = R.id.click_time
     }
 }

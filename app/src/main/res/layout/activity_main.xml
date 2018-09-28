@@ -8,6 +8,10 @@
             name="vm"
             type="com.cyy.kt.viewmodel.TestViewModel" />
 
+        <variable
+            name="presenter"
+            type="com.cyy.base.view.click.Presenter" />
+
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -15,13 +19,22 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{vm.name}"
+            android:onClick="@{(v)->presenter.onClick(v)}"
+            android:text="@{vm.name,default = 你好}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(v)->presenter.onClick(v)}"
+            app:imageUrl="@{vm.url}"
+            app:layout_constraintTop_toBottomOf="@+id/tv" />
 
     </android.support.constraint.ConstraintLayout>
 
