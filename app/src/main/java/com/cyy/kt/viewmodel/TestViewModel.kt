@@ -2,9 +2,9 @@ package com.cyy.kt.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
-import com.cyy.kt.R
+import com.cyy.base.rx.applySchedulers
+import com.cyy.kt.net.NetManager
+import io.reactivex.rxkotlin.subscribeBy
 
 /**
  * @author       :ChenYangYi
@@ -18,8 +18,14 @@ class TestViewModel : ViewModel() {
     var url = MutableLiveData<String>()
 
     fun getData() {
-        name.postValue("Chen")
-        url.postValue("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=712973186,1318287962&fm=27&gp=0.jpg")
+        NetManager.getInstance()
+                .getDouBan()
+                .getDouBanBook()
+                .compose(applySchedulers())
+                .subscribeBy {
+                    name.postValue(it.alt)
+                    url.postValue(it.publisher)
+                }
     }
 
 }
