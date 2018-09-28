@@ -1,14 +1,13 @@
 package com.cyy.base.base
 
 import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
-import com.cyy.base.view.click.Presenter
-import io.reactivex.disposables.CompositeDisposable
 
 /**
  * @author       :ChenYangYi
@@ -16,22 +15,18 @@ import io.reactivex.disposables.CompositeDisposable
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-abstract class BaseActivity : AppCompatActivity(), Presenter {
+abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
-//    protected lateinit var mBinding: VB
+    protected lateinit var mBinding: VB
 
     protected lateinit var mContext: Context
 
-
-    lateinit var factory: ViewModelProvider.Factory
-
-    /**
-     * 管理RxJava 订阅
-     */
-    protected var compositeDisposable = CompositeDisposable()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mBinding = DataBindingUtil.setContentView<VB>(this, getLayoutRes())
+        // 监听生命周期
+        mBinding.setLifecycleOwner(this)
+        mContext = this
         initData(savedInstanceState)
     }
 
@@ -43,16 +38,6 @@ abstract class BaseActivity : AppCompatActivity(), Presenter {
     @LayoutRes
     abstract fun getLayoutRes(): Int
 
-    fun <T : ViewModel> getInjectViewModel(modelClass: Class<T>) = ViewModelProviders.of(this, factory).get(modelClass)
+    fun <T : ViewModel> getInjectViewModel(modelClass: Class<T>) = ViewModelProviders.of(this).get(modelClass)
 
-    /**
-     * 释放资源
-     */
-    override fun onDestroy() {
-        // 取消执行的订阅
-        if (!compositeDisposable.isDisposed) {
-            compositeDisposable.clear()
-        }
-        super.onDestroy()
-    }
 }
