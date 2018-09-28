@@ -1,5 +1,6 @@
 package com.cyy.kt.viewmodel
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import android.databinding.ObservableInt
@@ -12,16 +13,13 @@ import com.cyy.kt.R
  * @github       :https://github.com/chenyy0708
  */
 class TestViewModel : ViewModel() {
-    val name = ObservableField<String>()
-    val error = ObservableInt()
+    val name = MutableLiveData<String>()
 
-
-    var url = ObservableField<String>()
+    var url = MutableLiveData<String>()
 
     fun getData() {
-        name.set("Chen")
-        url.set("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=712973186,1318287962&fm=27&gp=0.jpg")
-        error.set(R.mipmap.ic_launcher)
+        name.postValue("Chen")
+        url.postValue("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=712973186,1318287962&fm=27&gp=0.jpg")
     }
 
 }

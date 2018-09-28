@@ -10,9 +10,11 @@ import com.cyy.kt.R
  */
 
 @BindingAdapter("app:imageUrl")
-fun bindImgUrl(imageView: ImageView, url: String) {
-    Glide.with(imageView.context)
-            .load(url)
-            .error(R.mipmap.ic_launcher)
-            .into(imageView)
+fun bindImgUrl(imageView: ImageView, url: String?) {
+    url?.let {
+        Glide.with(imageView.context)
+                .load(url)
+                .error(R.mipmap.ic_launcher)
+                .into(imageView)
+    }
 }
