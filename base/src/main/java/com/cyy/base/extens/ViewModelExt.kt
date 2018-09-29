@@ -12,21 +12,14 @@ import com.cyy.base.base.viewmodel.LifecycleViewModel
  * @github       :https://github.com/chenyy0708
  */
 
-
-fun LifecycleViewModel.addLifecycle(activity: FragmentActivity) {
-    this.lifecycleOwner = activity
-}
-
-fun LifecycleViewModel.addLifecycle(fragment: Fragment) {
-    this.lifecycleOwner = fragment
-}
-
 fun <T : LifecycleViewModel> FragmentActivity.viewModel(modelClass: Class<T>) =
         ViewModelProviders.of(this).get(modelClass).also {
+            it.lifecycleOwner = this
             lifecycle.addObserver(it)
         }
 
 fun <T : LifecycleViewModel> Fragment.viewModel(modelClass: Class<T>) =
         ViewModelProviders.of(activity!!).get(modelClass).also {
+            it.lifecycleOwner = this
             lifecycle.addObserver(it)
         }

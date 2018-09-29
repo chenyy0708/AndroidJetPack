@@ -1,13 +1,9 @@
 package com.cyy.kt.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
-import com.cyy.base.base.viewmodel.LifecycleViewModel
 import com.cyy.base.extens.bindLifecycle
-import com.cyy.kt.base.App
-import com.cyy.kt.net.api.DouBanService
-import org.kodein.di.Kodein
+import com.cyy.kt.base.BaseViewModel
 import org.kodein.di.KodeinAware
-import org.kodein.di.generic.instance
 
 /**
  * @author       :ChenYangYi
@@ -15,16 +11,7 @@ import org.kodein.di.generic.instance
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-class TestViewModel : LifecycleViewModel(), KodeinAware {
-    /**
-     * 全局Kodein
-     */
-    override val kodein: Kodein = App.INSTANCE.kodein
-
-    /**
-     * Application中注入的ApiService
-     */
-    protected val douBanService: DouBanService by instance()
+class TestViewModel : BaseViewModel(), KodeinAware {
 
     val name = MutableLiveData<String>()
 

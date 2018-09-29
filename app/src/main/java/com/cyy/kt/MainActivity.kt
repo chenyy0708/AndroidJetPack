@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import com.cyy.base.aop.annotation.SingleClick
 import com.cyy.base.base.BaseActivity
-import com.cyy.base.extens.addLifecycle
 import com.cyy.base.view.click.Presenter
 import com.cyy.kt.databinding.ActivityMainBinding
 import com.cyy.kt.di.mainModule
@@ -47,7 +46,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter,
         // 点击事件 可选
         mBinding.presenter = this
         // 绑定生命周期，用于取消订阅
-        mainViewModel.addLifecycle(this)
         mainViewModel.getData()
     }
 

@@ -1,7 +1,6 @@
 package com.cyy.kt.di
 
-import com.cyy.base.extens.addLifecycle
-import com.cyy.base.extens.getInjectViewModel
+import com.cyy.base.extens.viewModel
 import com.cyy.kt.MainActivity
 import com.cyy.kt.viewmodel.TestViewModel
 import org.kodein.di.Kodein
@@ -21,10 +20,7 @@ val mainModule = Kodein.Module(MAIN_MODULE_TAG) {
      */
     bind<TestViewModel>() with scoped(AndroidComponentsWeakScope).singleton {
         // 得到ViewModel实例
-        instance<MainActivity>().getInjectViewModel(TestViewModel::class.java).apply {
-            // 绑定生命周期
-//            addLifecycle(instance<MainActivity>())
-        }
+        instance<MainActivity>().viewModel(TestViewModel::class.java)
     }
 
 }
