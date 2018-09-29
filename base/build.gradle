@@ -71,7 +71,6 @@ dependencies {
     // ViewModel and LiveData
     api "android.arch.lifecycle:extensions:$lifecycle_version"
     kapt "android.arch.lifecycle:compiler:$lifecycle_version"
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // databinding
     kapt "com.android.databinding:compiler:3.1.4"
     // RxJava support for Room

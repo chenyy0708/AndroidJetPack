@@ -1,7 +1,7 @@
 package com.cyy.kt.net
 
-import com.cyy.kt.api.DouBanService
-import com.cyy.kt.api.GankService
+import com.cyy.kt.net.api.DouBanService
+import com.cyy.kt.net.api.GankService
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

@@ -1,8 +1,8 @@
 package com.cyy.kt.viewmodel
 
-import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import com.cyy.base.rx.applySchedulers
+import android.databinding.ObservableField
+import com.cyy.kt.extens.applySchedulers
 import com.cyy.kt.net.NetManager
 import io.reactivex.rxkotlin.subscribeBy
 
@@ -13,18 +13,18 @@ import io.reactivex.rxkotlin.subscribeBy
  * @github       :https://github.com/chenyy0708
  */
 class TestViewModel : ViewModel() {
-    val name = MutableLiveData<String>()
+    val name = ObservableField<String>()
 
-    var url = MutableLiveData<String>()
+    var url = ObservableField<String>()
 
     fun getData() {
         NetManager.getInstance()
                 .getDouBan()
                 .getDouBanBook()
-                .compose(applySchedulers())
+                .applySchedulers()
                 .subscribeBy {
-                    name.postValue(it.alt)
-                    url.postValue(it.publisher)
+                    name.set(it.alt)
+                    url.set(it.publisher)
                 }
     }
 

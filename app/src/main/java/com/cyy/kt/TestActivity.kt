@@ -1,0 +1,24 @@
+package com.cyy.kt
+
+import android.os.Bundle
+import com.cyy.base.base.BaseActivity
+import com.cyy.kt.databinding.TestActivityBinding
+import com.cyy.kt.extens.navigateToActivity
+
+/**
+ * @author       :ChenYangYi
+ * @date         :2018/09/29/09:07
+ * @description  :
+ * @github       :https://github.com/chenyy0708
+ */
+
+class TestActivity : BaseActivity<TestActivityBinding>() {
+    override fun getLayoutRes(): Int = R.layout.test_activity
+
+    override fun initData(savedInstanceState: Bundle?) {
+        mBinding.bt.setOnClickListener {
+            navigateToActivity(MainActivity::class.java)
+        }
+    }
+
+}
