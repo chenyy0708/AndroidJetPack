@@ -6,9 +6,12 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
+import org.kodein.di.Copy
+import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinTrigger
 import org.kodein.di.android.closestKodein
+import org.kodein.di.android.retainedKodein
 
 /**
  * @author       :ChenYangYi
@@ -16,18 +19,30 @@ import org.kodein.di.android.closestKodein
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
+        KodeinAware {
 
     protected lateinit var mBinding: VB
 
     protected lateinit var mContext: Context
 
+    protected val parentKodein by closestKodein()
 
+    override val kodeinTrigger = KodeinTrigger()
+
+    /**
+     * 导入Application中所有的单例使用
+     */
+    override val kodein: Kodein by retainedKodein {
+        extend(parentKodein, copy = Copy.All)
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBinding()
         mContext = this
+        kodeinTrigger.trigger()
         initData(savedInstanceState)
     }
 
