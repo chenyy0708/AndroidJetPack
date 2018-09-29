@@ -79,9 +79,12 @@ dependencies {
     api "android.arch.persistence.room:runtime:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
 
-    //di
-    api "com.google.dagger:dagger:$dagger"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
+    // di
+    api 'org.kodein.di:kodein-di-generic-jvm:5.2.0'
+    // Android扩展组件
+    api 'org.kodein.di:kodein-di-framework-android-core:5.2.0'
+    // support扩展组件，我的项目中用到了v4包的Fragment，因此我需要它
+    api 'org.kodein.di:kodein-di-framework-android-support:5.2.0'
 
     // anko
     api "org.jetbrains.anko:anko:$anko_version"
