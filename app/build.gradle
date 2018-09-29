@@ -47,15 +47,12 @@ dependencies {
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$baseRecyclerViewAdapterHelper"
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$refreshLayoutVersion"
 
-
     kapt "com.google.dagger:dagger-compiler:$dagger"
     kapt "android.arch.lifecycle:compiler:$lifecycle_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
     kapt "com.android.databinding:compiler:3.1.4"
 
     implementation 'com.github.bumptech.glide:glide:3.7.0'
-
-    implementation 'com.uber.autodispose:autodispose-android-archcomponents:1.0.0-RC2'
 
     implementation  "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

@@ -23,11 +23,18 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initBinding()
+        mContext = this
+        initData(savedInstanceState)
+    }
+
+    /**
+     * 创建DataBinding
+     */
+    private fun initBinding() {
         mBinding = DataBindingUtil.setContentView<VB>(this, getLayoutRes())
         // 监听生命周期
         mBinding.setLifecycleOwner(this)
-        mContext = this
-        initData(savedInstanceState)
     }
 
     /**

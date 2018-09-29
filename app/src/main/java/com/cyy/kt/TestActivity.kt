@@ -3,7 +3,7 @@ package com.cyy.kt
 import android.os.Bundle
 import com.cyy.base.base.BaseActivity
 import com.cyy.kt.databinding.TestActivityBinding
-import com.cyy.kt.extens.navigateToActivity
+import com.cyy.base.extens.navigateToActivity
 
 /**
  * @author       :ChenYangYi

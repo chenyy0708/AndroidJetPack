@@ -64,8 +64,9 @@ dependencies {
     // kotlin
     api "io.reactivex.rxjava2:rxkotlin:$rxkotlin"
     // autodispose 取消订阅
-    implementation 'com.uber.autodispose:autodispose:0.8.0'
-    implementation 'com.uber.autodispose:autodispose-android-archcomponents:0.8.0'
+    api 'com.uber.autodispose:autodispose-android:1.0.0-RC2'
+    api 'com.uber.autodispose:autodispose-android-ktx:1.0.0-RC2'
+    api 'com.uber.autodispose:autodispose-android-archcomponents-ktx:1.0.0-RC2'
 
     // Architecture
     // ViewModel and LiveData

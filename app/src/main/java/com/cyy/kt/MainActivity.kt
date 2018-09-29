@@ -7,6 +7,7 @@ import com.cyy.base.base.BaseActivity
 import com.cyy.base.view.click.Presenter
 import com.cyy.kt.databinding.ActivityMainBinding
 import com.cyy.kt.viewmodel.TestViewModel
+import com.qingmei2.rhine.ext.viewmodel.addLifecycle
 import org.jetbrains.anko.toast
 
 
@@ -20,8 +21,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
 
     override fun initData(savedInstanceState: Bundle?) {
         mBinding.vm = viewModel
-        // 点击事件
+        // 点击事件 可选
         mBinding.presenter = this
+        // 绑定生命周期，用于取消订阅
+        viewModel.addLifecycle(this)
         viewModel.getData()
     }
 

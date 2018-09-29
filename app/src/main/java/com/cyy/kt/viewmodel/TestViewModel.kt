@@ -1,10 +1,9 @@
 package com.cyy.kt.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import com.cyy.kt.extens.applySchedulers
+import com.cyy.base.base.viewmodel.LifecycleViewModel
+import com.cyy.base.extens.bindLifecycle
 import com.cyy.kt.net.NetManager
-import io.reactivex.rxkotlin.subscribeBy
 
 /**
  * @author       :ChenYangYi
@@ -12,7 +11,7 @@ import io.reactivex.rxkotlin.subscribeBy
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-class TestViewModel : ViewModel() {
+class TestViewModel : LifecycleViewModel() {
     val name = MutableLiveData<String>()
 
     var url = MutableLiveData<String>()
@@ -21,11 +20,11 @@ class TestViewModel : ViewModel() {
         NetManager.getInstance()
                 .getDouBan()
                 .getDouBanBook()
-                .applySchedulers()
-                .subscribeBy {
+                // 线程切换 + 自动绑定Activity/Fragment生命周期取消订阅
+                .bindLifecycle(this)
+                .subscribe {
                     name.postValue(it.alt)
                     url.postValue(it.publisher)
                 }
     }
-
 }
