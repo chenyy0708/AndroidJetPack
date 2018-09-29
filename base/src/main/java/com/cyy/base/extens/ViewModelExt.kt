@@ -1,5 +1,6 @@
-package com.qingmei2.rhine.ext.viewmodel
+package com.cyy.base.extens
 
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import com.cyy.base.base.viewmodel.LifecycleViewModel
@@ -11,12 +12,21 @@ import com.cyy.base.base.viewmodel.LifecycleViewModel
  * @github       :https://github.com/chenyy0708
  */
 
+
 fun LifecycleViewModel.addLifecycle(activity: FragmentActivity) {
-//    activity.lifecycle.addObserver(this)
     this.lifecycleOwner = activity
 }
 
 fun LifecycleViewModel.addLifecycle(fragment: Fragment) {
-//    fragment.lifecycle.addObserver(this)
     this.lifecycleOwner = fragment
 }
+
+fun <T : LifecycleViewModel> FragmentActivity.viewModel(modelClass: Class<T>) =
+        ViewModelProviders.of(this).get(modelClass).also {
+            lifecycle.addObserver(it)
+        }
+
+fun <T : LifecycleViewModel> Fragment.viewModel(modelClass: Class<T>) =
+        ViewModelProviders.of(activity!!).get(modelClass).also {
+            lifecycle.addObserver(it)
+        }

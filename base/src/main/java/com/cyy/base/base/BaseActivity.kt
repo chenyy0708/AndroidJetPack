@@ -1,13 +1,14 @@
 package com.cyy.base.base
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
+import org.kodein.di.KodeinAware
+import org.kodein.di.KodeinTrigger
+import org.kodein.di.android.closestKodein
 
 /**
  * @author       :ChenYangYi
@@ -21,6 +22,8 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     protected lateinit var mContext: Context
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBinding()
@@ -33,8 +36,10 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
      */
     private fun initBinding() {
         mBinding = DataBindingUtil.setContentView<VB>(this, getLayoutRes())
-        // 监听生命周期
-        mBinding.setLifecycleOwner(this)
+        // 绑定LifeCycle
+        with(mBinding) {
+            setLifecycleOwner(this@BaseActivity)
+        }
     }
 
     /**
@@ -44,7 +49,5 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     @LayoutRes
     abstract fun getLayoutRes(): Int
-
-    fun <T : ViewModel> getInjectViewModel(modelClass: Class<T>) = ViewModelProviders.of(this).get(modelClass)
 
 }

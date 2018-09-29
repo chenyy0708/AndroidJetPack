@@ -1,9 +1,13 @@
 package com.cyy.base.extens
 
 import android.app.Activity
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.support.annotation.ColorRes
 import android.support.annotation.DimenRes
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.support.v4.content.ContextCompat
 import android.util.Log
 import com.cyy.base.BuildConfig
@@ -32,6 +36,17 @@ fun Activity.navigateToActivity(c: Class<*>) {
     val intent = Intent()
     intent.setClass(this, c)
     startActivity(intent)
+}
+
+/**
+ * Activity 得到ViewModel
+ */
+fun <T : ViewModel> FragmentActivity.getInjectViewModel(modelClass: Class<T>): T {
+    return ViewModelProviders.of(this).get(modelClass)
+}
+
+fun <T : ViewModel> Fragment.getInjectViewModel(modelClass: Class<T>): T {
+    return ViewModelProviders.of(this).get(modelClass)
 }
 
 /**
