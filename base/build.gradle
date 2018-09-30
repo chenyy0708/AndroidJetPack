@@ -98,7 +98,7 @@ dependencies {
     // 侧滑返回
     api 'cn.bingoogolapple:bga-swipebacklayout:1.1.9@aar'
     api 'me.jessyan:retrofit-url-manager:1.4.0'
-    api 'me.yokeyword:fragmentation:1.3.5'
+    // Snackbar
     api 'io.github.tonnyl:light:1.1.1'
     // 多状态布局
     api 'com.github.chenyy0708:LoadSir:2.0.0'

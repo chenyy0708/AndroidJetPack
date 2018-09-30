@@ -5,12 +5,12 @@ import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import me.yokeyword.fragmentation.SupportFragment
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinTrigger
 
@@ -20,7 +20,7 @@ import org.kodein.di.KodeinTrigger
  * @description  :Fragment基类
  * @github       :https://github.com/chenyy0708
  */
-abstract class BaseFragment<VB : ViewDataBinding> : SupportFragment(),
+abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
         KodeinAware {
 
     /**
@@ -59,7 +59,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : SupportFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBinding(view)
-        mContext = _mActivity
+        mContext = this!!.activity!!
         kodeinTrigger.trigger()
         // 注册多状态布局
         mLoadService = LoadSir.getDefault().register(getStatusLayout())

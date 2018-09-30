@@ -44,7 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
     override fun initData(savedInstanceState: Bundle?) {
         mBinding.vm = mainViewModel
         mBinding.presenter = this
-        initToolbar(mBinding.mainContent.toolBar, "MvvM框架", false)
+        initToolbar(mBinding.mainContent.toolBar, "MvvM框架", true)
         syncToolBar(mBinding.mainContent.toolBar)
         // 展示Loading
         mLoadService.showCallback(LoadingCallback::class.java)

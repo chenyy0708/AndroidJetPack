@@ -43,7 +43,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':base')
-    implementation "com.github.lygttpod:SuperTextView:$superTextView"
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$baseRecyclerViewAdapterHelper"
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$refreshLayoutVersion"
 
