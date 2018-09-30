@@ -1,4 +1,4 @@
-package com.cyy.base.base.viewmodel
+package com.cyy.base.base
 
 import android.content.Context
 import android.databinding.DataBindingUtil

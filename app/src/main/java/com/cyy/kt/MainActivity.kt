@@ -1,5 +1,6 @@
 package com.cyy.kt
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.view.View
 import com.cyy.base.aop.annotation.SingleClick
@@ -8,8 +9,8 @@ import com.cyy.base.extens.showMsg
 import com.cyy.base.extens.viewModel
 import com.cyy.base.view.click.Presenter
 import com.cyy.kt.databinding.ActivityMainBinding
+import com.cyy.kt.ui.callback.LoadingCallback
 import com.cyy.kt.viewmodel.TestViewModel
-import com.kingja.loadsir.callback.ProgressCallback
 import org.kodein.di.Kodein
 import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.android.retainedKodein
@@ -27,10 +28,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
     override val kodein: Kodein by retainedKodein {
         extend(parentKodein)
         bind<MainActivity>() with instance(this@MainActivity)
-        /**
-         * scoped(AndroidComponentsWeakScope)
-         * 保证了Activity级别的局部单例
-         */
+        // AndroidComponentsWeakScope 保证了Activity级别的局部单例
         bind<TestViewModel>() with scoped(AndroidComponentsWeakScope).singleton {
             // 得到ViewModel实例
             instance<MainActivity>().viewModel(TestViewModel::class.java)
@@ -42,11 +40,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
 
     override fun initData(savedInstanceState: Bundle?) {
         mBinding.vm = mainViewModel
-        // 点击事件 可选
         mBinding.presenter = this
-        // 绑定生命周期，用于取消订阅
+        // 展示Loading
+        mLoadService.showCallback(LoadingCallback::class.java)
+        // 获取数据
         mainViewModel.getData()
-        mLoadService.showCallback(ProgressCallback::class.java)
+        // 获取数据成功监听
+        mainViewModel.getLiveDataName().observe(this, Observer<String> {
+            mLoadService.showSuccess()
+        })
     }
 
     // 防止重复点击

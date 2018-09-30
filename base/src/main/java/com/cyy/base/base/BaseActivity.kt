@@ -25,14 +25,25 @@ import org.kodein.di.android.retainedKodein
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
         KodeinAware {
 
+    /**
+     * DataBind
+     */
     protected lateinit var mBinding: VB
 
+    /**
+     * 上下文
+     */
     protected lateinit var mContext: Context
 
+    /**
+     * 注入框架
+     */
     protected val parentKodein by closestKodein()
-
     override val kodeinTrigger = KodeinTrigger()
 
+    /**
+     * 多状态布局管理类
+     */
     protected lateinit var mLoadService: LoadService<Any>
 
     /**
@@ -63,10 +74,12 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
      * 创建DataBinding
      */
     private fun initBinding() {
-        mBinding = DataBindingUtil.setContentView<VB>(this, getLayoutRes())
-        // 绑定LifeCycle
-        with(mBinding) {
-            setLifecycleOwner(this@BaseActivity)
+        if (getLayoutRes() != null) {
+            mBinding = DataBindingUtil.setContentView<VB>(this, getLayoutRes())
+            // 绑定LifeCycle
+            with(mBinding) {
+                setLifecycleOwner(this@BaseActivity)
+            }
         }
     }
 

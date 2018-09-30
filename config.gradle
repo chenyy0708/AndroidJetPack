@@ -30,4 +30,6 @@ ext {
     room_version = "1.1.1"
 
     dagger = "2.14.1"
+
+    lottieVersion = "2.8.0"
 }

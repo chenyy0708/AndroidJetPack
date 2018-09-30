@@ -1,6 +1,7 @@
 package com.cyy.kt.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
+import com.cyy.base.extens.async
 import com.cyy.base.extens.bindLifecycle
 import com.cyy.kt.base.BaseViewModel
 
@@ -16,9 +17,12 @@ class TestViewModel : BaseViewModel() {
 
     var url = MutableLiveData<String>()
 
+    fun getLiveDataName(): MutableLiveData<String> = name
+
     fun getData() {
         douBanService
                 .getDouBanBook()
+                .async(4000)
                 // 线程切换 + 自动绑定Activity/Fragment生命周期取消订阅
                 .bindLifecycle(this)
                 .subscribe {
