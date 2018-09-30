@@ -2,6 +2,8 @@ package com.cyy.kt
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.widget.Toolbar
 import android.view.View
 import com.cyy.base.aop.annotation.SingleClick
 import com.cyy.base.base.BaseActivity
@@ -24,7 +26,7 @@ import org.kodein.di.generic.singleton
 class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
     override fun getLayoutRes(): Int = R.layout.activity_main
 
-    override fun getStatusLayout(): View = mBinding.container
+    override fun getStatusLayout(): View = mBinding.mainContent.container
 
     override val kodein: Kodein by retainedKodein {
         extend(parentKodein)
@@ -42,7 +44,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
     override fun initData(savedInstanceState: Bundle?) {
         mBinding.vm = mainViewModel
         mBinding.presenter = this
-        initToolbar(mBinding.toolBar, "MvvM框架", false)
+        initToolbar(mBinding.mainContent.toolBar, "MvvM框架", false)
+        syncToolBar(mBinding.mainContent.toolBar)
         // 展示Loading
         mLoadService.showCallback(LoadingCallback::class.java)
         // 获取数据
@@ -51,6 +54,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
         mainViewModel.getLiveDataName().observe(this, Observer<String> {
             mLoadService.showSuccess()
         })
+    }
+
+    private fun syncToolBar(toolbar: Toolbar) {
+        val toggle = ActionBarDrawerToggle(
+                this, mBinding.drawerLayout, toolbar, R.string.open,
+                R.string.close)
+        mBinding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
     }
 
     // 防止重复点击
