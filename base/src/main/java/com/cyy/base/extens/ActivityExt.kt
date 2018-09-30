@@ -6,13 +6,13 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.support.annotation.ColorRes
 import android.support.annotation.DimenRes
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.util.Log
 import com.cyy.base.BuildConfig
-import io.github.tonnyl.light.success
 
 /**
  * @author       :ChenYangYi
@@ -38,6 +38,18 @@ fun Activity.navigateToActivity(c: Class<*>) {
     val intent = Intent()
     intent.setClass(this, c)
     startActivity(intent)
+}
+
+/**
+ * 初始化Toolbar
+ */
+fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "Mvvm", isBack: Boolean = true) {
+    this.apply {
+        setSupportActionBar(mToolbar)
+        supportActionBar!!.title = mTitle
+        supportActionBar!!.setDisplayHomeAsUpEnabled(isBack)
+        mToolbar.setNavigationOnClickListener { onBackPressed() }
+    }
 }
 
 /**

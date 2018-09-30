@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.cyy.base.aop.annotation.SingleClick
 import com.cyy.base.base.BaseActivity
+import com.cyy.base.extens.initToolbar
 import com.cyy.base.extens.showMsg
 import com.cyy.base.extens.viewModel
 import com.cyy.base.view.click.Presenter
@@ -41,6 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
     override fun initData(savedInstanceState: Bundle?) {
         mBinding.vm = mainViewModel
         mBinding.presenter = this
+        initToolbar(mBinding.toolBar, "MvvM框架", false)
         // 展示Loading
         mLoadService.showCallback(LoadingCallback::class.java)
         // 获取数据
