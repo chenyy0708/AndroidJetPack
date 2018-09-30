@@ -6,6 +6,9 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import com.kingja.loadsir.core.LoadService
+import com.kingja.loadsir.core.LoadSir
 import org.kodein.di.Copy
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -16,7 +19,7 @@ import org.kodein.di.android.retainedKodein
 /**
  * @author       :ChenYangYi
  * @date         :2018/07/24/14:38
- * @description  :
+ * @description  :Activity基类
  * @github       :https://github.com/chenyy0708
  */
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
@@ -30,6 +33,8 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
 
     override val kodeinTrigger = KodeinTrigger()
 
+    protected lateinit var mLoadService: LoadService<Any>
+
     /**
      * 导入Application中所有的单例使用
      */
@@ -42,7 +47,16 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
         initBinding()
         mContext = this
         kodeinTrigger.trigger()
+        // 注册多状态布局
+        mLoadService = LoadSir.getDefault().register(getStatusLayout())
         initData(savedInstanceState)
+    }
+
+    /**
+     * 返回被多状态布局包裹的ViewGroup,默认为Activity根布局
+     */
+    protected open fun getStatusLayout(): View {
+        return mBinding.root
     }
 
     /**

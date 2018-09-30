@@ -1,10 +1,11 @@
 package com.cyy.kt
 
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import com.cyy.base.base.BaseActivity
 import com.cyy.base.extens.navigateToActivity
 import com.cyy.kt.databinding.TestActivityBinding
-import org.kodein.di.Kodein
 
 /**
  * @author       :ChenYangYi
@@ -14,7 +15,6 @@ import org.kodein.di.Kodein
  */
 
 class TestActivity : BaseActivity<TestActivityBinding>() {
-
     override fun getLayoutRes(): Int = R.layout.test_activity
 
     override fun initData(savedInstanceState: Bundle?) {

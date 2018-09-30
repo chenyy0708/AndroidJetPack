@@ -4,6 +4,9 @@ import android.content.Context
 import com.cyy.base.base.BaseApp
 import com.cyy.kt.di.httpClientModule
 import com.cyy.kt.net.UrlConstanct
+import com.kingja.loadsir.callback.ProgressCallback
+import com.kingja.loadsir.callback.SuccessCallback
+import com.kingja.loadsir.core.LoadSir
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -34,6 +37,12 @@ class App : BaseApp(), KodeinAware {
         // 动态切换Retrofit BaseUrl
         RetrofitUrlManager.getInstance().putDomain(UrlConstanct.DOUBAN, UrlConstanct.DOUBAN_URL)
         RetrofitUrlManager.getInstance().putDomain(UrlConstanct.GANK, UrlConstanct.GANK_URL)
+        // 初始化多状态布局
+        LoadSir.beginBuilder()
+                .addCallback(ProgressCallback.Builder()
+                        .build())
+                .setDefaultCallback(SuccessCallback::class.java)
+                .commit()
     }
 
     companion object {

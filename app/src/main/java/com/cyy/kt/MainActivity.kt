@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.View
 import com.cyy.base.aop.annotation.SingleClick
 import com.cyy.base.base.BaseActivity
+import com.cyy.base.extens.showMsg
 import com.cyy.base.extens.viewModel
 import com.cyy.base.view.click.Presenter
 import com.cyy.kt.databinding.ActivityMainBinding
 import com.cyy.kt.viewmodel.TestViewModel
-import org.jetbrains.anko.toast
+import com.kingja.loadsir.callback.ProgressCallback
 import org.kodein.di.Kodein
 import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.android.retainedKodein
@@ -19,8 +20,9 @@ import org.kodein.di.generic.singleton
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
-
     override fun getLayoutRes(): Int = R.layout.activity_main
+
+    override fun getStatusLayout(): View = mBinding.container
 
     override val kodein: Kodein by retainedKodein {
         extend(parentKodein)
@@ -44,12 +46,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
         mBinding.presenter = this
         // 绑定生命周期，用于取消订阅
         mainViewModel.getData()
+        mLoadService.showCallback(ProgressCallback::class.java)
     }
 
     // 防止重复点击
     @SingleClick
     override fun onClick(v: View?) {
-        toast("Click")
+        showMsg("修改成功")
     }
 }
 
