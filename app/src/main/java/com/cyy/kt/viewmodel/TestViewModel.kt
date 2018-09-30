@@ -3,7 +3,6 @@ package com.cyy.kt.viewmodel
 import android.arch.lifecycle.MutableLiveData
 import com.cyy.base.extens.bindLifecycle
 import com.cyy.kt.base.BaseViewModel
-import org.kodein.di.KodeinAware
 
 /**
  * @author       :ChenYangYi
@@ -11,7 +10,7 @@ import org.kodein.di.KodeinAware
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-class TestViewModel : BaseViewModel(), KodeinAware {
+class TestViewModel : BaseViewModel() {
 
     val name = MutableLiveData<String>()
 

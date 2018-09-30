@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.View
 import com.cyy.base.aop.annotation.SingleClick
 import com.cyy.base.base.BaseActivity
+import com.cyy.base.extens.viewModel
 import com.cyy.base.view.click.Presenter
 import com.cyy.kt.databinding.ActivityMainBinding
-import com.cyy.kt.di.mainModule
 import com.cyy.kt.viewmodel.TestViewModel
 import org.jetbrains.anko.toast
 import org.kodein.di.Kodein
+import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.android.retainedKodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
+import org.kodein.di.generic.scoped
+import org.kodein.di.generic.singleton
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
@@ -21,8 +24,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
 
     override val kodein: Kodein by retainedKodein {
         extend(parentKodein)
-        import(mainModule)
         bind<MainActivity>() with instance(this@MainActivity)
+        /**
+         * scoped(AndroidComponentsWeakScope)
+         * 保证了Activity级别的局部单例
+         */
+        bind<TestViewModel>() with scoped(AndroidComponentsWeakScope).singleton {
+            // 得到ViewModel实例
+            instance<MainActivity>().viewModel(TestViewModel::class.java)
+        }
     }
 
     // 注入MainViewModel管理业务数据

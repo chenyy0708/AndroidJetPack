@@ -35,7 +35,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
      */
     override val kodein: Kodein by retainedKodein {
         extend(parentKodein, copy = Copy.All)
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
