@@ -2,6 +2,7 @@ package com.cyy.base.extens
 
 import android.app.Activity
 import android.support.design.widget.Snackbar
+import android.support.v4.app.Fragment
 import io.github.tonnyl.light.success
 import io.github.tonnyl.light.warning
 
@@ -17,6 +18,14 @@ import io.github.tonnyl.light.warning
  */
 fun Activity.showMsg(message: String) {
     success(this.window.decorView, message, Snackbar.LENGTH_SHORT)
+            .show()
+}
+
+/**
+ * 提示消息
+ */
+fun Fragment.showMsg(message: String) {
+    success(this.view!!, message, Snackbar.LENGTH_SHORT)
             .show()
 }
 

@@ -1,59 +1,36 @@
 package com.cyy.kt
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
-import android.view.View
-import com.cyy.base.aop.annotation.SingleClick
 import com.cyy.base.base.BaseActivity
+import com.cyy.base.extens.addFragment
 import com.cyy.base.extens.initToolbar
-import com.cyy.base.extens.showMsg
-import com.cyy.base.extens.viewModel
-import com.cyy.base.view.click.Presenter
-import com.cyy.kt.databinding.ActivityMainBinding
-import com.cyy.kt.ui.callback.LoadingCallback
-import com.cyy.kt.viewmodel.TestViewModel
+import com.cyy.kt.databinding.MainActivityBinding
+import com.cyy.kt.ui.fragment.TestFragment
 import org.kodein.di.Kodein
-import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.android.retainedKodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
-import org.kodein.di.generic.scoped
-import org.kodein.di.generic.singleton
 
 
-class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
-    override fun getLayoutRes(): Int = R.layout.activity_main
-
-    override fun getStatusLayout(): View = mBinding.mainContent.container
+class MainActivity : BaseActivity<MainActivityBinding>() {
+    override fun getLayoutRes(): Int = R.layout.main_activity
 
     override val kodein: Kodein by retainedKodein {
         extend(parentKodein)
         bind<MainActivity>() with instance(this@MainActivity)
-        // AndroidComponentsWeakScope 保证了Activity级别的局部单例
-        bind<TestViewModel>() with scoped(AndroidComponentsWeakScope).singleton {
-            // 得到ViewModel实例
-            instance<MainActivity>().viewModel(TestViewModel::class.java)
-        }
     }
 
-    // 注入MainViewModel管理业务数据
-    private val mainViewModel: TestViewModel by instance()
+    private var listOf = listOf<Fragment>(
+            TestFragment.newInstance()
+    )
 
     override fun initData(savedInstanceState: Bundle?) {
-        mBinding.vm = mainViewModel
-        mBinding.presenter = this
-        initToolbar(mBinding.mainContent.toolBar, "MvvM框架", true)
-        syncToolBar(mBinding.mainContent.toolBar)
-        // 展示Loading
-        mLoadService.showCallback(LoadingCallback::class.java)
-        // 获取数据
-        mainViewModel.getData()
-        // 获取数据成功监听
-        mainViewModel.getLiveDataName().observe(this, Observer<String> {
-            mLoadService.showSuccess()
-        })
+        initToolbar(mBinding.toolBar, "MvvM框架", true)
+        syncToolBar(mBinding.toolBar)
+        addFragment(listOf[0], R.id.fl_continer)
     }
 
     private fun syncToolBar(toolbar: Toolbar) {
@@ -62,12 +39,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), Presenter {
                 R.string.close)
         mBinding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-    }
-
-    // 防止重复点击
-    @SingleClick
-    override fun onClick(v: View?) {
-        showMsg("修改成功")
     }
 }
 

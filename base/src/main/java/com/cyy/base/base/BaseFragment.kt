@@ -53,7 +53,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         mRootView = LayoutInflater.from(context).inflate(getLayoutRes(), container, false)
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return mRootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
