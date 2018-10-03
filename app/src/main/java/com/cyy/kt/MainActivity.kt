@@ -5,17 +5,21 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
 import com.cyy.base.base.BaseActivity
-import com.cyy.base.extens.addFragment
 import com.cyy.base.extens.initToolbar
 import com.cyy.kt.databinding.MainActivityBinding
 import com.cyy.kt.ui.fragment.TestFragment
+import com.ncapdevi.fragnav.FragNavController
 import org.kodein.di.Kodein
 import org.kodein.di.android.retainedKodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 
 
-class MainActivity : BaseActivity<MainActivityBinding>() {
+class MainActivity : BaseActivity<MainActivityBinding>(), FragNavController.RootFragmentListener {
+    override fun getRootFragment(p0: Int): Fragment {
+        return mFragments[p0]
+    }
+
     override fun getLayoutRes(): Int = R.layout.main_activity
 
     override val kodein: Kodein by retainedKodein {
@@ -23,14 +27,21 @@ class MainActivity : BaseActivity<MainActivityBinding>() {
         bind<MainActivity>() with instance(this@MainActivity)
     }
 
-    private var listOf = listOf<Fragment>(
+    private val mFragments = listOf<Fragment>(
             TestFragment.newInstance()
     )
+
+    lateinit var mNavController: FragNavController
 
     override fun initData(savedInstanceState: Bundle?) {
         initToolbar(mBinding.toolBar, "MvvM框架", true)
         syncToolBar(mBinding.toolBar)
-        addFragment(listOf[0], R.id.fl_continer)
+
+        mNavController = FragNavController.newBuilder(savedInstanceState, supportFragmentManager, R.id.fl_continer)
+                .rootFragmentListener(this, mFragments.size)
+                .build()
+
+        mNavController.switchTab(FragNavController.TAB1)
     }
 
     private fun syncToolBar(toolbar: Toolbar) {
