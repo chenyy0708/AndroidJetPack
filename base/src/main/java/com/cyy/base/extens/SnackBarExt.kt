@@ -1,9 +1,11 @@
 package com.cyy.base.extens
 
+import android.R
 import android.app.Activity
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import io.github.tonnyl.light.success
+import android.support.v4.content.ContextCompat
+import io.github.tonnyl.light.make
 import io.github.tonnyl.light.warning
 
 /**
@@ -17,16 +19,26 @@ import io.github.tonnyl.light.warning
  * 提示消息
  */
 fun Activity.showMsg(message: String) {
-    success(this.window.decorView, message, Snackbar.LENGTH_SHORT)
-            .show()
+    make(
+            this.window.decorView,
+            message,
+            Snackbar.LENGTH_SHORT,
+            null,
+            ContextCompat.getColor(this, io.github.tonnyl.light.R.color.color_normal),
+            ContextCompat.getColor(this, R.color.white)).show()
 }
 
 /**
  * 提示消息
  */
 fun Fragment.showMsg(message: String) {
-    success(this.view!!, message, Snackbar.LENGTH_SHORT)
-            .show()
+    make(
+            this.view!!,
+            message,
+            Snackbar.LENGTH_SHORT,
+            null,
+            ContextCompat.getColor(view!!.context, io.github.tonnyl.light.R.color.color_normal),
+            ContextCompat.getColor(view!!.context, R.color.white)).show()
 }
 
 /**

@@ -6,4 +6,4 @@ package com.cyy.kt.model.data
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-data class DouBanBook(var alt: String, var publisher: String, var summary: String)
+data class DouBanBook(var alt: String, var publisher: String, var image: String)

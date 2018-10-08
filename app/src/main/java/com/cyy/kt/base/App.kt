@@ -5,6 +5,7 @@ import com.cyy.base.base.BaseApp
 import com.cyy.kt.di.httpClientModule
 import com.cyy.kt.net.UrlConstanct
 import com.cyy.kt.ui.callback.LoadingCallback
+import com.facebook.stetho.Stetho
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
@@ -42,6 +43,7 @@ class App : BaseApp(), KodeinAware {
                 .addCallback(LoadingCallback())
                 .setDefaultCallback(SuccessCallback::class.java)
                 .commit()
+        Stetho.initializeWithDefaults(this)
     }
 
     companion object {

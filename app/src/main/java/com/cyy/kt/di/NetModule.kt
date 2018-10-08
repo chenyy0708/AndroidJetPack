@@ -1,12 +1,16 @@
 package com.cyy.kt.di
 
+import com.cyy.kt.BuildConfig
 import com.cyy.kt.net.UrlConstanct
 import com.cyy.kt.net.api.DouBanService
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
+import com.ihsanbal.logging.Level
+import com.ihsanbal.logging.LoggingInterceptor
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.internal.platform.Platform
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -50,7 +54,11 @@ val httpClientModule = Kodein.Module(NET_MODEUL_TAG) {
     }
 
     bind<Interceptor>(HTTP_CLIENT_MODULE_INTERCEPTOR_LOG_TAG) with singleton {
-        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        LoggingInterceptor.Builder()
+                .loggable(BuildConfig.DEBUG)
+                .setLevel(Level.BASIC)
+                .log(Platform.INFO)
+                .build()
     }
 
     /**
@@ -62,6 +70,7 @@ val httpClientModule = Kodein.Module(NET_MODEUL_TAG) {
                 .connectTimeout(CONNECT_TIME_OUT, TimeUnit.MILLISECONDS)
                 .writeTimeout(CONNECT_TIME_OUT, TimeUnit.MILLISECONDS)
                 .addInterceptor(instance(HTTP_CLIENT_MODULE_INTERCEPTOR_LOG_TAG))
+                .addNetworkInterceptor(StethoInterceptor())
                 .build()
     }
 

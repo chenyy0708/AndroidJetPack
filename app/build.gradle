@@ -43,8 +43,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':base')
-    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$baseRecyclerViewAdapterHelper"
-    implementation "com.scwang.smartrefresh:SmartRefreshLayout:$refreshLayoutVersion"
 
     kapt "android.arch.lifecycle:compiler:$lifecycle_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
@@ -59,5 +57,15 @@ dependencies {
         exclude group: "com.android.support"
     }
 
+    implementation('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+
     implementation 'com.ncapdevi:frag-nav:2.4.0'
+
+    implementation "android.arch.paging:runtime:$paging_version"
+    implementation "android.arch.paging:rxjava2:1.0.0-rc1"
+
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 }

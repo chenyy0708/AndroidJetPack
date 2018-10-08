@@ -27,7 +27,7 @@ class TestViewModel : BaseViewModel() {
                 .bindLifecycle(this)
                 .subscribe {
                     name.postValue(it.alt)
-                    url.postValue(it.publisher)
+                    url.postValue(it.image)
                 }
     }
 }

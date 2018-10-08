@@ -57,7 +57,6 @@ dependencies {
     api "com.squareup.retrofit2:retrofit:$retrofitVersion"
     api "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     api "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
-    api "com.squareup.okhttp3:logging-interceptor:$logginginterceptor"
 
     // rxjava
     api "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
