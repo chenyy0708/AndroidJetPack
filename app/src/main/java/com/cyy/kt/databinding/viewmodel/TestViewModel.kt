@@ -1,9 +1,12 @@
-package com.cyy.kt.viewmodel
+package com.cyy.kt.databinding.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import com.cyy.base.extens.async
 import com.cyy.base.extens.bindLifecycle
 import com.cyy.kt.base.BaseViewModel
+import com.cyy.kt.model.data.DouBanBook
+import com.cyy.kt.net.BaseObserver
+import com.cyy.kt.net.exception.CException
 
 /**
  * @author       :ChenYangYi
@@ -17,17 +20,23 @@ class TestViewModel : BaseViewModel() {
 
     var url = MutableLiveData<String>()
 
-    fun getLiveDataName(): MutableLiveData<String> = name
-
     fun getData() {
         douBanService
                 .getDouBanBook()
-                .async(4000)
+                .async(2000)
                 // 线程切换 + 自动绑定Activity/Fragment生命周期取消订阅
                 .bindLifecycle(this)
-                .subscribe {
-                    name.postValue(it.alt)
-                    url.postValue(it.image)
-                }
+                .subscribe(object : BaseObserver<DouBanBook>() {
+                    override fun onNext(douBanBook: DouBanBook) {
+                        name.postValue(douBanBook.alt)
+                        url.postValue(douBanBook.image)
+                    }
+
+                    override fun onError(p0: Throwable) {
+                        throwable.value = CException("Token失效")
+                    }
+
+                })
+
     }
 }

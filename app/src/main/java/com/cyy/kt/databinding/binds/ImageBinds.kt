@@ -1,4 +1,4 @@
-package com.cyy.kt.helper.binds
+package com.cyy.kt.databinding.binds
 
 import android.databinding.BindingAdapter
 import android.widget.ImageView

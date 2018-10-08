@@ -46,7 +46,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
     /**
      * 多状态布局管理类
      */
-    protected lateinit var mLoadService: LoadService<Any>
+    open lateinit var mLoadService: LoadService<Any>
 
 
     override fun onCreateView(inflater: LayoutInflater,

@@ -1,15 +1,9 @@
 package com.cyy.base.extens
 
 import android.app.Activity
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.support.annotation.ColorRes
 import android.support.annotation.DimenRes
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
@@ -52,29 +46,6 @@ fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "Mvvm", is
         supportActionBar!!.setDisplayHomeAsUpEnabled(isBack)
         mToolbar.setNavigationOnClickListener { onBackPressed() }
     }
-}
-
-/**
- * Activity 得到ViewModel
- */
-fun <T : ViewModel> FragmentActivity.getInjectViewModel(modelClass: Class<T>): T {
-    return ViewModelProviders.of(this).get(modelClass)
-}
-
-fun <T : ViewModel> Fragment.getInjectViewModel(modelClass: Class<T>): T {
-    return ViewModelProviders.of(this).get(modelClass)
-}
-
-fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int){
-    supportFragmentManager.inTransaction { add(frameId, fragment) }
-}
-
-fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
-    supportFragmentManager.inTransaction{replace(frameId, fragment)}
-}
-
-inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransaction) {
-    beginTransaction().func().commit()
 }
 
 /**

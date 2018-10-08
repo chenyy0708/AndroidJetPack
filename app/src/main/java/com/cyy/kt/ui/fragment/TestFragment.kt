@@ -11,8 +11,10 @@ import com.cyy.base.view.click.Presenter
 import com.cyy.kt.R
 import com.cyy.kt.base.App
 import com.cyy.kt.databinding.TestFragmentBinding
-import com.cyy.kt.ui.callback.LoadingCallback
-import com.cyy.kt.viewmodel.TestViewModel
+import com.cyy.kt.databinding.viewmodel.TestViewModel
+import com.cyy.kt.net.exception.doError
+import com.cyy.kt.net.exception.showLoading
+import com.cyy.kt.net.exception.showSuccess
 import org.kodein.di.Kodein
 import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.generic.bind
@@ -52,12 +54,15 @@ class TestFragment : BaseFragment<TestFragmentBinding>(), Presenter {
         mBinding.vm = testViewModel
         mBinding.presenter = this
         // 展示Loading
-        mLoadService.showCallback(LoadingCallback::class.java)
+        showLoading()
         // 获取数据
         testViewModel.getData()
         // 获取数据成功监听
-        testViewModel.getLiveDataName().observe(this, Observer<String> {
-            mLoadService.showSuccess()
+        testViewModel.name.observe(this, Observer {
+            showSuccess()
+        })
+        testViewModel.throwable.observe(this, Observer {
+            doError(it)
         })
     }
 

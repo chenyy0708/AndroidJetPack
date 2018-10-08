@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.cyy.kt.viewmodel.TestViewModel" />
+            type="com.cyy.kt.databinding.viewmodel.TestViewModel" />
 
         <variable
             name="presenter"

@@ -4,6 +4,7 @@ import android.content.Context
 import com.cyy.base.base.BaseApp
 import com.cyy.kt.di.httpClientModule
 import com.cyy.kt.net.UrlConstanct
+import com.cyy.kt.ui.callback.ErrorCallback
 import com.cyy.kt.ui.callback.LoadingCallback
 import com.facebook.stetho.Stetho
 import com.kingja.loadsir.callback.SuccessCallback
@@ -41,6 +42,7 @@ class App : BaseApp(), KodeinAware {
         // 初始化多状态布局
         LoadSir.beginBuilder()
                 .addCallback(LoadingCallback())
+                .addCallback(ErrorCallback())
                 .setDefaultCallback(SuccessCallback::class.java)
                 .commit()
         Stetho.initializeWithDefaults(this)

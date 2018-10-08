@@ -44,7 +44,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
     /**
      * 多状态布局管理类
      */
-    protected lateinit var mLoadService: LoadService<Any>
+    open lateinit var mLoadService: LoadService<Any>
 
     /**
      * 导入Application中所有的单例使用
@@ -90,5 +90,4 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
 
     @LayoutRes
     abstract fun getLayoutRes(): Int
-
 }
