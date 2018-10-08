@@ -6,7 +6,6 @@ import com.cyy.base.extens.bindLifecycle
 import com.cyy.kt.base.BaseViewModel
 import com.cyy.kt.model.data.DouBanBook
 import com.cyy.kt.net.BaseObserver
-import com.cyy.kt.net.exception.CException
 
 /**
  * @author       :ChenYangYi
@@ -26,16 +25,11 @@ class TestViewModel : BaseViewModel() {
                 .async(2000)
                 // 线程切换 + 自动绑定Activity/Fragment生命周期取消订阅
                 .bindLifecycle(this)
-                .subscribe(object : BaseObserver<DouBanBook>() {
+                .subscribe(object : BaseObserver<DouBanBook>(throwable) {
                     override fun onNext(douBanBook: DouBanBook) {
                         name.postValue(douBanBook.alt)
                         url.postValue(douBanBook.image)
                     }
-
-                    override fun onError(p0: Throwable) {
-                        throwable.value = CException("Token失效")
-                    }
-
                 })
 
     }
