@@ -15,6 +15,7 @@ import com.cyy.kt.databinding.viewmodel.TestViewModel
 import com.cyy.base.net.exception.doError
 import com.cyy.base.net.exception.showLoading
 import com.cyy.base.net.exception.showSuccess
+import com.cyy.kt.base.App
 import org.kodein.di.Kodein
 import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.generic.bind
@@ -26,10 +27,8 @@ class TestFragment : BaseFragment<TestFragmentBinding>(), Presenter {
 
     override fun getLayoutRes(): Int = R.layout.test_fragment
 
-    override fun getStatusLayout(): View = mBinding.container
-
     override val kodein: Kodein = Kodein.lazy {
-        extend(BaseApp.INSTANCE.kodein)
+        extend(App.INSTANCE.baseKodein)
         bind<TestFragment>() with instance(this@TestFragment)
         // AndroidComponentsWeakScope 保证了Activity级别的局部单例
         bind<TestViewModel>() with scoped(AndroidComponentsWeakScope).singleton {

@@ -59,7 +59,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBinding(view)
-        mContext = this!!.activity!!
+        mContext = this.activity!!
         kodeinTrigger.trigger()
         // 注册多状态布局
         mLoadService = LoadSir.getDefault().register(getStatusLayout())

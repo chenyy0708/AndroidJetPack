@@ -2,7 +2,6 @@ package com.cyy.base.di
 
 import com.cyy.base.BuildConfig
 import com.cyy.base.net.UrlConstanct
-import com.cyy.base.net.api.DouBanService
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.ihsanbal.logging.Level
@@ -75,11 +74,4 @@ val httpClientModule = Kodein.Module(NET_MODEUL_TAG) {
     }
 
     bind<Gson>() with singleton { Gson() }
-
-    /**
-     * 全局豆瓣 ApiService
-     */
-    bind<DouBanService>() with singleton {
-        instance<Retrofit>().create(DouBanService::class.java)
-    }
 }

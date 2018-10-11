@@ -24,7 +24,7 @@ import org.kodein.di.generic.singleton
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-class BaseApp : MultiDexApplication(), KodeinAware {
+open class BaseApp : MultiDexApplication(), KodeinAware {
 
     override val kodein: Kodein = Kodein.lazy {
         bind<Context>() with singleton { this@BaseApp }
@@ -36,7 +36,6 @@ class BaseApp : MultiDexApplication(), KodeinAware {
 
     override fun onCreate() {
         super.onCreate()
-        INSTANCE = this
         // 动态切换Retrofit BaseUrl
         RetrofitUrlManager.getInstance().putDomain(UrlConstanct.DOUBAN, UrlConstanct.DOUBAN_URL)
         RetrofitUrlManager.getInstance().putDomain(UrlConstanct.GANK, UrlConstanct.GANK_URL)
@@ -52,9 +51,5 @@ class BaseApp : MultiDexApplication(), KodeinAware {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         MultiDex.install(this)
-    }
-
-    companion object {
-        lateinit var INSTANCE: BaseApp
     }
 }

@@ -1,4 +1,4 @@
-package com.cyy.base.model.data
+package com.cyy.kt.net.data
 
 /**
  * @author       :ChenYangYi

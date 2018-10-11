@@ -1,8 +1,8 @@
 package com.cyy.base.base.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
-import com.cyy.base.base.BaseApp
-import com.cyy.base.net.api.DouBanService
+import com.cyy.kt.net.api.DouBanService
+import com.cyy.kt.base.App
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.instance
@@ -11,7 +11,7 @@ open class BaseViewModel : LifecycleViewModel(), KodeinAware {
     /**
      * 全局Kodein
      */
-    override val kodein: Kodein = BaseApp.INSTANCE.kodein
+    override val kodein: Kodein = App.INSTANCE.baseKodein
 
     /**
      * 错误
