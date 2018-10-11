@@ -1,4 +1,4 @@
-package com.cyy.kt.net.exception
+package com.cyy.base.net.exception
 
 /**
  * @author       :ChenYangYi

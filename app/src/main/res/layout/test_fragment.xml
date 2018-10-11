@@ -10,7 +10,7 @@
 
         <variable
             name="presenter"
-            type="com.cyy.base.view.click.Presenter" />
+            type="com.cyy.base.databinding.binds.Presenter" />
 
     </data>
 

@@ -1,12 +1,12 @@
-package com.cyy.kt.net.exception
+package com.cyy.base.net.exception
 
 import android.databinding.ViewDataBinding
 import android.widget.TextView
+import com.cyy.base.R
 import com.cyy.base.base.BaseActivity
 import com.cyy.base.base.BaseFragment
-import com.cyy.kt.R
-import com.cyy.kt.ui.callback.ErrorCallback
-import com.cyy.kt.ui.callback.LoadingCallback
+import com.cyy.base.callback.ErrorCallback
+import com.cyy.base.callback.LoadingCallback
 import java.net.UnknownHostException
 
 /**

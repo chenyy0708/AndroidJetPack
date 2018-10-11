@@ -1,4 +1,4 @@
-package com.cyy.base.view.click
+package com.cyy.base.databinding.binds
 
 import android.view.View
 

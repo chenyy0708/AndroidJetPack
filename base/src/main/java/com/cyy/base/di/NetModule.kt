@@ -1,8 +1,8 @@
-package com.cyy.kt.di
+package com.cyy.base.di
 
-import com.cyy.kt.BuildConfig
-import com.cyy.kt.net.UrlConstanct
-import com.cyy.kt.net.api.DouBanService
+import com.cyy.base.BuildConfig
+import com.cyy.base.net.UrlConstanct
+import com.cyy.base.net.api.DouBanService
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.ihsanbal.logging.Level

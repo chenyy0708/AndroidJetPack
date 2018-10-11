@@ -17,7 +17,7 @@ android {
         versionName config.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -77,6 +77,9 @@ dependencies {
     api "android.arch.persistence.room:runtime:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
 
+    api "android.arch.paging:runtime:$paging_version"
+    api "android.arch.paging:rxjava2:1.0.0-rc1"
+
     // di
     api 'org.kodein.di:kodein-di-generic-jvm:5.2.0'
     // Android扩展组件
@@ -101,4 +104,15 @@ dependencies {
     api 'io.github.tonnyl:light:1.1.1'
     // 多状态布局
     api 'com.github.chenyy0708:LoadSir:2.0.0'
+
+    api 'com.github.bumptech.glide:glide:3.7.0'
+    // Lottie动画
+    api ('com.airbnb.android:lottie:2.5.4') {
+        exclude group: "com.android.support"
+    }
+    implementation('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 }

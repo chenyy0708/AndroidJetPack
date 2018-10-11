@@ -1,7 +1,7 @@
-package com.cyy.kt.net.api
+package com.cyy.base.net.api
 
-import com.cyy.kt.model.data.DouBanBook
-import com.cyy.kt.net.UrlConstanct
+import com.cyy.base.model.data.DouBanBook
+import com.cyy.base.net.UrlConstanct
 import io.reactivex.Observable
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import retrofit2.http.GET

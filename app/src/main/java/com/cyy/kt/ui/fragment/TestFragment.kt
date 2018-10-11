@@ -7,14 +7,14 @@ import com.cyy.base.aop.annotation.SingleClick
 import com.cyy.base.base.BaseFragment
 import com.cyy.base.extens.showMsg
 import com.cyy.base.extens.viewModel
-import com.cyy.base.view.click.Presenter
+import com.cyy.base.databinding.binds.Presenter
 import com.cyy.kt.R
-import com.cyy.kt.base.App
+import com.cyy.base.base.BaseApp
 import com.cyy.kt.databinding.TestFragmentBinding
 import com.cyy.kt.databinding.viewmodel.TestViewModel
-import com.cyy.kt.net.exception.doError
-import com.cyy.kt.net.exception.showLoading
-import com.cyy.kt.net.exception.showSuccess
+import com.cyy.base.net.exception.doError
+import com.cyy.base.net.exception.showLoading
+import com.cyy.base.net.exception.showSuccess
 import org.kodein.di.Kodein
 import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.generic.bind
@@ -29,7 +29,7 @@ class TestFragment : BaseFragment<TestFragmentBinding>(), Presenter {
     override fun getStatusLayout(): View = mBinding.container
 
     override val kodein: Kodein = Kodein.lazy {
-        extend(App.INSTANCE.kodein)
+        extend(BaseApp.INSTANCE.kodein)
         bind<TestFragment>() with instance(this@TestFragment)
         // AndroidComponentsWeakScope 保证了Activity级别的局部单例
         bind<TestViewModel>() with scoped(AndroidComponentsWeakScope).singleton {

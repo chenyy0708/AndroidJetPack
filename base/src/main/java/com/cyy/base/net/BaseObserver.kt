@@ -1,4 +1,4 @@
-package com.cyy.kt.net
+package com.cyy.base.net
 
 import android.arch.lifecycle.MutableLiveData
 import io.reactivex.observers.DisposableObserver
