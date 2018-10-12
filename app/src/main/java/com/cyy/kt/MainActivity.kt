@@ -34,7 +34,7 @@ class MainActivity : BaseActivity<MainActivityBinding>(), FragNavController.Root
     lateinit var mNavController: FragNavController
 
     override fun initData(savedInstanceState: Bundle?) {
-        initToolbar(mBinding.toolBar, "MvvM框架", true)
+        initToolbar(mBinding.toolBar)
         syncToolBar(mBinding.toolBar)
 
         mNavController = FragNavController.newBuilder(savedInstanceState, supportFragmentManager, R.id.fl_continer)

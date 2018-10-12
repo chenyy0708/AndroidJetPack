@@ -38,7 +38,7 @@ fun Activity.navigateToActivity(c: Class<*>) {
 /**
  * 初始化Toolbar
  */
-fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "Mvvm", isBack: Boolean = true) {
+fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "", isBack: Boolean = true) {
     this.apply {
         setSupportActionBar(mToolbar)
         supportActionBar!!.title = mTitle
