@@ -11,7 +11,7 @@ import android.support.annotation.NonNull
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-data class Book(
+data class  Book(
         var id: Int,
         var alt: String,
         var publisher: String,
