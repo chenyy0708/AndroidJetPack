@@ -21,6 +21,7 @@ fun <VB : ViewDataBinding> BaseFragment<VB>.doError(throwable: Throwable?) {
     when (throwable) {
         is UnknownHostException -> showError()
         is CException -> showError(throwable.msg)
+        else -> showError()
     }
 }
 

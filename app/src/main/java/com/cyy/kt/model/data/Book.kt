@@ -13,7 +13,7 @@ import android.support.annotation.NonNull
  */
 @Entity(tableName = "book")
 data class Book(
-        @PrimaryKey
+        @PrimaryKey(autoGenerate = true)
         @NonNull
         var id: Int,
         @ColumnInfo(name = "alt")

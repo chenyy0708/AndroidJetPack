@@ -24,14 +24,14 @@ class TestViewModel : BaseViewModel() {
     private val bookRepository: BookRepository by instance()
 
     fun getData() {
-        bookRepository.getLocalBook(1220562)
-                .bindLifecycle(this)
-                .subscribe(object : BaseObserver<Book>(throwable) {
-                    override fun onNext(douBanBook: Book) {
-                        name.postValue(douBanBook.alt)
-                        url.postValue(douBanBook.image)
-                    }
-                })
+//        bookRepository.getLocalBook(1220562)
+//                .bindLifecycle(this)
+//                .subscribe(object : BaseObserver<Book>(throwable) {
+//                    override fun onNext(douBanBook: Book) {
+//                        name.postValue(douBanBook.alt)
+//                        url.postValue(douBanBook.image)
+//                    }
+//                })
         bookRepository.getRemoteBook(1220562)
                 .async(2000)
                 .bindLifecycle(this)

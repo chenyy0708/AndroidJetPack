@@ -21,10 +21,10 @@ class BookRepository(
 
     fun getRemoteBook(id: Int): Flowable<Book> {
         return remoteDataSource.getBook(id)
-                .flatMap {
-                    localDataSource.saveBook(it)  // save book
-                            .andThen(Flowable.just(it))
-                }
+//                .flatMap {
+////                    localDataSource.saveBook(it)  // save book
+//                            .andThen(Flowable.just(it))
+//                }
     }
 
     fun getLocalBook(id: Int): Flowable<Book> {
