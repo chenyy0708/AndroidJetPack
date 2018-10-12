@@ -11,14 +11,8 @@ import android.support.annotation.NonNull
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-@Entity(tableName = "book")
 data class Book(
-        @PrimaryKey(autoGenerate = true)
-        @NonNull
         var id: Int,
-        @ColumnInfo(name = "alt")
         var alt: String,
-        @ColumnInfo(name = "publisher")
         var publisher: String,
-        @ColumnInfo(name = "image")
         var image: String)

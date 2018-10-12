@@ -1,7 +1,6 @@
 package com.cyy.kt.base
 
 import com.cyy.base.base.BaseApp
-import com.cyy.kt.di.dbModule
 import com.cyy.kt.model.remote.api.DouBanService
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -21,7 +20,6 @@ class App : BaseApp(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         // 导入基类中的Kodein，存储公共的全局实例
         extend(baseKodein)
-        import(dbModule)
         bind<DouBanService>() with singleton {
             instance<Retrofit>().create(DouBanService::class.java)
         }
