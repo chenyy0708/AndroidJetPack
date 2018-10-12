@@ -50,6 +50,6 @@ fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "Mvvm", is
 /**
  * 打印日志--扩展函数
  */
-fun Any.logD(msg: String?) {
+fun logD(msg: String?) {
     Log.d("MvvM", msg)
 }
