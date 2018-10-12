@@ -2,7 +2,7 @@ package com.cyy.kt.di
 
 import android.arch.persistence.room.Room
 import com.cyy.kt.base.App
-import com.cyy.kt.db.database.BookDatabase
+import com.cyy.kt.model.db.database.BookDatabase
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.singleton

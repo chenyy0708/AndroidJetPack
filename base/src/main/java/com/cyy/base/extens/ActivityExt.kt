@@ -8,7 +8,6 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
-import com.cyy.base.BuildConfig
 
 /**
  * @author       :ChenYangYi
@@ -52,7 +51,5 @@ fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "Mvvm", is
  * 打印日志--扩展函数
  */
 fun Any.logD(msg: String?) {
-    if (BuildConfig.DEBUG) {
-        Log.d(javaClass.simpleName, msg)
-    }
+    Log.d("MvvM", msg)
 }

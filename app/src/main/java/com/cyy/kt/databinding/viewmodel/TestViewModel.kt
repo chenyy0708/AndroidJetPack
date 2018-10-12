@@ -5,8 +5,8 @@ import com.cyy.base.base.viewmodel.BaseViewModel
 import com.cyy.base.extens.async
 import com.cyy.base.extens.bindLifecycle
 import com.cyy.base.net.BaseObserver
-import com.cyy.kt.db.database.BookDatabase
-import com.cyy.kt.net.data.DouBanBook
+import com.cyy.kt.model.data.Book
+import com.cyy.kt.model.db.database.BookDatabase
 import org.kodein.di.generic.instance
 
 /**
@@ -29,8 +29,8 @@ class TestViewModel : BaseViewModel() {
                 .async(2000)
                 // 线程切换 + 自动绑定Activity/Fragment生命周期取消订阅
                 .bindLifecycle(this)
-                .subscribe(object : BaseObserver<DouBanBook>(throwable) {
-                    override fun onNext(douBanBook: DouBanBook) {
+                .subscribe(object : BaseObserver<Book>(throwable) {
+                    override fun onNext(douBanBook: Book) {
                         name.postValue(douBanBook.alt)
                         url.postValue(douBanBook.image)
                     }

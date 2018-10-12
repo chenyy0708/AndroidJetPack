@@ -1,9 +1,9 @@
-package com.cyy.kt.db.database
+package com.cyy.kt.model.db.database
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
-import com.cyy.kt.db.dao.BookDao
-import com.cyy.kt.db.data.Book
+import com.cyy.kt.model.db.dao.BookDao
+import com.cyy.kt.model.data.Book
 
 /**
  * @author       :ChenYangYi

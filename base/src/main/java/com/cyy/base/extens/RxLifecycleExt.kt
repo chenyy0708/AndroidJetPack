@@ -3,8 +3,10 @@ package com.cyy.base.extens
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleOwner
 import com.uber.autodispose.AutoDispose
+import com.uber.autodispose.FlowableSubscribeProxy
 import com.uber.autodispose.ObservableSubscribeProxy
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -27,6 +29,12 @@ fun <T> Observable<T>.async(withDelay: Long = 0): Observable<T> =
 /**
  * 延时执行任务--扩展函数
  */
+fun <T> Flowable<T>.async(withDelay: Long = 0): Flowable<T> =
+        this.subscribeOn(Schedulers.io()).delay(withDelay, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread())
+
+/**
+ * 延时执行任务--扩展函数
+ */
 fun <T> Single<T>.async(withDelay: Long = 0): Single<T> =
         this.subscribeOn(Schedulers.io()).delay(withDelay, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread())
 
@@ -40,6 +48,17 @@ fun <T> Observable<T>.applySchedulers(): Observable<T> {
     }
 }
 
+
+/**
+ * 线程转换--扩展函数
+ */
+fun <T> Flowable<T>.applySchedulers(): Flowable<T> {
+    return this.compose { observable ->
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+}
+
 /**
  *
  * 线程切换 + 自动绑定Activity/Fragment生命周期取消订阅
@@ -47,3 +66,9 @@ fun <T> Observable<T>.applySchedulers(): Observable<T> {
 fun <T> Observable<T>.bindLifeCycle(owner: LifecycleOwner): ObservableSubscribeProxy<T> =
         this.applySchedulers().`as`(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(owner, Lifecycle.Event.ON_DESTROY)))
 
+/**
+ *
+ * 线程切换 + 自动绑定Activity/Fragment生命周期取消订阅
+ */
+fun <T> Flowable<T>.bindLifeCycle(owner: LifecycleOwner): FlowableSubscribeProxy<T> =
+        this.applySchedulers().`as`(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(owner, Lifecycle.Event.ON_DESTROY)))

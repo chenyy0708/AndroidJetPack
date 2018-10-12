@@ -2,7 +2,7 @@ package com.cyy.kt.base
 
 import com.cyy.base.base.BaseApp
 import com.cyy.kt.di.dbModule
-import com.cyy.kt.net.api.DouBanService
+import com.cyy.kt.model.remote.api.DouBanService
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.bind

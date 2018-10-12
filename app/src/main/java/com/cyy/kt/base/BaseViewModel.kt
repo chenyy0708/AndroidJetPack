@@ -1,7 +1,7 @@
 package com.cyy.base.base.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
-import com.cyy.kt.net.api.DouBanService
+import com.cyy.kt.model.remote.api.DouBanService
 import com.cyy.kt.base.App
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware

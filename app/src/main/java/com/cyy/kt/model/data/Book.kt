@@ -1,4 +1,4 @@
-package com.cyy.kt.db.data
+package com.cyy.kt.model.data
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
