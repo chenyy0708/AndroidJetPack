@@ -12,7 +12,6 @@ import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
 import org.kodein.di.android.androidModule
 import org.kodein.di.android.support.androidSupportModule
 import org.kodein.di.generic.bind
@@ -24,9 +23,9 @@ import org.kodein.di.generic.singleton
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-open class BaseApp : MultiDexApplication(), KodeinAware {
+open class BaseApp : MultiDexApplication() {
 
-    override val kodein: Kodein = Kodein.lazy {
+    val baseKodein: Kodein = Kodein.lazy {
         bind<Context>() with singleton { this@BaseApp }
         import(androidModule(this@BaseApp))
         import(androidSupportModule(this@BaseApp))

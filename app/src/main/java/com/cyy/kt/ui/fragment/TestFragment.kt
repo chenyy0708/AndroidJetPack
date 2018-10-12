@@ -9,7 +9,6 @@ import com.cyy.base.extens.showMsg
 import com.cyy.base.extens.viewModel
 import com.cyy.base.databinding.binds.Presenter
 import com.cyy.kt.R
-import com.cyy.base.base.BaseApp
 import com.cyy.kt.databinding.TestFragmentBinding
 import com.cyy.kt.databinding.viewmodel.TestViewModel
 import com.cyy.base.net.exception.doError
@@ -28,7 +27,7 @@ class TestFragment : BaseFragment<TestFragmentBinding>(), Presenter {
     override fun getLayoutRes(): Int = R.layout.test_fragment
 
     override val kodein: Kodein = Kodein.lazy {
-        extend(App.INSTANCE.baseKodein)
+        extend(App.INSTANCE.kodein)
         bind<TestFragment>() with instance(this@TestFragment)
         // AndroidComponentsWeakScope 保证了Activity级别的局部单例
         bind<TestViewModel>() with scoped(AndroidComponentsWeakScope).singleton {

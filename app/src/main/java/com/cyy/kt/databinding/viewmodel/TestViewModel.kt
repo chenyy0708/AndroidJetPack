@@ -5,7 +5,9 @@ import com.cyy.base.base.viewmodel.BaseViewModel
 import com.cyy.base.extens.async
 import com.cyy.base.extens.bindLifecycle
 import com.cyy.base.net.BaseObserver
+import com.cyy.kt.db.database.BookDatabase
 import com.cyy.kt.net.data.DouBanBook
+import org.kodein.di.generic.instance
 
 /**
  * @author       :ChenYangYi
@@ -18,6 +20,8 @@ class TestViewModel : BaseViewModel() {
     val name = MutableLiveData<String>()
 
     var url = MutableLiveData<String>()
+
+    val bookDatabase: BookDatabase by instance()
 
     fun getData() {
         douBanService

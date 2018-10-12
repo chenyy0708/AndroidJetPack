@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar
 import com.cyy.base.base.BaseActivity
 import com.cyy.base.extens.initToolbar
 import com.cyy.kt.databinding.MainActivityBinding
+import com.cyy.kt.db.database.BookDatabase
 import com.cyy.kt.ui.fragment.TestFragment
 import com.ncapdevi.fragnav.FragNavController
 import org.kodein.di.Kodein
@@ -30,6 +31,8 @@ class MainActivity : BaseActivity<MainActivityBinding>(), FragNavController.Root
     private val mFragments = listOf<Fragment>(
             TestFragment.newInstance()
     )
+
+    val bookDatabase: BookDatabase by instance()
 
     lateinit var mNavController: FragNavController
 

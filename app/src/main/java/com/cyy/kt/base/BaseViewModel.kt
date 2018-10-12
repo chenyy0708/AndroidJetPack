@@ -11,7 +11,7 @@ open class BaseViewModel : LifecycleViewModel(), KodeinAware {
     /**
      * 全局Kodein
      */
-    override val kodein: Kodein = App.INSTANCE.baseKodein
+    override val kodein: Kodein = App.INSTANCE.kodein
 
     /**
      * 错误
