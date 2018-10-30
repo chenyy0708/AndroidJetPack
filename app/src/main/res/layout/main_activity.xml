@@ -24,38 +24,14 @@
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:titleTextColor="@android:color/white">
 
-                <LinearLayout
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="?actionBarItemBackground"
-                        android:clickable="true"
-                        android:padding="10dp"
-                        android:src="@drawable/icon_cloud_music" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="?actionBarItemBackground"
-                        android:clickable="true"
-                        android:padding="10dp"
-                        android:src="@drawable/icon_cloud_music" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="?actionBarItemBackground"
-                        android:clickable="true"
-                        android:padding="10dp"
-                        android:src="@drawable/icon_cloud_music" />
-                </LinearLayout>
+                    android:background="?actionBarItemBackground"
+                    android:clickable="true"
+                    android:padding="10dp"
+                    android:src="@drawable/icon_cloud_music" />
             </android.support.v7.widget.Toolbar>
 
             <FrameLayout

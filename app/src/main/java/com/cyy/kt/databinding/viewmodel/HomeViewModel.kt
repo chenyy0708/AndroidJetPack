@@ -13,7 +13,7 @@ import com.cyy.kt.model.data.Book
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-class TestViewModel : BaseViewModel() {
+class HomeViewModel : BaseViewModel() {
 
     val name = MutableLiveData<String>()
 
