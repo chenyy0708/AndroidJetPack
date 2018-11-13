@@ -1,6 +1,6 @@
 package com.cyy.base.extens
 
-import com.cyy.base.base.viewmodel.LifecycleViewModel
+import com.cyy.base.databinding.viewmodel.LifecycleViewModel
 import com.uber.autodispose.FlowableSubscribeProxy
 import com.uber.autodispose.ObservableSubscribeProxy
 import io.reactivex.Flowable

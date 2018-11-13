@@ -3,7 +3,7 @@ package com.cyy.base.extens
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import com.cyy.base.base.viewmodel.LifecycleViewModel
+import com.cyy.base.databinding.viewmodel.LifecycleViewModel
 
 /**
  * @author       :ChenYangYi

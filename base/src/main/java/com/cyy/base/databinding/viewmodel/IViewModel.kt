@@ -1,4 +1,4 @@
-package com.qingmei2.rhine.base.viewmodel
+package com.cyy.base.databinding.viewmodel
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
