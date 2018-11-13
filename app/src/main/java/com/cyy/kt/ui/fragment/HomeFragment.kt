@@ -58,11 +58,9 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        mBinding.vm = homeViewModel
         // 展示Loading
         showLoading()
-        // 获取数据
-        homeViewModel.getData()
+        mBinding.vm = homeViewModel
         // 获取数据成功监听
         homeViewModel.name.observe(this, Observer {
             showSuccess()
