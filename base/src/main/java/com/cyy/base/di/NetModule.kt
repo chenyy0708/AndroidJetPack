@@ -2,7 +2,6 @@ package com.cyy.base.di
 
 import com.cyy.base.BuildConfig
 import com.cyy.base.net.UrlConstanct
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
@@ -69,7 +68,6 @@ val httpClientModule = Kodein.Module(NET_MODEUL_TAG) {
                 .connectTimeout(CONNECT_TIME_OUT, TimeUnit.MILLISECONDS)
                 .writeTimeout(CONNECT_TIME_OUT, TimeUnit.MILLISECONDS)
                 .addInterceptor(instance(HTTP_CLIENT_MODULE_INTERCEPTOR_LOG_TAG))
-                .addNetworkInterceptor(StethoInterceptor())
                 .build()
     }
 

@@ -7,7 +7,6 @@ import com.cyy.base.callback.ErrorCallback
 import com.cyy.base.callback.LoadingCallback
 import com.cyy.base.di.httpClientModule
 import com.cyy.base.net.UrlConstanct
-import com.facebook.stetho.Stetho
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
@@ -44,7 +43,6 @@ open class BaseApp : MultiDexApplication() {
                 .addCallback(ErrorCallback())
                 .setDefaultCallback(SuccessCallback::class.java)
                 .commit()
-        Stetho.initializeWithDefaults(this)
     }
 
     override fun attachBaseContext(base: Context?) {
