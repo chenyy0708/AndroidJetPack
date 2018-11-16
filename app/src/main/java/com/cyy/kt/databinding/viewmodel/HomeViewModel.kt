@@ -24,6 +24,7 @@ class HomeViewModel : BaseViewModel() {
         super.onCreate(lifecycleOwner)
         // 获取数据
         getData()
+
     }
 
     fun getData() {
