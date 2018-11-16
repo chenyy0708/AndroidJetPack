@@ -24,7 +24,7 @@ const val HTTP_CLIENT_MODULE_INTERCEPTOR_LOG_TAG = "http_client_module_intercept
 /**
  * 超时时间
  */
-val CONNECT_TIME_OUT: Long = 1000 * 10
+val CONNECT_TIME_OUT: Long = 1000 * 30
 
 /**
  * 提供全局的ApiService，Retrofit等
