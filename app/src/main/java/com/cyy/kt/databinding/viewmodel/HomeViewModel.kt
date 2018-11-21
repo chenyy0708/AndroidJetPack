@@ -25,6 +25,7 @@ class HomeViewModel : BaseViewModel() {
         // 获取数据
         getData()
 
+
     }
 
     fun getData() {
