@@ -37,6 +37,7 @@ class MainActivity : BaseActivity<MainActivityBinding>(), FragNavController.Root
         initToolbar(mBinding.toolBar)
         syncToolBar(mBinding.toolBar)
 
+
         mNavController = FragNavController.newBuilder(savedInstanceState, supportFragmentManager, R.id.fl_continer)
                 .rootFragmentListener(this, mFragments.size)
                 .build()
