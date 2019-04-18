@@ -2,11 +2,11 @@ package com.cyy.base.extens
 
 import android.app.Activity
 import android.content.Intent
-import android.support.annotation.ColorRes
-import android.support.annotation.DimenRes
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import android.util.Log
 
 /**

@@ -1,8 +1,8 @@
 package com.cyy.base.base
 
 import android.content.Context
-import android.support.multidex.MultiDex
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 import com.cyy.base.callback.ErrorCallback
 import com.cyy.base.callback.LoadingCallback
 import com.cyy.base.di.httpClientModule
@@ -11,8 +11,7 @@ import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import org.kodein.di.Kodein
-import org.kodein.di.android.androidModule
-import org.kodein.di.android.support.androidSupportModule
+import org.kodein.di.android.androidCoreModule
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.singleton
 
@@ -26,9 +25,8 @@ open class BaseApp : MultiDexApplication() {
 
     val baseKodein: Kodein = Kodein.lazy {
         bind<Context>() with singleton { this@BaseApp }
-        import(androidModule(this@BaseApp))
-        import(androidSupportModule(this@BaseApp))
-
+        import(androidCoreModule(this@BaseApp))
+//        import(androidSupportModule(this@BaseApp))
         import(httpClientModule)
     }
 

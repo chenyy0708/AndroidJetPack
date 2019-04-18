@@ -1,8 +1,8 @@
 package com.cyy.base.extens
 
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
+import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.cyy.base.databinding.viewmodel.LifecycleViewModel
 
 /**
@@ -12,13 +12,13 @@ import com.cyy.base.databinding.viewmodel.LifecycleViewModel
  * @github       :https://github.com/chenyy0708
  */
 
-fun <T : LifecycleViewModel> FragmentActivity.viewModel(modelClass: Class<T>) =
+fun <T : LifecycleViewModel> androidx.fragment.app.FragmentActivity.viewModel(modelClass: Class<T>) =
         ViewModelProviders.of(this).get(modelClass).also {
             it.lifecycleOwner = this
             lifecycle.addObserver(it)
         }
 
-fun <T : LifecycleViewModel> Fragment.viewModel(modelClass: Class<T>) =
+fun <T : LifecycleViewModel> androidx.fragment.app.Fragment.viewModel(modelClass: Class<T>) =
         ViewModelProviders.of(activity!!).get(modelClass).also {
             it.lifecycleOwner = this
             lifecycle.addObserver(it)

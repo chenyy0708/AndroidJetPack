@@ -1,7 +1,7 @@
 package com.cyy.base.extens
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleOwner
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import com.uber.autodispose.AutoDispose
 import com.uber.autodispose.FlowableSubscribeProxy
 import com.uber.autodispose.ObservableSubscribeProxy
@@ -64,11 +64,11 @@ fun <T> Flowable<T>.applySchedulers(): Flowable<T> {
  * 线程切换 + 自动绑定Activity/Fragment生命周期取消订阅
  */
 fun <T> Observable<T>.bindLifeCycle(owner: LifecycleOwner): ObservableSubscribeProxy<T> =
-        this.applySchedulers().`as`(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(owner,Lifecycle.Event.ON_DESTROY)))
+        this.applySchedulers().`as`(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(owner,Lifecycle.Event.ON_DESTROY )))
 
 /**
  *
  * 线程切换 + 自动绑定Activity/Fragment生命周期取消订阅
  */
 fun <T> Flowable<T>.bindLifeCycle(owner: LifecycleOwner): FlowableSubscribeProxy<T> =
-        this.applySchedulers().`as`(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(owner,Lifecycle.Event.ON_DESTROY)))
+        this.applySchedulers().`as`(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(owner, Lifecycle.Event.ON_DESTROY)))

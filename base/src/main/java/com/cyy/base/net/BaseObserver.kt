@@ -1,6 +1,6 @@
 package com.cyy.base.net
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.cyy.base.extens.logD
 import io.reactivex.subscribers.DisposableSubscriber
 

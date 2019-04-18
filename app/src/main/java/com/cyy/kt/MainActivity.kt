@@ -1,9 +1,9 @@
 package com.cyy.kt
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import com.cyy.base.base.BaseActivity
 import com.cyy.base.extens.initToolbar
 import com.cyy.kt.databinding.MainActivityBinding

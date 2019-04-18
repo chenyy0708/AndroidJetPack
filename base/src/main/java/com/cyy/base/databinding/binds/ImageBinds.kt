@@ -1,6 +1,6 @@
 package com.cyy.base.databinding.binds
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 

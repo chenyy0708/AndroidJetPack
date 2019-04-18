@@ -1,19 +1,19 @@
 package com.cyy.base.base
 
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import org.kodein.di.Copy
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinTrigger
-import org.kodein.di.android.closestKodein
+import org.kodein.di.android.kodein
 import org.kodein.di.android.retainedKodein
 
 /**
@@ -38,7 +38,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
     /**
      * 注入框架
      */
-    protected val parentKodein by closestKodein()
+    protected val parentKodein by kodein()
     override val kodeinTrigger = KodeinTrigger()
 
     /**

@@ -1,6 +1,6 @@
 package com.cyy.base.net.exception
 
-import android.databinding.ViewDataBinding
+import androidx.databinding.ViewDataBinding
 import android.widget.TextView
 import com.cyy.base.R
 import com.cyy.base.base.BaseActivity

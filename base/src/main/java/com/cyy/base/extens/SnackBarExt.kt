@@ -2,9 +2,9 @@ package com.cyy.base.extens
 
 import android.R
 import android.app.Activity
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
+import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
 import io.github.tonnyl.light.make
 import io.github.tonnyl.light.warning
 
@@ -31,11 +31,11 @@ fun Activity.showMsg(message: String) {
 /**
  * 提示消息
  */
-fun Fragment.showMsg(message: String) {
+fun androidx.fragment.app.Fragment.showMsg(message: String) {
     make(
             this.view!!,
             message,
-            Snackbar.LENGTH_SHORT,
+            com.google.android.material.snackbar.Snackbar.LENGTH_SHORT,
             null,
             ContextCompat.getColor(view!!.context, io.github.tonnyl.light.R.color.color_normal),
             ContextCompat.getColor(view!!.context, R.color.white)).show()

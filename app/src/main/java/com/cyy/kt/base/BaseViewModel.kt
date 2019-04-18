@@ -1,6 +1,6 @@
 package com.cyy.kt.base
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.cyy.base.databinding.viewmodel.LifecycleViewModel
 import com.cyy.kt.model.remote.api.DouBanService
 import com.cyy.kt.base.App

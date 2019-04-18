@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'android-aspectjx'
+//apply plugin: 'android-aspectjx'
 
 
 def config = rootProject.ext.android // 配置
@@ -15,17 +15,17 @@ android {
         targetSdkVersion config.targetSdkVersion
         versionCode config.versionCode
         versionName config.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -39,24 +39,24 @@ android {
         enabled = true
     }
 
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
     implementation project(':base')
     implementation project(':commonres')
-
-    kapt "android.arch.lifecycle:compiler:$lifecycle_version"
-    kapt "android.arch.persistence.room:compiler:$room_version"
-    kapt "com.android.databinding:compiler:3.1.4"
-
-
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    kapt 'androidx.databinding:databinding-compiler:3.3.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.ncapdevi:frag-nav:2.4.0'
-    implementation('com.alibaba.android:vlayout:1.2.18@aar') {
-        transitive = true
-    }
+//    implementation project(':flutter')
 }

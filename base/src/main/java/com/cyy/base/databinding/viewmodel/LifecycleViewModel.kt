@@ -1,9 +1,9 @@
 package com.cyy.base.databinding.viewmodel
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.ViewModel
-import android.support.annotation.CallSuper
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModel
+import androidx.annotation.CallSuper
 import com.cyy.base.extens.logD
 
 /**

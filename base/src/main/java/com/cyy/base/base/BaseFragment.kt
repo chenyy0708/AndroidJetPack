@@ -1,11 +1,11 @@
 package com.cyy.base.base
 
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.v4.app.Fragment
+import androidx.annotation.LayoutRes
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +20,7 @@ import org.kodein.di.KodeinTrigger
  * @description  :Fragment基类
  * @github       :https://github.com/chenyy0708
  */
-abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
+abstract class BaseFragment<VB : ViewDataBinding> : androidx.fragment.app.Fragment(),
         KodeinAware {
 
     /**

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.v4.widget.DrawerLayout
+    <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/tool_bar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -32,7 +32,7 @@
                     android:clickable="true"
                     android:padding="10dp"
                     android:src="@drawable/icon_cloud_music" />
-            </android.support.v7.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
 
             <FrameLayout
                 android:id="@+id/fl_continer"
@@ -41,7 +41,7 @@
         </LinearLayout>
 
 
-        <android.support.design.widget.NavigationView
+        <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
             android:layout_width="250dp"
             android:layout_height="match_parent"
@@ -51,5 +51,5 @@
             app:itemIconTint="@color/colorPrimary"
             app:itemTextColor="@color/colorPrimary" />
 
-    </android.support.v4.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

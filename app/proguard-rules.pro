@@ -35,8 +35,14 @@
 -keepattributes *Annotation*,InnerClasses
 #忽略警告
 -ignorewarning
-#如果引用了v4或者v7包
--dontwarn android.support.**
+#androidX
+-keep class com.google.android.material.** {*;}
+-keep class androidx.** {*;}
+-keep public class * extends androidx.**
+-keep interface androidx.** {*;}
+-dontwarn com.google.android.material.**
+-dontnote com.google.android.material.**
+-dontwarn androidx.**
 #保持 native 方法不被混淆
 -keepclasseswithmembernames class * {
     native <methods>;
@@ -58,8 +64,6 @@
     public <init>(android.content.Context, android.util.AttributeSet);
     public <init>(android.content.Context, android.util.AttributeSet, int);
 }
-
-
 # 保持哪些类不被混淆
 -keep public class * extends android.app.Fragment
 -keep public class * extends android.app.Activity
@@ -90,18 +94,6 @@
 -keep class * implements android.os.Parcelable {
   public static final android.os.Parcelable$Creator *;
 }
-# support-v7-appcompat
--keep public class android.support.v7.widget.** { *; }
--keep public class android.support.v7.internal.widget.** { *; }
--keep public class android.support.v7.internal.view.menu.** { *; }
--keep public class * extends android.support.v4.view.ActionProvider {
-    public <init>(android.content.Context);
-}
-# support-design (PhotoPicker)
--dontwarn android.support.design.**
--keep class android.support.design.** { *; }
--keep interface android.support.design.** { *; }
--keep public class android.support.design.R$* { *; }
 -keep class **.R$* {
  *;
 }
@@ -165,12 +157,5 @@
 -keepclassmembernames,allowobfuscation interface * {
     @android.databinding.* <methods>;
 }
-#-------------------------vlayout---------------------------------------------
--keepattributes InnerClasses
--keep class com.alibaba.android.vlayout.ExposeLinearLayoutManagerEx { *; }
--keep class android.support.v7.widget.RecyclerView$LayoutParams { *; }
--keep class android.support.v7.widget.RecyclerView$ViewHolder { *; }
--keep class android.support.v7.widget.ChildHelper { *; }
--keep class android.support.v7.widget.ChildHelper$Bucket { *; }
--keep class android.support.v7.widget.RecyclerView$LayoutManager { *; }
+
 
