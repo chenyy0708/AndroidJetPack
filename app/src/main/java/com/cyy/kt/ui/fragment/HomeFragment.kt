@@ -3,11 +3,13 @@ package com.cyy.kt.ui.fragment
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
+import android.view.ViewGroup
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
 import com.alibaba.android.vlayout.layout.FloatLayoutHelper
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper
 import com.cyy.base.base.BaseFragment
+import com.cyy.base.extens.showMsg
 import com.cyy.base.extens.viewModel
 import com.cyy.base.net.exception.doError
 import com.cyy.base.net.exception.showLoading
@@ -19,6 +21,7 @@ import com.cyy.kt.base.Constant
 import com.cyy.kt.databinding.MainFragmentBinding
 import com.cyy.kt.databinding.viewmodel.HomeViewModel
 import com.cyy.kt.ui.adapter.*
+import io.flutter.facade.Flutter
 import org.kodein.di.Kodein
 import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.generic.bind
@@ -64,9 +67,11 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
         // 获取数据成功监听
         homeViewModel.name.observe(this, Observer {
             showSuccess()
+            showMsg(it!!)
         })
         homeViewModel.throwable.observe(this, Observer {
-            doError(it)
+            //            doError(it)
+
         })
         // 初始化VirtualLayoutManager
         layoutManager = VirtualLayoutManager(activity!!)
@@ -77,10 +82,17 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
         viewPool.setMaxRecycledViews(0, 10)
         // 设置适配器
         mAdapters = ArrayList()
-        initAdapter()
+//        initAdapter()
         delegateAdapter = DelegateAdapter(layoutManager, true)
         mBinding.recyclerView.adapter = delegateAdapter
         delegateAdapter.setAdapters(mAdapters.toList())
+
+        // 1. 通过Flutter.createView创建FlutterView组件方式
+
+        var flutterView = Flutter.createView(activity!!, lifecycle, "flutterView")
+        var layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        // 2. 将Flutter 视图添加到原生布局中
+        mBinding.llContainer.addView(flutterView, layoutParams)
     }
 
     /**

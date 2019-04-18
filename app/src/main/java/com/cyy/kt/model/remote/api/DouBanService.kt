@@ -2,6 +2,7 @@ package com.cyy.kt.model.remote.api
 
 import com.cyy.base.net.UrlConstanct
 import com.cyy.kt.model.data.Book
+import com.cyy.kt.model.data.Gank
 import io.reactivex.Flowable
 import io.reactivex.Observable
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
@@ -18,4 +19,8 @@ interface DouBanService {
     @Headers(RetrofitUrlManager.DOMAIN_NAME_HEADER + UrlConstanct.DOUBAN)
     @GET("v2/book/1220562")
     fun getDouBanBook(): Flowable<Book>
+
+    @Headers(RetrofitUrlManager.DOMAIN_NAME_HEADER + UrlConstanct.GANK)
+    @GET("api/data/Android/10/1")
+    fun getGank(): Flowable<Gank>
 }

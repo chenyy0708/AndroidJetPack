@@ -7,6 +7,7 @@ import com.cyy.base.extens.async
 import com.cyy.base.extens.bindLifecycle
 import com.cyy.base.net.BaseObserver
 import com.cyy.kt.model.data.Book
+import com.cyy.kt.model.data.Gank
 
 /**
  * @author       :ChenYangYi
@@ -36,6 +37,13 @@ class HomeViewModel : BaseViewModel() {
                     override fun onNext(douBanBook: Book) {
                         name.postValue(douBanBook.alt)
                         url.postValue(douBanBook.image)
+                    }
+                })
+        douBanService.getGank()
+                .bindLifecycle(this)
+                .subscribe(object : BaseObserver<Gank>(throwable) {
+                    override fun onNext(gank: Gank) {
+                        name.postValue(gank.results[0].url)
                     }
                 })
     }

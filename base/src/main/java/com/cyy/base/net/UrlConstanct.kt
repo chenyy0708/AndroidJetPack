@@ -11,7 +11,7 @@ class UrlConstanct {
     companion object {
         const val DOUBAN_URL: String = "https://api.douban.com/"
         const val DOUBAN: String = "douban"
-        const val GANK_URL: String = "https://gank.io/"
+        const val GANK_URL: String = "http://gank.io/"
         const val GANK: String = "gank"
     }
 }

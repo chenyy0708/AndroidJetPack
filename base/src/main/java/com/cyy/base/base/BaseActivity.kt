@@ -74,10 +74,10 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
      * 创建DataBinding
      */
     private fun initBinding() {
-        if (getLayoutRes() != null) {
+        if (getLayoutRes() != 0) {
             mBinding = DataBindingUtil.setContentView<VB>(this, getLayoutRes())
             // 绑定LifeCycle
-            with(mBinding) {
+            mBinding?.apply {
                 setLifecycleOwner(this@BaseActivity)
             }
         }

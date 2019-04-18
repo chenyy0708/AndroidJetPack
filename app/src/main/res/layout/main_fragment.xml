@@ -14,9 +14,24 @@
     </data>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <LinearLayout
+        android:id="@+id/ll_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.name}" />
+    </LinearLayout>
+
 </layout>
 
