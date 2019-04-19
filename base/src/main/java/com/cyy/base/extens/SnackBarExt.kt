@@ -2,9 +2,8 @@ package com.cyy.base.extens
 
 import android.R
 import android.app.Activity
-import com.google.android.material.snackbar.Snackbar
-import androidx.fragment.app.Fragment
 import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 import io.github.tonnyl.light.make
 import io.github.tonnyl.light.warning
 

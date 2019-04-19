@@ -1,14 +1,13 @@
 package com.cyy.base.base
 
 import android.content.Context
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import android.os.Bundle
-import androidx.annotation.LayoutRes
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import org.kodein.di.KodeinAware
@@ -79,8 +78,9 @@ abstract class BaseFragment<VB : ViewDataBinding> : androidx.fragment.app.Fragme
     private fun initBinding(rootView: View) {
         mBinding = DataBindingUtil.bind<VB>(rootView)!!
         // 绑定LifeCycle
-        with(mBinding) {
-            setLifecycleOwner(this@BaseFragment)
+        mBinding.apply {
+            lifecycleOwner = this@BaseFragment
+
         }
     }
 

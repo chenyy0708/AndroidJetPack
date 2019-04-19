@@ -1,8 +1,6 @@
 package com.cyy.base.extens
 
 import androidx.lifecycle.ViewModelProviders
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.cyy.base.databinding.viewmodel.LifecycleViewModel
 
 /**
