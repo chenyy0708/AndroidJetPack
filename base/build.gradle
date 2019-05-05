@@ -9,7 +9,6 @@ android {
     compileSdkVersion config.compileSdkVersion
 
 
-
     defaultConfig {
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
@@ -55,11 +54,11 @@ dependencies {
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     // DataBinding
-    kapt 'androidx.databinding:databinding-compiler:3.3.2'
+    kapt "androidx.databinding:databinding-compiler:$gradle_version"
     // Retrofit OkHttp
     api "com.squareup.retrofit2:retrofit:$retrofitVersion"
     api "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    api "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+//    api "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     api 'me.jessyan:retrofit-url-manager:1.4.0'
     // Retrofit协程
     api 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
@@ -67,12 +66,12 @@ dependencies {
 //    api "com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x"
 //    api 'com.github.VictorAlbertos.Jolyglot:gson:0.0.4'
     // RxJava
-    api "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
-    api "io.reactivex.rxjava2:rxkotlin:$rxkotlin"
+//    api "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+//    api "io.reactivex.rxjava2:rxkotlin:$rxkotlin"
     // AutoDispose 取消订阅
-    api "com.uber.autodispose:autodispose-android:$autodispose"
-    api "com.uber.autodispose:autodispose-android-ktx:$autodispose"
-    api "com.uber.autodispose:autodispose-android-archcomponents-ktx:$autodispose"
+//    api "com.uber.autodispose:autodispose-android:$autodispose"
+//    api "com.uber.autodispose:autodispose-android-ktx:$autodispose"
+//    api "com.uber.autodispose:autodispose-android-archcomponents-ktx:$autodispose"
     // di
     api "org.kodein.di:kodein-di-generic-jvm:$kodein"
     api "org.kodein.di:kodein-di-framework-android-x:$kodein"

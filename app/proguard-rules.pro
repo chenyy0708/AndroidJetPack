@@ -34,7 +34,7 @@
 #保护注解
 -keepattributes *Annotation*,InnerClasses
 #忽略警告
--ignorewarning
+#-ignorewarning
 #androidX
 -keep class com.google.android.material.** {*;}
 -keep class androidx.** {*;}

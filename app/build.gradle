@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 //apply plugin: 'android-aspectjx'
 
 
@@ -52,7 +52,7 @@ dependencies {
     implementation project(':base')
     implementation project(':commonres')
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
-    kapt 'androidx.databinding:databinding-compiler:3.3.2'
+    kapt "androidx.databinding:databinding-compiler:$gradle_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.ncapdevi:frag-nav:2.4.0'
 //    implementation project(':flutter')

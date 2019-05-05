@@ -2,12 +2,12 @@ package com.minic.base.extens
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
-import androidx.core.content.ContextCompat
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import android.util.Log
+import androidx.core.content.ContextCompat
 
 /**
  * @author       :ChenYangYi
@@ -50,6 +50,7 @@ fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "", isBack
 /**
  * 打印日志--扩展函数
  */
-fun Any.logD(msg: String?) {
-    Log.d(javaClass.simpleName, msg)
+fun Any.logD(msg: String?,
+             tag: String = javaClass.simpleName) {
+    Log.d(tag, msg)
 }
