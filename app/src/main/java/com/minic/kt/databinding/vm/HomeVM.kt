@@ -7,7 +7,6 @@ import com.minic.kt.base.BaseVM
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import retrofit2.HttpException
 
 /**
@@ -31,20 +30,13 @@ class HomeVM : BaseVM() {
             delay(3000L)// 非阻塞的等待 3 秒钟
             try {
                 val response = request.await()
+                logD("获取数据成功", tag = "HomeVM")
                 name.postValue(response.data[0].name)
             } catch (e: HttpException) {
             } catch (e: Throwable) {
                 throwable.value = e
             }
         }
-        // 协程已在等待时主线程还在继续
-        logD("开始阻塞")
-        runBlocking {
-            logD("线程:${Thread.currentThread().name}", tag = "HomeVM")
-            // 但是这个表达式阻塞了主线程
-            delay(2000L)  // ……我们延迟 2 秒来保证 JVM 的存活
-        }
-        logD("继续运行")
     }
 
 }
