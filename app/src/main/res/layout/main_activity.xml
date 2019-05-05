@@ -31,7 +31,7 @@
                     android:background="?actionBarItemBackground"
                     android:clickable="true"
                     android:padding="10dp"
-                    android:src="@drawable/icon_cloud_music" />
+                    android:src="@mipmap/ic_launcher" />
             </androidx.appcompat.widget.Toolbar>
 
             <FrameLayout

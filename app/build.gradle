@@ -10,7 +10,7 @@ def config = rootProject.ext.android // 配置
 android {
     compileSdkVersion config.compileSdkVersion
     defaultConfig {
-        applicationId "com.cyy.kt"
+        applicationId "com.minic.kt"
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
         versionCode config.versionCode
@@ -21,11 +21,11 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

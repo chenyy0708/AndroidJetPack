@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Music</string>
+    <string name="app_name">JetPack</string>
     <string name="open">open_toggle</string>
     <string name="close">close_toggle</string>
 </resources>

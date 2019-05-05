@@ -5,11 +5,11 @@
 
         <variable
             name="vm"
-            type="com.cyy.kt.databinding.viewmodel.HomeViewModel" />
+            type="com.minic.kt.databinding.viewmodel.HomeViewModel" />
 
         <variable
             name="presenter"
-            type="com.cyy.base.databinding.binds.Presenter" />
+            type="com.minic.base.databinding.binds.Presenter" />
 
     </data>
 
@@ -20,11 +20,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv"
