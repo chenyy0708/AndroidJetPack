@@ -18,6 +18,6 @@ abstract class BaseObserver<T>(private val throwableData: MutableLiveData<Throwa
 
     override fun onError(throwable: Throwable) {
         logD("onError")
-        throwableData!!.value = throwable
+        throwableData.value = throwable
     }
 }

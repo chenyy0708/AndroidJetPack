@@ -34,7 +34,7 @@ fun androidx.fragment.app.Fragment.showMsg(message: String) {
     make(
             this.view!!,
             message,
-            com.google.android.material.snackbar.Snackbar.LENGTH_SHORT,
+            Snackbar.LENGTH_SHORT,
             null,
             ContextCompat.getColor(view!!.context, io.github.tonnyl.light.R.color.color_normal),
             ContextCompat.getColor(view!!.context, R.color.white)).show()

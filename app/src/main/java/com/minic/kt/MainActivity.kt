@@ -31,7 +31,7 @@ class MainActivity : BaseActivity<MainActivityBinding>(), FragNavController.Root
             HomeFragment.newInstance()
     )
 
-    lateinit var mNavController: FragNavController
+    private lateinit var mNavController: FragNavController
 
     override fun initData(savedInstanceState: Bundle?) {
         initToolbar(mBinding.toolBar)

@@ -77,7 +77,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
      * 创建DataBinding
      */
     private fun initBinding(rootView: View) {
-        mBinding = DataBindingUtil.bind<VB>(rootView)!!
+        mBinding = DataBindingUtil.bind(rootView)!!
         // 绑定LifeCycle
         mBinding.apply {
             lifecycleOwner = this@BaseFragment

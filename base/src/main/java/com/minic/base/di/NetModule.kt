@@ -19,12 +19,12 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-val NET_MODEUL_TAG = "NET_MODEUL_TAG"
+const val NET_MODEUL_TAG = "NET_MODEUL_TAG"
 const val HTTP_CLIENT_MODULE_INTERCEPTOR_LOG_TAG = "http_client_module_interceptor_log_tag"
 /**
  * 超时时间
  */
-val CONNECT_TIME_OUT: Long = 1000 * 30
+const val CONNECT_TIME_OUT: Long = 1000 * 30
 
 /**
  * 提供全局的ApiService，Retrofit等

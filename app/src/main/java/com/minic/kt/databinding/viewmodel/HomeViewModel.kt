@@ -29,7 +29,7 @@ class HomeViewModel : BaseViewModel() {
 
     }
 
-    fun getData() {
+    private fun getData() {
         douBanService.getDouBanBook()
                 .async(2000)
                 .bindLifecycle(this)
