@@ -42,21 +42,15 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        // 展示Loading
         showLoading()
         mBinding.vm = homeViewModel
-        // 获取数据成功监听
         homeViewModel.name.observe(this, Observer {
             showSuccess()
             showMsg(it!!)
         })
         homeViewModel.throwable.observe(this, Observer {
-            //            doError(it)
+            showMsg(it.message.toString())
         })
-//        var flutterView = Flutter.createView(activity!!, lifecycle, "flutterView")
-//        var layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-//        // 2. 将Flutter 视图添加到原生布局中
-//        mBinding.llContainer.addView(flutterView, layoutParams)
     }
 
 }

@@ -4,6 +4,7 @@ import android.R
 import android.app.Activity
 import com.google.android.material.snackbar.Snackbar
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import io.github.tonnyl.light.make
 import io.github.tonnyl.light.warning
 
@@ -30,7 +31,7 @@ fun Activity.showMsg(message: String) {
 /**
  * 提示消息
  */
-fun androidx.fragment.app.Fragment.showMsg(message: String) {
+fun Fragment.showMsg(message: String) {
     make(
             this.view!!,
             message,

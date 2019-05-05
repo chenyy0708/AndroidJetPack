@@ -1,10 +1,11 @@
 package com.minic.base.di
 
-import com.minic.base.BuildConfig
-import com.minic.base.net.UrlConstanct
 import com.google.gson.Gson
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.minic.base.BuildConfig
+import com.minic.base.net.UrlConstant
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -15,7 +16,6 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -44,9 +44,10 @@ val httpClientModule = Kodein.Module(NET_MODEUL_TAG) {
      */
     bind<Retrofit>() with singleton {
         instance<Retrofit.Builder>()
-                .baseUrl(UrlConstanct.DOUBAN_URL)
+                .baseUrl(UrlConstant.WAN_ANDROID_URL)
                 .client(instance())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }

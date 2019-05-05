@@ -1,5 +1,7 @@
 package com.minic.base.extens
 
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import com.minic.base.databinding.viewmodel.LifecycleViewModel
 
@@ -10,13 +12,13 @@ import com.minic.base.databinding.viewmodel.LifecycleViewModel
  * @github       :https://github.com/chenyy0708
  */
 
-fun <T : LifecycleViewModel> androidx.fragment.app.FragmentActivity.viewModel(modelClass: Class<T>) =
+fun <T : LifecycleViewModel> FragmentActivity.viewModel(modelClass: Class<T>) =
         ViewModelProviders.of(this).get(modelClass).also {
             it.lifecycleOwner = this
             lifecycle.addObserver(it)
         }
 
-fun <T : LifecycleViewModel> androidx.fragment.app.Fragment.viewModel(modelClass: Class<T>) =
+fun <T : LifecycleViewModel> Fragment.viewModel(modelClass: Class<T>) =
         ViewModelProviders.of(activity!!).get(modelClass).also {
             it.lifecycleOwner = this
             lifecycle.addObserver(it)

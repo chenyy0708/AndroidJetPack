@@ -1,7 +1,7 @@
 package com.minic.kt.base
 
 import com.minic.base.base.BaseApp
-import com.minic.kt.model.remote.api.DouBanService
+import com.minic.kt.model.remote.api.WanAndroidService
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.bind
@@ -20,8 +20,8 @@ class App : BaseApp(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         // 导入基类中的Kodein，存储公共的全局实例
         extend(baseKodein)
-        bind<DouBanService>() with singleton {
-            instance<Retrofit>().create(DouBanService::class.java)
+        bind<WanAndroidService>() with singleton {
+            instance<Retrofit>().create(WanAndroidService::class.java)
         }
     }
 

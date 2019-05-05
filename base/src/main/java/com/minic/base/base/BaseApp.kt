@@ -6,7 +6,7 @@ import androidx.multidex.MultiDexApplication
 import com.minic.base.callback.ErrorCallback
 import com.minic.base.callback.LoadingCallback
 import com.minic.base.di.httpClientModule
-import com.minic.base.net.UrlConstanct
+import com.minic.base.net.UrlConstant
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
@@ -26,15 +26,13 @@ open class BaseApp : MultiDexApplication() {
     val baseKodein: Kodein = Kodein.lazy {
         bind<Context>() with singleton { this@BaseApp }
         import(androidCoreModule(this@BaseApp))
-//        import(androidSupportModule(this@BaseApp))
         import(httpClientModule)
     }
 
     override fun onCreate() {
         super.onCreate()
         // 动态切换Retrofit BaseUrl
-        RetrofitUrlManager.getInstance().putDomain(UrlConstanct.DOUBAN, UrlConstanct.DOUBAN_URL)
-        RetrofitUrlManager.getInstance().putDomain(UrlConstanct.GANK, UrlConstanct.GANK_URL)
+        RetrofitUrlManager.getInstance().putDomain(UrlConstant.WAN_ANDROID, UrlConstant.WAN_ANDROID_URL)
         // 初始化多状态布局
         LoadSir.beginBuilder()
                 .addCallback(LoadingCallback())
