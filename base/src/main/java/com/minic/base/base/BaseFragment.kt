@@ -9,6 +9,9 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import org.kodein.di.KodeinAware
@@ -79,8 +82,8 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
     private fun initBinding(rootView: View) {
         mBinding = DataBindingUtil.bind<VB>(rootView)!!
         // 绑定LifeCycle
-        with(mBinding) {
-            setLifecycleOwner(this@BaseFragment)
+        mBinding.apply {
+            lifecycleOwner = this@BaseFragment
         }
     }
 
