@@ -76,10 +76,7 @@
 -keep public class * extends android.preference.Preference
 -keep public class com.android.vending.licensing.ILicensingService
 
--keep class com.cyy.kt.model.data.**{*;}
-#-keep class * extends com.horen.base.mvp.BasePresenter{*;}
-#-keep class * implements com.horen.base.mvp.BaseModel{*;}
-#-keep class * implements com.horen.base.mvp.BaseView{*;}
+-keep class com.minic.kt.model.data.**{*;}
 -keep class * implements retrofit2.Converter{*;}
 -keep class * extends Converter.Factory
 #序列化类不被混淆
