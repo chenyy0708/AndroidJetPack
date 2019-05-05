@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.minic.kt.databinding.viewmodel.HomeViewModel" />
+            type="com.minic.kt.databinding.vm.HomeVM" />
 
         <variable
             name="presenter"

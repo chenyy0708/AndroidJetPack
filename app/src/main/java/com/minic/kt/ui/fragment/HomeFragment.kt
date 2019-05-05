@@ -10,7 +10,7 @@ import com.minic.base.net.exception.showSuccess
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.MainFragmentBinding
-import com.minic.kt.databinding.viewmodel.HomeViewModel
+import com.minic.kt.databinding.vm.HomeVM
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.AndroidLifecycleScope
 import org.kodein.di.generic.bind
@@ -25,12 +25,12 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
     override val kodein: Kodein = Kodein.lazy {
         extend(App.INSTANCE.kodein)
         bind<HomeFragment>() with instance(this@HomeFragment)
-        bind<HomeViewModel>() with scoped(AndroidLifecycleScope).singleton {
-            instance<HomeFragment>().viewModel(HomeViewModel::class.java)
+        bind<HomeVM>() with scoped(AndroidLifecycleScope).singleton {
+            instance<HomeFragment>().viewModel(HomeVM::class.java)
         }
     }
     // 注入MainViewModel管理业务数据
-    private val homeViewModel: HomeViewModel by instance()
+    private val homeViewModel: HomeVM by instance()
 
     companion object {
         fun newInstance(): HomeFragment {

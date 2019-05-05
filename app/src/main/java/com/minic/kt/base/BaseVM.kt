@@ -7,7 +7,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.instance
 
-open class BaseViewModel : LifecycleViewModel(), KodeinAware {
+open class BaseVM : LifecycleViewModel(), KodeinAware {
     /**
      * 全局Kodein
      */
