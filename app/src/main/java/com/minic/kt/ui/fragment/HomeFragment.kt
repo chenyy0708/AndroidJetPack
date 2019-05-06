@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import com.minic.base.base.BaseFragment
 import com.minic.base.extens.showMsg
 import com.minic.base.extens.viewModel
+import com.minic.base.net.exception.doError
 import com.minic.base.net.exception.showLoading
 import com.minic.base.net.exception.showSuccess
 import com.minic.kt.R
@@ -49,7 +50,7 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
             showMsg(it!!)
         })
         homeViewModel.throwable.observe(this, Observer {
-            showMsg(it.message.toString())
+            doError(it)
         })
     }
 

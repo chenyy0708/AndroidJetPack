@@ -23,9 +23,9 @@ class HomeVM : BaseVM() {
         launch {
             // 在后台启动一个新的协程并继续
             wanAndroidService.chaptersAsync().awaitResponse {
-                throwable.value = it // 异常
-            }.apply {
-                name.postValue(get(0).name) // 获取数据成功
+                throwable.postValue(it)
+            }?.apply {
+                name.postValue(this[0].name) // 获取数据成功
             }
         }
 
