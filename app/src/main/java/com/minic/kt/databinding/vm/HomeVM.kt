@@ -2,12 +2,9 @@ package com.minic.kt.databinding.vm
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import com.minic.base.extens.logD
 import com.minic.kt.base.BaseVM
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
+import com.minic.kt.ext.awaitResponse
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
 
 /**
  * @author       :ChenYangYi
@@ -23,20 +20,17 @@ class HomeVM : BaseVM() {
     }
 
     private fun chapters() {
-        GlobalScope.launch {
-            logD("线程:${Thread.currentThread().name}", tag = "HomeVM")
+        launch {
             // 在后台启动一个新的协程并继续
-            val request = douBanService.chaptersAsync()
-            delay(3000L)// 非阻塞的等待 3 秒钟
-            try {
-                val response = request.await()
-                logD("获取数据成功", tag = "HomeVM")
-                name.postValue(response.data[0].name)
-            } catch (e: HttpException) {
-            } catch (e: Throwable) {
-                throwable.value = e
+            wanAndroidService.chaptersAsync().awaitResponse {
+                throwable.value = it // 异常
+            }.apply {
+                name.postValue(get(0).name) // 获取数据成功
             }
         }
+
     }
 
 }
+
+

@@ -6,14 +6,7 @@ package com.minic.kt.model.data
  * @Author: ChenYy
  * @Date: 2019/3/20 下午5:36
  */
-
 data class Chapters(
-        val `data`: List<Data>,
-        val errorCode: Int,
-        val errorMsg: String
-)
-
-data class Data(
         val children: List<Any>,
         val courseId: Int,
         val id: Int,

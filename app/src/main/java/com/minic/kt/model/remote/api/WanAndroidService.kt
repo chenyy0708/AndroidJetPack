@@ -1,6 +1,7 @@
 package com.minic.kt.model.remote.api
 
 import com.minic.base.net.UrlConstant
+import com.minic.kt.model.data.BResponse
 import com.minic.kt.model.data.Chapters
 import kotlinx.coroutines.Deferred
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
@@ -19,5 +20,5 @@ interface WanAndroidService {
      */
     @Headers(RetrofitUrlManager.DOMAIN_NAME_HEADER + UrlConstant.WAN_ANDROID)
     @GET("wxarticle/chapters/json")
-    fun chaptersAsync(): Deferred<Chapters>
+    fun chaptersAsync(): Deferred<BResponse<List<Chapters>>>
 }
