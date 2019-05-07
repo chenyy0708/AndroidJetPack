@@ -33,16 +33,6 @@
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
 #保护注解
 -keepattributes *Annotation*,InnerClasses
-#忽略警告
-#-ignorewarning
-#androidX
--keep class com.google.android.material.** {*;}
--keep class androidx.** {*;}
--keep public class * extends androidx.**
--keep interface androidx.** {*;}
--dontwarn com.google.android.material.**
--dontnote com.google.android.material.**
--dontwarn androidx.**
 #保持 native 方法不被混淆
 -keepclasseswithmembernames class * {
     native <methods>;
@@ -121,7 +111,7 @@
 -keepclassmembernames,allowobfuscation interface * {
     @retrofit2.http.* <methods>;
 }
--dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+-dontwarn org.codehaus.mojo.animal_sniffer.*
 #--------------------------okhttp3------------------------------------------------
 -dontwarn okhttp3.**
 -dontwarn okio.**
@@ -129,27 +119,7 @@
 -dontwarn org.conscrypt.**
 -dontwarn javax.inject.**
 -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
-#-------------------------RxJava RxAndroid---------------------------------------------
--dontwarn sun.misc.**
--dontwarn rx.**
--keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
-    long producerIndex;
-    long consumerIndex;
-}
--keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
-    rx.internal.util.atomic.LinkedQueueNode producerNode;
-}
--keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
-    rx.internal.util.atomic.LinkedQueueNode consumerNode;
-}
-#-------------------------aspectjx---------------------------------------------
--keepclassmembernames,allowobfuscation interface * {
-    @org.aspectj.lang.annotation.* <methods>;
-}
-#-------------------------aspectjx---------------------------------------------
--keepclassmembernames,allowobfuscation interface * {
-    @org.aspectj.lang.annotation.* <methods>;
-}
+-dontwarn okhttp3.internal.platform.ConscryptPlatform
 #-------------------------databinding---------------------------------------------
 -keepclassmembernames,allowobfuscation interface * {
     @android.databinding.* <methods>;
@@ -164,5 +134,19 @@
 -keepclassmembernames class kotlinx.** {
     volatile <fields>;
 }
-
+#-------------------------AndroidX---------------------------------------------
+-keep class com.google.android.material.** {*;}
+-keep class androidx.** {*;}
+-keep public class * extends androidx.**
+-keep interface androidx.** {*;}
+-dontwarn com.google.android.material.**
+-dontnote com.google.android.material.**
+-dontwarn androidx.**
+#-------------------------Glide---------------------------------------------
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
 
