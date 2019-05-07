@@ -7,6 +7,7 @@ import com.minic.base.base.BaseActivity
 import com.minic.base.base.BaseFragment
 import com.minic.base.callback.ErrorCallback
 import com.minic.base.callback.LoadingCallback
+import com.minic.base.extens.showMsg
 import java.net.UnknownHostException
 
 /**
@@ -20,7 +21,7 @@ import java.net.UnknownHostException
 fun <VB : ViewDataBinding> BaseFragment<VB>.doError(throwable: Throwable?) {
     when (throwable) {
         is UnknownHostException -> showError()
-        is CException -> showError(throwable.msg)
+        is CException -> showMsg(throwable.msg)
         else -> showError()
     }
 }

@@ -17,7 +17,7 @@ class CoroutineSupport : CoroutineScope {
     private val job: Job = SupervisorJob()
 
     override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Default + job
+        get() = Dispatchers.Main + job
 
     fun cancelAllJob() = job.cancel()
 }

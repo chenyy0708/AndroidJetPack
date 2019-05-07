@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.minic.base.extens.logD
 import com.minic.kt.base.BaseVM
 import com.minic.kt.ext.awaitResponse
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
@@ -22,15 +21,20 @@ class HomeVM : BaseVM() {
     }
 
     private fun chapters() {
-        coroutine.launch {
-            delay(3000L)
-            wanAndroidService.chaptersAsync().awaitResponse {
-                throwable.postValue(it)
-            }?.apply {
-                logD(tag = "HomeVM", msg = "获取数据成功")
-                name.postValue(this[0].name)// 获取数据成功
+        try {
+            coroutine.launch {
+                logD("HomeVM", "launch:${Thread.currentThread().name}")
+                wanAndroidService.chaptersAsync().awaitResponse {
+                    logD("HomeVM", "Error:${Thread.currentThread().name}")
+                    throwable.postValue(it)
+                }?.apply {
+                    logD("HomeVM", "Success:${Thread.currentThread().name}")
+                    name.postValue(this[0].name)// 获取数据成功
+                }
             }
 
+        } catch (e: Exception) {
+            println(e.localizedMessage)
         }
     }
 
