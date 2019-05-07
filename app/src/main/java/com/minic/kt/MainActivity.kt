@@ -34,14 +34,11 @@ class MainActivity : BaseActivity<MainActivityBinding>(), FragNavController.Root
     private lateinit var mNavController: FragNavController
 
     override fun initData(savedInstanceState: Bundle?) {
-        initToolbar(mBinding.toolBar)
-        syncToolBar(mBinding.toolBar)
-
-
+        initToolbar(mBinding.includeToolbar.toolBar, mTitle = getString(R.string.app_name))
+        syncToolBar(mBinding.includeToolbar.toolBar)
         mNavController = FragNavController.newBuilder(savedInstanceState, supportFragmentManager, R.id.fl_continer)
                 .rootFragmentListener(this, mFragments.size)
                 .build()
-
         mNavController.switchTab(FragNavController.TAB1)
     }
 

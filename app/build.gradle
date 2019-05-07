@@ -55,5 +55,7 @@ dependencies {
     kapt "androidx.databinding:databinding-compiler:$gradle_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.ncapdevi:frag-nav:2.4.0'
-//    implementation project(':flutter')
+    implementation "com.scwang.smartrefresh:SmartRefreshLayout:$smartrefresh_layout_version"
+    implementation "com.scwang.smartrefresh:SmartRefreshHeader:$smartrefresh_layout_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

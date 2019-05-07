@@ -2,7 +2,7 @@ ext {
 
     android = [ // 配置信息
                 compileSdkVersion: 28,
-                minSdkVersion    : 19,
+                minSdkVersion    : 21,
                 targetSdkVersion : 28,
                 versionCode      : 1,
                 versionName      : "1.0.0"
@@ -23,4 +23,5 @@ ext {
 
     coroutines_version = "1.2.1"
     coroutines_adapter_version = "0.9.2"
+    smartrefresh_layout_version = "1.1.0-andx-7"
 }
