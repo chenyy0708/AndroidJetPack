@@ -2,16 +2,14 @@ package com.minic.kt.base
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import com.minic.base.coroutine.CoroutineSupport
 import com.minic.base.databinding.viewmodel.LifecycleViewModel
 import com.minic.kt.model.remote.api.WanAndroidService
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.instance
 
-open class BaseVM : LifecycleViewModel(), KodeinAware, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+open class BaseVM : LifecycleViewModel(), KodeinAware {
     /**
      * 全局Kodein
      */
@@ -26,9 +24,13 @@ open class BaseVM : LifecycleViewModel(), KodeinAware, CoroutineScope by Corouti
      * Application中注入的ApiService
      */
     protected val wanAndroidService: WanAndroidService by instance()
+    /**
+     * 协程
+     */
+    protected val coroutine: CoroutineSupport = CoroutineSupport()
 
     override fun onDestroy(lifecycleOwner: LifecycleOwner) {
         super.onDestroy(lifecycleOwner)
-        cancel()
+        coroutine.cancelAllJob()
     }
 }

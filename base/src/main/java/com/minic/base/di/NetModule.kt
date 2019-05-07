@@ -46,7 +46,6 @@ val httpClientModule = Kodein.Module(NET_MODEUL_TAG) {
         instance<Retrofit.Builder>()
                 .baseUrl(UrlConstant.WAN_ANDROID_URL)
                 .client(instance())
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

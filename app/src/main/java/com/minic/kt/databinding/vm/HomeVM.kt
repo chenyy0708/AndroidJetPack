@@ -2,8 +2,10 @@ package com.minic.kt.databinding.vm
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import com.minic.base.extens.logD
 import com.minic.kt.base.BaseVM
 import com.minic.kt.ext.awaitResponse
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
@@ -20,15 +22,16 @@ class HomeVM : BaseVM() {
     }
 
     private fun chapters() {
-        launch {
-            // 在后台启动一个新的协程并继续
+        coroutine.launch {
+            delay(3000L)
             wanAndroidService.chaptersAsync().awaitResponse {
                 throwable.postValue(it)
             }?.apply {
-                name.postValue(this[0].name) // 获取数据成功
+                logD(tag = "HomeVM", msg = "获取数据成功")
+                name.postValue(this[0].name)// 获取数据成功
             }
-        }
 
+        }
     }
 
 }
