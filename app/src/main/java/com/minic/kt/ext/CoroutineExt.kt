@@ -17,11 +17,6 @@ import kotlin.coroutines.resumeWithException
 suspend fun <T> Deferred<BResponse<T>>.awaitResponse(catchBlock: suspend (Throwable) -> Unit = {}): T? {
     val response: BResponse<T>?
     val result: T?
-    newSingleThreadContext("main").use {
-        runBlocking {
-            logD("HomeVM", "newSingleThreadContext:${Thread.currentThread().name}")
-        }
-    }
     try {
         logD("HomeVM", "awaitResponse:${Thread.currentThread().name}")
         response = await()
