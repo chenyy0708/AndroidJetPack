@@ -14,10 +14,9 @@ import kotlin.coroutines.resumeWithException
  * @Date: 2019-05-06 17:50
  */
 suspend fun <T> Deferred<BResponse<T>>.awaitResponse(catchBlock: suspend (Throwable) -> Unit = {}): T? {
-    val response: BResponse<T>?
-    val result: T?
+    var result: T? = null
     try {
-        response = await()
+        val response = await()
         result = suspendCancellableCoroutine<T> { cont ->
             if (null == response) {
                 cont.resumeWithException(CException("No data"))
@@ -31,7 +30,7 @@ suspend fun <T> Deferred<BResponse<T>>.awaitResponse(catchBlock: suspend (Throwa
         }
     } catch (e: Throwable) {
         catchBlock(e)
-        return null
+        return result
     }
     return result
 }
