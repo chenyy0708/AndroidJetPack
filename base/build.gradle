@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-//apply plugin: 'android-aspectjx'
 apply plugin: 'kotlin-kapt'
 
 def config = rootProject.ext.android // 配置
@@ -16,7 +15,6 @@ android {
         versionName config.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
     }
 
     buildTypes {
@@ -33,23 +31,19 @@ android {
 
 }
 
-//aspectjx {
-//////排除所有package路径中包含`android.support`的class文件及库（jar文件）
-////    exclude 'android.support'
-////}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0-alpha05'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha05'
-    // support
+    // androidx
     api "androidx.appcompat:appcompat:1.0.2"
     api 'androidx.constraintlayout:constraintlayout:1.1.3'
     api "com.google.android.material:material:$supportVersion"
     api "androidx.legacy:legacy-support-v4:1.0.0"
     api "androidx.cardview:cardview:$supportVersion"
-    api 'androidx.multidex:multidex:2.0.1'
+    api 'androidx.core:core-ktx:1.0.2'
     // ViewModel and LiveData
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"

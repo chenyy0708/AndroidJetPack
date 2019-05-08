@@ -1,8 +1,7 @@
 package com.minic.base.base
 
+import android.app.Application
 import android.content.Context
-import androidx.multidex.MultiDex
-import androidx.multidex.MultiDexApplication
 import com.minic.base.callback.ErrorCallback
 import com.minic.base.callback.LoadingCallback
 import com.minic.base.di.httpClientModule
@@ -21,7 +20,7 @@ import org.kodein.di.generic.singleton
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-open class BaseApp : MultiDexApplication() {
+open class BaseApp : Application() {
 
     val baseKodein: Kodein = Kodein.lazy {
         bind<Context>() with singleton { this@BaseApp }
@@ -39,10 +38,5 @@ open class BaseApp : MultiDexApplication() {
                 .addCallback(ErrorCallback())
                 .setDefaultCallback(SuccessCallback::class.java)
                 .commit()
-    }
-
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
     }
 }

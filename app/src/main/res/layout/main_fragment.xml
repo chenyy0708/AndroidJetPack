@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,7 +10,7 @@
 
         <variable
             name="presenter"
-            type="com.minic.base.databinding.binds.Presenter" />
+            type="com.minic.kt.databinding.binds.Presenter" />
 
     </data>
 
@@ -24,6 +25,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{vm.name}" />
+
+        <ImageView
+            app:imageUrl="@{vm.imageUrl}"
+            android:id="@+id/iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
     </LinearLayout>
 
 </layout>

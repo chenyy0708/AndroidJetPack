@@ -1,7 +1,8 @@
-package com.minic.base.databinding.binds
+package com.minic.kt.databinding.binds
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.pingerx.imagego.core.strategy.loadImage
 
 /**
  * 页面描述：ImageBinds
@@ -9,6 +10,5 @@ import androidx.databinding.BindingAdapter
 
 @BindingAdapter("app:imageUrl")
 fun bindImgUrl(imageView: ImageView, url: String?) {
-    url?.let {
-    }
+    loadImage(url, imageView)
 }

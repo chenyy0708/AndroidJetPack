@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
  */
 class HomeVM : BaseVM() {
     val name = MutableLiveData<String>()
+    val imageUrl = MutableLiveData<String>()
     override fun onCreate(lifecycleOwner: LifecycleOwner) {
         super.onCreate(lifecycleOwner)
         chapters()
@@ -22,9 +23,10 @@ class HomeVM : BaseVM() {
     private fun chapters() {
         coroutine.launch {
             wanAndroidService.chaptersAsync().awaitResponse {
-                throwable.postValue(it)
+                throwable.value = it
             }?.apply {
-                name.postValue(this[0].name)// 获取数据成功
+                name.value = this[0].name// 获取数据成功
+                imageUrl.value = "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1546434533,2850833042&fm=27&gp=0.jpg"
             }
         }
     }
