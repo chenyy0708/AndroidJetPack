@@ -1,7 +1,7 @@
 package com.minic.kt.ext
 
 import com.minic.base.net.exception.CException
-import com.minic.kt.model.data.BResponse
+import com.minic.kt.data.model.BResponse
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume

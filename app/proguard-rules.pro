@@ -66,7 +66,7 @@
 -keep public class * extends android.preference.Preference
 -keep public class com.android.vending.licensing.ILicensingService
 
--keep class com.minic.kt.model.data.**{*;}
+-keep class com.minic.kt.data.model.data.**{*;}
 -keep class * implements retrofit2.Converter{*;}
 -keep class * extends Converter.Factory
 #序列化类不被混淆

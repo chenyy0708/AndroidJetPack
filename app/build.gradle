@@ -62,4 +62,5 @@ dependencies {
         exclude group: 'com.github.bumptech.glide', module: 'glide'
         exclude group: 'com.github.bumptech.glide', module: 'compiler'
     }
+    implementation "androidx.paging:paging-runtime:$paging_version"
 }

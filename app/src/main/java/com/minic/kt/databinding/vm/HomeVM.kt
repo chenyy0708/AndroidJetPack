@@ -2,6 +2,7 @@ package com.minic.kt.databinding.vm
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.LivePagedListBuilder
 import com.minic.kt.base.BaseVM
 import com.minic.kt.ext.awaitResponse
 import kotlinx.coroutines.launch
@@ -22,7 +23,7 @@ class HomeVM : BaseVM() {
 
     private fun chapters() {
         coroutine.launch {
-            wanAndroidService.chaptersAsync().awaitResponse {
+            gankRepository.chaptersAsync().awaitResponse {
                 throwable.value = it
             }?.apply {
                 name.value = this[0].name// 获取数据成功

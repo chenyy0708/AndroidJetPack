@@ -1,7 +1,8 @@
 package com.minic.kt.base
 
 import com.minic.base.base.BaseApp
-import com.minic.kt.model.remote.api.WanAndroidService
+import com.minic.kt.data.GankRepository
+import com.minic.kt.data.api.GankService
 import com.pingerx.imagego.core.ImageGo
 import com.pingerx.imagego.core.strategy.ImageOptions
 import com.pingerx.imagego.glide.GlideImageStrategy
@@ -23,8 +24,11 @@ class App : BaseApp(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         // 导入基类中的Kodein，存储公共的全局实例
         extend(baseKodein)
-        bind<WanAndroidService>() with singleton {
-            instance<Retrofit>().create(WanAndroidService::class.java)
+        bind<GankService>() with singleton {
+            instance<Retrofit>().create(GankService::class.java)
+        }
+        bind<GankRepository>() with singleton {
+            GankRepository(instance())
         }
     }
 

@@ -1,4 +1,4 @@
-package com.minic.kt.model.data
+package com.minic.kt.data.model
 
 /**
  * @ClassName: 公众号列表

@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import com.minic.base.coroutine.CoroutineSupport
 import com.minic.base.databinding.viewmodel.LifecycleViewModel
-import com.minic.kt.model.remote.api.WanAndroidService
+import com.minic.kt.data.GankRepository
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.instance
@@ -16,14 +16,14 @@ open class BaseVM : LifecycleViewModel(), KodeinAware {
     override val kodein: Kodein = App.INSTANCE.kodein
 
     /**
-     * 错误
+     * throwable
      */
     open val throwable = MutableLiveData<Throwable>()
 
     /**
-     * Application中注入的ApiService
+     * Application中注入的Repository
      */
-    protected val wanAndroidService: WanAndroidService by instance()
+    protected val gankRepository: GankRepository by instance()
     /**
      * 协程
      */
