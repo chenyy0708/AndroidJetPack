@@ -50,7 +50,7 @@ fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "", isBack
 /**
  * 打印日志--扩展函数
  */
-fun Any.logD(tag: String = javaClass.simpleName,
+fun Any.logD(tag: String = "GANK_LOG",
              msg: String? = "") {
     Log.d(tag, msg)
 }

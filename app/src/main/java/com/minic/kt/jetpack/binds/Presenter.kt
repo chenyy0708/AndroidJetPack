@@ -1,4 +1,4 @@
-package com.minic.kt.databinding.binds
+package com.minic.kt.jetpack.binds
 
 import android.view.View
 

@@ -1,37 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
             name="vm"
-            type="com.minic.kt.databinding.vm.HomeVM" />
+            type="com.minic.kt.ui.fragment.vm.HomeVM" />
 
         <variable
             name="presenter"
-            type="com.minic.kt.databinding.binds.Presenter" />
+            type="com.minic.kt.jetpack.binds.Presenter" />
 
     </data>
 
-    <LinearLayout
-        android:id="@+id/ll_container"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.name}" />
-
-        <ImageView
-            app:imageUrl="@{vm.imageUrl}"
-            android:id="@+id/iv"
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
-    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </layout>
 
