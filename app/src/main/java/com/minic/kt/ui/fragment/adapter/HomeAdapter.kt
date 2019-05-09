@@ -23,8 +23,7 @@ class HomeAdapter : PagedListAdapter<Android, SimpleViewHolder>(mDiffCallback) {
     }
 
     override fun onBindViewHolder(holder: SimpleViewHolder, position: Int) {
-        logD(msg = "Text")
-        holder.getView<TextView>(R.id.tv).text = getItem(position)?.url
+        holder.getView<TextView>(R.id.tv).text = getItem(position)?.desc
     }
 
 }

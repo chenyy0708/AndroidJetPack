@@ -1,5 +1,6 @@
 package com.minic.kt.ui.fragment.vm
 
+import com.minic.base.extens.logD
 import com.minic.kt.base.BaseVM
 import com.minic.kt.data.model.gank.Android
 import com.minic.kt.ext.awaitV2Response
@@ -14,6 +15,7 @@ import kotlinx.coroutines.launch
  */
 class HomeVM : BaseVM() {
     var mList = loadData<Android> { page, rows, callback ->
+        logD(msg = "加载第${page}页数据")
         coroutine.launch {
             gankRepository.androidListAsync(page, rows).awaitV2Response {
                 throwable.value = it

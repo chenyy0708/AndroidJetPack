@@ -53,6 +53,10 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
         })
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = adapter
+
+        mBinding.swipeLayout.setOnRefreshListener {
+            homeViewModel.mList.value?.dataSource?.invalidate()
+        }
     }
 
 }
