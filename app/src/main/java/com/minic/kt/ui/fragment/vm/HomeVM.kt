@@ -1,5 +1,6 @@
 package com.minic.kt.ui.fragment.vm
 
+import androidx.lifecycle.MutableLiveData
 import com.minic.base.extens.logD
 import com.minic.kt.base.BaseVM
 import com.minic.kt.data.model.gank.Android
@@ -17,6 +18,9 @@ class HomeVM : BaseVM() {
     var mList = loadData<Android> { page, rows, callback ->
         logD(msg = "加载第${page}页数据")
         coroutine.launch {
+            if (page == 1) { // 刷新完成
+                refreshComplete.value = true
+            }
             gankRepository.androidListAsync(page, rows).awaitV2Response {
                 throwable.value = it
             }?.apply {
@@ -24,6 +28,7 @@ class HomeVM : BaseVM() {
             }
         }
     }
+    val refreshComplete = MutableLiveData<Boolean>()
 }
 
 

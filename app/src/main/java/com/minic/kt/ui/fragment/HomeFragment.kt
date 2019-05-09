@@ -1,6 +1,7 @@
 package com.minic.kt.ui.fragment
 
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.minic.base.base.BaseFragment
@@ -51,9 +52,12 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
         homeViewModel.mList.observe(this, Observer {
             adapter.submitList(it)
         })
+        homeViewModel.refreshComplete.observe(this, Observer {
+            mBinding.swipeLayout.isRefreshing = !it
+        })
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = adapter
-
+        mBinding.swipeLayout.setColorSchemeColors(ContextCompat.getColor(mContext, R.color.colorPrimary))
         mBinding.swipeLayout.setOnRefreshListener {
             homeViewModel.mList.value?.dataSource?.invalidate()
         }
