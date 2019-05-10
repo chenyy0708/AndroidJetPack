@@ -1,10 +1,12 @@
 package com.minic.kt.jetpack.paging
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.minic.base.adapter.SimpleViewHolder
 
 /**
  * @ClassName: PagingAdapter
@@ -12,16 +14,21 @@ import com.minic.base.adapter.SimpleViewHolder
  * @Author: ChenYy
  * @Date: 2019-05-10 09:52
  */
-abstract class PagingAdapter<V>(@LayoutRes private val layoutId: Int,
-                                mDiffCallback: DiffUtil.ItemCallback<V>) :
-        PagedListAdapter<V, SimpleViewHolder>(mDiffCallback) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleViewHolder {
-        return SimpleViewHolder(parent, layoutId)
+abstract class PagingAdapter<V, VB : ViewDataBinding>(@LayoutRes private val layoutId: Int,
+                                                      mDiffCallback: DiffUtil.ItemCallback<V>) :
+        PagedListAdapter<V, BindingHolder<VB>>(mDiffCallback) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<VB> {
+        return BindingHolder(DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context), layoutId, parent, false))
     }
 
-    override fun onBindViewHolder(holder: SimpleViewHolder, position: Int) {
-        convert(holder, position)
+    override fun onBindViewHolder(holder: BindingHolder<VB>, position: Int) {
+        val item = getItem(position)
+        bindTo(holder.binding, item)
     }
 
-    abstract fun convert(holder: SimpleViewHolder, position: Int)
+    /**
+     * DataBind绑定Item
+     */
+    abstract fun bindTo(bind: VB, item: V?)
 }
