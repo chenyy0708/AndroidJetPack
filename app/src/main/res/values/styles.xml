@@ -13,4 +13,13 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <style name="tv_title_style">
+        <item name="android:textSize">@dimen/sp_15</item>
+        <item name="android:textColor">@color/main_font_color</item>
+    </style>
+
+    <style name="tv_desc_style">
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:textColor">@color/light_font_color</item>
+    </style>
 </resources>

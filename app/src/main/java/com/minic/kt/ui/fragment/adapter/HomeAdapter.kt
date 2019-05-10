@@ -5,6 +5,8 @@ import com.minic.kt.R
 import com.minic.kt.data.model.gank.Android
 import com.minic.kt.databinding.ItemHomeBinding
 import com.minic.kt.jetpack.paging.PagingAdapter
+import com.minic.kt.utils.ext.dp2px
+import com.minic.kt.utils.ext.loadImage
 
 
 /**
@@ -16,6 +18,11 @@ import com.minic.kt.jetpack.paging.PagingAdapter
 class HomeAdapter : PagingAdapter<Android, ItemHomeBinding>(R.layout.item_home, mDiffCallback) {
     override fun bindTo(bind: ItemHomeBinding, item: Android?) {
         bind.item = item
+        if (item?.images != null && item.images.isNotEmpty()) {
+            bind.iv.loadImage(item.images[0], dp2px(4f))
+        } else {
+            bind.iv.loadImage(R.mipmap.ic_launcher_round)
+        }
     }
 }
 

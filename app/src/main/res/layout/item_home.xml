@@ -10,19 +10,90 @@
             type="com.minic.kt.data.model.gank.Android" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="30dp">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="@dimen/dp_10"
+        app:cardCornerRadius="@dimen/radius"
+        app:cardElevation="@dimen/elevation">
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{item.desc}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="1" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:paddingStart="@dimen/app_margin"
+            android:paddingEnd="@dimen/app_margin">
+
+            <TextView
+                android:id="@+id/tv"
+                style="@style/tv_title_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{item.desc}"
+                app:layout_constraintLeft_toRightOf="@+id/iv"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv"
+                tools:text="我的一个标题我的一个标题我的一个标题我的一个标题我的一个标题我的一个标题我的一个标题我的一个标题我的一个标题我的一个标题" />
+
+            <ImageView
+                android:id="@+id/iv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:src="@drawable/vector_account_circle_px"
+                app:layout_constraintBottom_toBottomOf="@+id/iv"
+                app:layout_constraintLeft_toRightOf="@+id/iv" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/tv_desc_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:text="@{item.publishedAt}"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_time"
+                app:layout_constraintLeft_toRightOf="@+id/iv_time"
+                app:layout_constraintTop_toTopOf="@+id/iv_time"
+                tools:text="时间" />
+
+            <ImageView
+                android:id="@+id/iv_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:src="@drawable/vector_account_circle_px"
+                app:layout_constraintBottom_toBottomOf="@+id/iv"
+                app:layout_constraintLeft_toRightOf="@+id/tv_time" />
+
+            <TextView
+                android:id="@+id/tv_author"
+                style="@style/tv_desc_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:text="@{item.who}"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_author"
+                app:layout_constraintLeft_toRightOf="@+id/iv_author"
+                app:layout_constraintTop_toTopOf="@+id/iv_author"
+                tools:text="作者" />
+
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_launcher" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 </layout>

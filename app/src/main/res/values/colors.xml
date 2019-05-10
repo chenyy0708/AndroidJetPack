@@ -3,4 +3,8 @@
     <color name="colorPrimary">#7e57c2</color>
     <color name="colorPrimaryDark">#4d2c91</color>
     <color name="colorAccent">#b085f5</color>
+
+    <!-- 主字体颜色 -->
+    <color name="main_font_color">#373D52</color>
+    <color name="light_font_color">#A8ACBC</color>
 </resources>

@@ -2,13 +2,13 @@ package com.minic.kt.jetpack.binds
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.pingerx.imagego.core.strategy.loadImage
+import com.minic.kt.utils.ext.loadImage
 
 /**
  * 页面描述：ImageBinds
  */
 
-@BindingAdapter("app:imageUrl")
+@BindingAdapter("imageUrl")
 fun bindImgUrl(imageView: ImageView, url: String?) {
-    loadImage(url, imageView)
+    imageView.loadImage(url)
 }
