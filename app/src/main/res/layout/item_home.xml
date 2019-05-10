@@ -54,7 +54,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_8"
-                android:text="@{item.publishedAt}"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_time"
                 app:layout_constraintLeft_toRightOf="@+id/iv_time"
                 app:layout_constraintTop_toTopOf="@+id/iv_time"

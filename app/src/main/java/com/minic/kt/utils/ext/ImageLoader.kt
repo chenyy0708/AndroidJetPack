@@ -1,8 +1,10 @@
 package com.minic.kt.utils.ext
 
 import android.widget.ImageView
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
 import com.minic.kt.R
-import com.pingerx.imagego.core.strategy.loadRound
+import com.minic.kt.base.GlideApp
 
 /**
  * @ClassName: ImageLoader
@@ -12,9 +14,12 @@ import com.pingerx.imagego.core.strategy.loadRound
  */
 
 fun ImageView.loadImage(any: Any?, radius: Int = 0) {
-    if (radius > 0) {
-        loadRound(any, this, radius)
-    } else {
-        com.pingerx.imagego.core.strategy.loadImage(any, this, placeHolder = R.mipmap.ic_launcher_round, errorHolder = R.mipmap.ic_launcher_round)
-    }
+    GlideApp.with(this.context)
+            .load(any)
+            .placeholder(R.mipmap.ic_launcher_round)
+            .error(R.mipmap.ic_launcher_round)
+            .centerCrop()
+            .transition(DrawableTransitionOptions.with(
+                    DrawableCrossFadeFactory.Builder(300).setCrossFadeEnabled(true).build()))
+            .into(this)
 }

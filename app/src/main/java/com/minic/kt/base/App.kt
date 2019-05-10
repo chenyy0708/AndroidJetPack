@@ -3,9 +3,6 @@ package com.minic.kt.base
 import com.minic.base.base.BaseApp
 import com.minic.kt.data.GankRepository
 import com.minic.kt.data.api.GankService
-import com.pingerx.imagego.core.ImageGo
-import com.pingerx.imagego.core.strategy.ImageOptions
-import com.pingerx.imagego.glide.GlideImageStrategy
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.bind
@@ -35,9 +32,6 @@ class App : BaseApp(), KodeinAware {
     override fun onCreate() {
         INSTANCE = this
         super.onCreate()
-        ImageGo.setDebug(true)   // 开发模式
-                .setStrategy(GlideImageStrategy())  // 图片加载策略
-                .setDefaultBuilder(ImageOptions.Builder())  // 图片加载配置属性，可使用默认属性
     }
 
 

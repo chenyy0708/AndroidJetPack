@@ -56,11 +56,11 @@ dependencies {
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$smartrefresh_layout_version"
     implementation "com.scwang.smartrefresh:SmartRefreshHeader:$smartrefresh_layout_version"
     implementation "com.github.bumptech.glide:glide:$glide_version"
-    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
-    implementation "com.pingerx:imagego-core:$imageloader_version"
-    implementation("com.pingerx:imagego-glide:$imageloader_version") {
-        exclude group: 'com.github.bumptech.glide', module: 'glide'
-        exclude group: 'com.github.bumptech.glide', module: 'compiler'
-    }
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+//    implementation "com.pingerx:imagego-core:$imageloader_version"
+//    implementation("com.pingerx:imagego-glide:$imageloader_version") {
+//        exclude group: 'com.github.bumptech.glide', module: 'glide'
+//        exclude group: 'com.github.bumptech.glide', module: 'compiler'
+//    }
     implementation "androidx.paging:paging-runtime:$paging_version"
 }

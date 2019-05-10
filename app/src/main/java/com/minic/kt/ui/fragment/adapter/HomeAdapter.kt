@@ -5,6 +5,7 @@ import com.minic.kt.R
 import com.minic.kt.data.model.gank.Android
 import com.minic.kt.databinding.ItemHomeBinding
 import com.minic.kt.jetpack.paging.PagingAdapter
+import com.minic.kt.utils.TimeUtils
 import com.minic.kt.utils.ext.dp2px
 import com.minic.kt.utils.ext.loadImage
 
@@ -23,6 +24,7 @@ class HomeAdapter : PagingAdapter<Android, ItemHomeBinding>(R.layout.item_home, 
         } else {
             bind.iv.loadImage(R.mipmap.ic_launcher_round)
         }
+        bind.tvTime.text = TimeUtils.get().getTimeFormatText(item?.publishedAt!!)
     }
 }
 

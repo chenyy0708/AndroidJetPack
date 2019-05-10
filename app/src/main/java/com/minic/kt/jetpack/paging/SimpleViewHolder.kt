@@ -4,12 +4,10 @@ import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
-import com.pingerx.imagego.core.strategy.loadImage
 
 
 /**
@@ -43,7 +41,6 @@ class SimpleViewHolder(parent: ViewGroup, @LayoutRes layoutId: Int) : RecyclerVi
     }
 
     fun loadIV(@IdRes viewId: Int, str: String?): SimpleViewHolder {
-        loadImage(str, getView<ImageView>(viewId))
         return this
     }
 }
