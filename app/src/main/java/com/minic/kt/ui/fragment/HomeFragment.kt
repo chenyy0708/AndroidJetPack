@@ -37,15 +37,21 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
     companion object {
         fun newInstance(): HomeFragment {
             val bundle = Bundle()
-            val testFragment = HomeFragment()
-            testFragment.arguments = bundle
-            return testFragment
+            val homeFragment = HomeFragment()
+            homeFragment.arguments = bundle
+            return homeFragment
         }
     }
 
     override fun initData(savedInstanceState: Bundle?) {
         val adapter = HomeAdapter()
         mBinding.vm = homeViewModel
+        mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
+        mBinding.recyclerView.adapter = adapter
+        mBinding.swipeLayout.setColorSchemeColors(ContextCompat.getColor(mContext, R.color.colorPrimary))
+        mBinding.swipeLayout.setOnRefreshListener {
+            homeViewModel.mList.value?.dataSource?.invalidate()
+        }
         homeViewModel.throwable.observe(this, Observer {
             doError(it)
         })
@@ -55,12 +61,6 @@ class HomeFragment : BaseFragment<MainFragmentBinding>() {
         homeViewModel.refreshComplete.observe(this, Observer {
             mBinding.swipeLayout.isRefreshing = !it
         })
-        mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
-        mBinding.recyclerView.adapter = adapter
-        mBinding.swipeLayout.setColorSchemeColors(ContextCompat.getColor(mContext, R.color.colorPrimary))
-        mBinding.swipeLayout.setOnRefreshListener {
-            homeViewModel.mList.value?.dataSource?.invalidate()
-        }
     }
 
 }
