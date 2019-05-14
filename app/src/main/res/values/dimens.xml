@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="elevation">1px</dimen>
+    <dimen name="elevation">1.5dp</dimen>
     <dimen name="radius">4dp</dimen>
 
     <dimen name="dp_8">8dp</dimen>

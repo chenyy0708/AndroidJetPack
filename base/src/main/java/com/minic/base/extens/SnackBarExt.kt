@@ -45,6 +45,6 @@ fun Fragment.showMsg(message: String) {
  * 警告
  */
 fun Activity.showWarning(message: String) {
-    warning(this.window.decorView, "message", Snackbar.LENGTH_SHORT).show()
+    warning(this.window.decorView, message, Snackbar.LENGTH_SHORT).show()
 }
 

@@ -29,7 +29,7 @@ interface GankService {
      * Android列表
      */
     @Headers(RetrofitUrlManager.DOMAIN_NAME_HEADER + UrlConstant.GANK_IO)
-    @GET("data/Android/{rows}/{page}")
-    fun androidListAsync(@Path("page") page: Int, @Path("rows") rows: Int):
+    @GET("data/{type}/{rows}/{page}")
+    fun androidListAsync(@Path("page") page: Int, @Path("rows") rows: Int, @Path("type") type: String):
             Deferred<BV2Response<List<Android>>>
 }

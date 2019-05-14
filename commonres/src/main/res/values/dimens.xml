@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tv_11_sp">11sp</dimen>
+    <dimen name="tv_12_sp">12sp</dimen>
+    <dimen name="tv_13_sp">13sp</dimen>
+    <dimen name="tv_14_sp">14sp</dimen>
+    <dimen name="tv_15_sp">15sp</dimen>
+    <dimen name="tv_16_sp">16sp</dimen>
+    <dimen name="tv_17_sp">17sp</dimen>
+    <dimen name="tv_18_sp">18sp</dimen>
+    <dimen name="tv_19_sp">19sp</dimen>
+    <dimen name="tv_20_sp">20sp</dimen>
+    <dimen name="tv_21_sp">21sp</dimen>
+    <dimen name="tv_22_sp">22sp</dimen>
+    <dimen name="tv_23_sp">23sp</dimen>
+    <dimen name="tv_24_sp">24sp</dimen>
+    <dimen name="tv_25_sp">25sp</dimen>
+</resources>

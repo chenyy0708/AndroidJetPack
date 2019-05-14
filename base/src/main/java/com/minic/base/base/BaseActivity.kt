@@ -86,7 +86,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
     /**
      * 初始化数据
      */
-    abstract fun initData(savedInstanceState: Bundle?)
+    protected abstract fun initData(savedInstanceState: Bundle?)
 
     @LayoutRes
     abstract fun getLayoutRes(): Int

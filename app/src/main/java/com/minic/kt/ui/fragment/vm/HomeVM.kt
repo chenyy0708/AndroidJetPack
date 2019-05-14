@@ -14,14 +14,14 @@ import kotlinx.coroutines.launch
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-class HomeVM : BaseVM() {
+class HomeVM(private val typeName: String) : BaseVM() {
     var mList = loadData<Android> { page, rows, callback ->
         logD(msg = "加载第${page}页数据")
         coroutine.launch {
             if (page == 1) { // 刷新完成
                 refreshComplete.value = true
             }
-            gankRepository.androidListAsync(page, rows).awaitV2Response {
+            gankRepository.androidListAsync(page, rows, typeName).awaitV2Response {
                 throwable.value = it
             }?.apply {
                 callback.onResult(this)

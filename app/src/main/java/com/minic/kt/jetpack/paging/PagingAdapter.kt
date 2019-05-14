@@ -17,18 +17,33 @@ import androidx.recyclerview.widget.DiffUtil
 abstract class PagingAdapter<V, VB : ViewDataBinding>(@LayoutRes private val layoutId: Int,
                                                       mDiffCallback: DiffUtil.ItemCallback<V>) :
         PagedListAdapter<V, BindingHolder<VB>>(mDiffCallback) {
+
+    private var onItemClickListener: ItemClickListener<V>? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<VB> {
-        return BindingHolder(DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context), layoutId, parent, false))
+        val bindingHolder = BindingHolder<VB>(DataBindingUtil.inflate(LayoutInflater.from(parent.context),
+                layoutId, parent, false))
+        onItemClickListener?.let {
+            bindingHolder.itemView.setOnClickListener {
+                onItemClickListener!!(getItem(bindingHolder.layoutPosition)!!, bindingHolder.layoutPosition)
+            }
+        }
+        return bindingHolder
     }
 
     override fun onBindViewHolder(holder: BindingHolder<VB>, position: Int) {
         val item = getItem(position)
-        bindTo(holder.binding, item)
+        bindTo(holder.binding, item!!)
     }
 
     /**
      * DataBind绑定Item
      */
-    abstract fun bindTo(bind: VB, item: V?)
+    abstract fun bindTo(bind: VB, item: V)
+
+    fun setOnItemClickListener(onItemClickListener: ItemClickListener<V>) {
+        this.onItemClickListener = onItemClickListener
+    }
 }
+
+typealias ItemClickListener<T> = (item: T, position: Int) -> Unit

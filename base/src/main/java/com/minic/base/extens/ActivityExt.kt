@@ -1,6 +1,7 @@
 package com.minic.base.extens
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.annotation.ColorRes
@@ -45,6 +46,16 @@ fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "", isBack
         supportActionBar!!.setDisplayHomeAsUpEnabled(isBack)
         mToolbar.setNavigationOnClickListener { onBackPressed() }
     }
+}
+
+/**
+ * 启动Activity
+ * inline一般用于高阶函数作为参数
+ */
+inline fun <T> Context.comeOnStart(clazz: Class<T>, action: (intent: Intent) -> Unit) {
+    val intent = Intent(this, clazz)
+    action(intent)
+    this.startActivity(intent)
 }
 
 /**

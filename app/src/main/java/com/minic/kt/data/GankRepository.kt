@@ -22,5 +22,5 @@ class GankRepository constructor(private val gankService: GankService) {
     /**
      * 干货网站数据
      */
-    fun androidListAsync(page: Int, rows: Int): Deferred<BV2Response<List<Android>>> = gankService.androidListAsync(page, rows)
+    fun androidListAsync(page: Int, rows: Int,type:String): Deferred<BV2Response<List<Android>>> = gankService.androidListAsync(page, rows,type)
 }

@@ -17,14 +17,14 @@ import com.minic.kt.utils.ext.loadImage
  * @Date: 2019-05-09 09:20
  */
 class HomeAdapter : PagingAdapter<Android, ItemHomeBinding>(R.layout.item_home, mDiffCallback) {
-    override fun bindTo(bind: ItemHomeBinding, item: Android?) {
+    override fun bindTo(bind: ItemHomeBinding, item: Android) {
         bind.item = item
-        if (item?.images != null && item.images.isNotEmpty()) {
+        if (item.images != null && item.images.isNotEmpty()) {
             bind.iv.loadImage(item.images[0], dp2px(4f))
         } else {
             bind.iv.loadImage(R.mipmap.ic_launcher_round)
         }
-        bind.tvTime.text = TimeUtils.get().getTimeFormatText(item?.publishedAt!!)
+        bind.tvTime.text = TimeUtils.get().getTimeFormatText(item.publishedAt)
     }
 }
 
