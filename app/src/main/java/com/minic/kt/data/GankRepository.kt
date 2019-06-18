@@ -5,7 +5,6 @@ import com.minic.kt.data.model.BResponse
 import com.minic.kt.data.model.BV2Response
 import com.minic.kt.data.model.Chapters
 import com.minic.kt.data.model.gank.Android
-import kotlinx.coroutines.Deferred
 
 /**
  * @author       :ChenYangYi
@@ -17,10 +16,10 @@ class GankRepository constructor(private val gankService: GankService) {
     /**
      * 文章列表
      */
-    fun chaptersAsync(): Deferred<BResponse<List<Chapters>>> = gankService.chaptersAsync()
+    suspend fun chaptersAsync(): BResponse<List<Chapters>> = gankService.chaptersAsync()
 
     /**
      * 干货网站数据
      */
-    fun androidListAsync(page: Int, rows: Int,type:String): Deferred<BV2Response<List<Android>>> = gankService.androidListAsync(page, rows,type)
+    suspend fun androidListAsync(page: Int, rows: Int, type: String): BV2Response<List<Android>> = gankService.androidListAsync(page, rows, type)
 }

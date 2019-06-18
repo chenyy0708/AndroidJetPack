@@ -3,7 +3,6 @@ package com.minic.base.di
 import com.google.gson.Gson
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.minic.base.BuildConfig
 import com.minic.base.net.UrlConstant
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
@@ -46,7 +45,6 @@ val httpClientModule = Kodein.Module(NET_MODEUL_TAG) {
         instance<Retrofit.Builder>()
                 .baseUrl(UrlConstant.WAN_ANDROID_URL)
                 .client(instance())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }

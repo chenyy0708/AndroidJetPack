@@ -9,7 +9,7 @@ ext {
     ]
 
     supportVersion = '1.0.0-beta01'
-    retrofitVersion = "2.3.0"
+    retrofitVersion = "2.6.0"
     okhttp3Version = "3.9.1"
     rxjavaVersion = "2.1.8"
     rxkotlin = "2.2.0"
@@ -22,7 +22,6 @@ ext {
     kodein = "6.2.0"
 
     coroutines_version = "1.2.1"
-    coroutines_adapter_version = "0.9.2"
     smartrefresh_layout_version = "1.1.0-andx-7"
     glide_version = "4.9.0"
     imageloader_version = "1.0.2"

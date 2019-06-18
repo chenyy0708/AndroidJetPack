@@ -5,7 +5,6 @@ import com.minic.kt.data.model.BResponse
 import com.minic.kt.data.model.BV2Response
 import com.minic.kt.data.model.Chapters
 import com.minic.kt.data.model.gank.Android
-import kotlinx.coroutines.Deferred
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -23,13 +22,13 @@ interface GankService {
      */
     @Headers(RetrofitUrlManager.DOMAIN_NAME_HEADER + UrlConstant.WAN_ANDROID)
     @GET("wxarticle/chapters/json")
-    fun chaptersAsync(): Deferred<BResponse<List<Chapters>>>
+    suspend fun chaptersAsync(): BResponse<List<Chapters>>
 
     /**
      * Android列表
      */
     @Headers(RetrofitUrlManager.DOMAIN_NAME_HEADER + UrlConstant.GANK_IO)
     @GET("data/{type}/{rows}/{page}")
-    fun androidListAsync(@Path("page") page: Int, @Path("rows") rows: Int, @Path("type") type: String):
-            Deferred<BV2Response<List<Android>>>
+    suspend fun androidListAsync(@Path("page") page: Int, @Path("rows") rows: Int, @Path("type") type: String):
+            BV2Response<List<Android>>
 }

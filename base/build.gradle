@@ -53,8 +53,6 @@ dependencies {
     api "com.squareup.retrofit2:retrofit:$retrofitVersion"
     api "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     api 'me.jessyan:retrofit-url-manager:1.4.0'
-    // Retrofit协程
-    api "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutines_adapter_version"
     // 协程
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     // di
