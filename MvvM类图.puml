@@ -1,0 +1,51 @@
+@startuml
+interface IViewModel
+
+interface LifecycleViewModel {
+  # lifecycleOwner
+  # onCreate()
+  # onStart()
+  # onResume()
+  # ...
+}
+IViewModel <|-- LifecycleViewModel
+
+class BaseVM {
+  # CoroutineSupport
+  # ApiService
+}
+
+
+LifecycleViewModel <|.. BaseVM
+
+abstract BaseActivity {
+  # DataBinding
+}
+
+
+class BaseModel {
+  - code
+  - message
+  - data
+}
+
+class LoginActivity {
+}
+BaseActivity <|-- LoginActivity
+
+class LoginViewModel {
+  处理登陆逻辑，发送登陆请求，
+  拿到登陆成功信息，并且通知View层做出响应的操作响应
+}
+BaseVM <|-- LoginViewModel
+
+class LoginModel {
+  - 登陆回调数据
+}
+BaseModel <|-- LoginModel
+
+LoginViewModel  *-- LoginActivity : 包含
+LoginModel*--  LoginViewModel: 包含
+
+
+@enduml
