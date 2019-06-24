@@ -33,7 +33,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         extend(App.INSTANCE.kodein)
         bind<HomeFragment>() with instance(this@HomeFragment)
         bind<HomeVM>() with scoped(AndroidLifecycleScope).singleton {
-            ViewModelProviders.of(activity!!, HomeVMFactory(this@HomeFragment.arguments?.getString(TYPE_NAME)!!)).get(HomeVM::class.java)
+            ViewModelProviders.of(activity!!, HomeVMFactory(this@HomeFragment.arguments?.getString(TYPE_NAME)!!)).get(HomeVM::class.java).also {
+                it.lifecycleOwner = this@HomeFragment
+            }
         }
     }
     // 注入MainViewModel管理业务数据

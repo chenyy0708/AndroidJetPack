@@ -16,7 +16,7 @@ ext {
     rxandroidVersion = "2.0.2"
     gsonVersion = "2.8.2"
     anko_version = "0.10.5"
-    lifecycle_version = '2.1.0-alpha04'
+    lifecycle_version = '2.2.0-alpha01'
     lottieVersion = "2.8.0"
     autodispose = "1.2.0"
     kodein = "6.2.0"
