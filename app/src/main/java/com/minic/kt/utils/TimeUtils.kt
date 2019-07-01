@@ -12,7 +12,7 @@ class TimeUtils private constructor() {
     private val month = 31 * day// 月
     private val year = 12 * month// 年
 
-    private val FORMAT_TYPE = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+    private val FORMAT_TYPE = "yyyy-MM-dd'T'HH:mm:ss.SSS"
     @SuppressLint("SimpleDateFormat")
     private val format = SimpleDateFormat(FORMAT_TYPE)
 
