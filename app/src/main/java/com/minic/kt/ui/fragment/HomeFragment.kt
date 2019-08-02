@@ -3,7 +3,6 @@ package com.minic.kt.ui.fragment
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.minic.base.base.BaseFragment
 import com.minic.base.extens.comeOnStart
@@ -16,13 +15,9 @@ import com.minic.kt.ui.activity.BROWSER_URL
 import com.minic.kt.ui.activity.BrowserActivity
 import com.minic.kt.ui.fragment.adapter.HomeAdapter
 import com.minic.kt.ui.fragment.vm.HomeVM
-import com.minic.kt.ui.fragment.vm.HomeVMFactory
 import org.kodein.di.Kodein
-import org.kodein.di.android.x.AndroidLifecycleScope
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
-import org.kodein.di.generic.scoped
-import org.kodein.di.generic.singleton
 
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
@@ -32,14 +27,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val kodein: Kodein = Kodein.lazy {
         extend(App.INSTANCE.kodein)
         bind<HomeFragment>() with instance(this@HomeFragment)
-        bind<HomeVM>() with scoped(AndroidLifecycleScope).singleton {
-            ViewModelProviders.of(activity!!, HomeVMFactory(this@HomeFragment.arguments?.getString(TYPE_NAME)!!)).get(HomeVM::class.java).also {
-                it.lifecycleOwner = this@HomeFragment
-            }
-        }
     }
     // 注入MainViewModel管理业务数据
-    private val homeViewModel: HomeVM by instance()
+    private lateinit var homeViewModel: HomeVM
 
     companion object {
         fun newInstance(typeName: String): HomeFragment {
@@ -52,6 +42,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
+        homeViewModel = HomeVM(this@HomeFragment.arguments?.getString(TYPE_NAME)!!).also {
+            it.lifecycleOwner = this@HomeFragment
+        }
         val homeAdapter = HomeAdapter()
         homeAdapter.setOnItemClickListener { item, _ ->
             mContext.comeOnStart(BrowserActivity::class.java) {

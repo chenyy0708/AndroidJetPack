@@ -19,7 +19,7 @@ fun ImageView.loadImage(any: Any?, radius: Int = 0) {
             .placeholder(R.mipmap.ic_launcher_round)
             .error(R.mipmap.ic_launcher_round)
             .centerCrop()
-            .transition(DrawableTransitionOptions.with(
-                    DrawableCrossFadeFactory.Builder(300).setCrossFadeEnabled(true).build()))
+//            .transition(DrawableTransitionOptions.with(
+//                    DrawableCrossFadeFactory.Builder(300).setCrossFadeEnabled(true).build()))
             .into(this)
 }

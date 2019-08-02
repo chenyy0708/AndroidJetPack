@@ -10,7 +10,7 @@ import com.minic.base.base.BaseActivity
 import com.minic.base.extens.initToolbar
 import com.minic.kt.databinding.ActivityMainBinding
 import com.minic.kt.ui.fragment.HomeFragment
-import com.ncapdevi.fragnav.FragNavController
+import com.minic.kt.utils.FragmentChangeManager
 import org.kodein.di.Kodein
 import org.kodein.di.android.retainedKodein
 import org.kodein.di.generic.bind
@@ -19,7 +19,19 @@ import org.kodein.di.generic.instance
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationView.OnNavigationItemSelectedListener {
 
-    private val fragNavController: FragNavController = FragNavController(supportFragmentManager, R.id.fl_continer)
+    private val mFragments by lazy {
+        listOf<Fragment>(
+                HomeFragment.newInstance("Android"),
+                HomeFragment.newInstance("iOS"),
+                HomeFragment.newInstance("福利"),
+                HomeFragment.newInstance("休息视频"),
+                HomeFragment.newInstance("拓展资源"),
+                HomeFragment.newInstance("前端"),
+                HomeFragment.newInstance("all")
+        )
+    }
+
+    private lateinit var fragmentChangeManage: FragmentChangeManager
 
     override fun getLayoutRes(): Int = R.layout.activity_main
 
@@ -31,25 +43,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationView.OnNavig
     override fun initData(savedInstanceState: Bundle?) {
         initToolbar(mBinding.includeToolbar.toolBar, mTitle = getString(R.string.app_name))
         syncToolBar(mBinding.includeToolbar.toolBar)
-        val mFragments = listOf<Fragment>(
-                HomeFragment.newInstance("Android"),
-                HomeFragment.newInstance("iOS"),
-                HomeFragment.newInstance("福利"),
-                HomeFragment.newInstance("休息视频"),
-                HomeFragment.newInstance("拓展资源"),
-                HomeFragment.newInstance("前端"),
-                HomeFragment.newInstance("all")
-        )
-        fragNavController.apply {
-            rootFragments = mFragments
-        }
-        fragNavController.initialize(FragNavController.TAB1, savedInstanceState)
         mBinding.navView.setNavigationItemSelectedListener(this)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle?) {
-        super.onSaveInstanceState(outState)
-        fragNavController.onSaveInstanceState(outState!!)
+        fragmentChangeManage = FragmentChangeManager(supportFragmentManager, R.id.fl_continer, mFragments)
     }
 
     private fun syncToolBar(toolbar: Toolbar) {
@@ -62,13 +57,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), NavigationView.OnNavig
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.android -> fragNavController.switchTab(FragNavController.TAB1)
-            R.id.ios -> fragNavController.switchTab(FragNavController.TAB2)
-//            R.id.welfare -> fragNavController.switchTab(FragNavController.TAB1)
-//            R.id.video -> fragNavController.switchTab(FragNavController.TAB1)
-//            R.id.resource -> fragNavController.switchTab(FragNavController.TAB1)
-//            R.id.web -> fragNavController.switchTab(FragNavController.TAB1)
-//            R.id.all -> fragNavController.switchTab(FragNavController.TAB1)
+            R.id.android -> fragmentChangeManage.setFragments(0)
+            R.id.ios -> fragmentChangeManage.setFragments(1)
+            R.id.welfare -> fragmentChangeManage.setFragments(2)
+            R.id.video -> fragmentChangeManage.setFragments(3)
+            R.id.resource -> fragmentChangeManage.setFragments(4)
+            R.id.web -> fragmentChangeManage.setFragments(5)
+            R.id.all -> fragmentChangeManage.setFragments(6)
         }
         mBinding.drawerLayout.closeDrawers()
         return true
