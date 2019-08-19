@@ -20,9 +20,9 @@ class HomeAdapter : PagingAdapter<Android, ItemHomeBinding>(R.layout.item_home, 
     override fun bindTo(bind: ItemHomeBinding, item: Android) {
         bind.item = item
         if (item.images != null && item.images.isNotEmpty()) {
-//            bind.iv.loadImage(item.images[0], dp2px(4f))
+            bind.iv.loadImage(item.images[0], dp2px(4f))
         } else {
-//            bind.iv.loadImage(R.mipmap.ic_launcher_round)
+            bind.iv.loadImage(R.mipmap.ic_launcher_round)
         }
         bind.tvTime.text = TimeUtils.get().getTimeFormatText(item.publishedAt)
     }
