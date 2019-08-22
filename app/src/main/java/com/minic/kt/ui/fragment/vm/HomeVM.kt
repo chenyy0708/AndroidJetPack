@@ -1,11 +1,13 @@
 package com.minic.kt.ui.fragment.vm
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.minic.base.extens.logD
 import com.minic.kt.base.BaseVM
 import com.minic.kt.data.model.gank.Android
 import com.minic.kt.ext.awaitV2Response
 import com.minic.kt.jetpack.paging.loadData
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
@@ -15,9 +17,12 @@ import kotlinx.coroutines.launch
  * @github       :https://github.com/chenyy0708
  */
 class HomeVM(private val typeName: String) : BaseVM() {
+
     var mList = loadData<Android> { page, rows, callback ->
         logD(msg = "加载第${page}页数据")
-        coroutine.launch {
+        viewModelScope.launch {
+            delay(3000)
+            logD(tag = "sfwewfe", msg = "数据加载${Thread.currentThread().name}")
             if (page == 1) { // 刷新完成
                 refreshComplete.value = true
             }
@@ -28,6 +33,8 @@ class HomeVM(private val typeName: String) : BaseVM() {
             }
         }
     }
+
+
     val refreshComplete = MutableLiveData<Boolean>()
 }
 

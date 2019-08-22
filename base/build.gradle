@@ -47,6 +47,7 @@ dependencies {
     // ViewModel and LiveData
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // DataBinding
     kapt "androidx.databinding:databinding-compiler:$gradle_version"
     // Retrofit OkHttp

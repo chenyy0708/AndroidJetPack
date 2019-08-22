@@ -44,6 +44,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initData(savedInstanceState: Bundle?) {
         homeViewModel = HomeVM(this@HomeFragment.arguments?.getString(TYPE_NAME)!!).also {
             it.lifecycleOwner = this@HomeFragment
+            lifecycle.addObserver(it)
         }
         val homeAdapter = HomeAdapter()
         homeAdapter.setOnItemClickListener { item, _ ->
