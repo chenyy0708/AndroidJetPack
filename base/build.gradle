@@ -46,7 +46,7 @@ dependencies {
     api 'androidx.core:core-ktx:1.0.2'
     // ViewModel and LiveData
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // DataBinding
     kapt "androidx.databinding:databinding-compiler:$gradle_version"
