@@ -53,6 +53,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 it.putExtra(BROWSER_URL, item.url)
             }
         }
+
         mBinding.vm = homeViewModel
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = homeAdapter
