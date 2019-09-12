@@ -9,6 +9,7 @@ import androidx.annotation.DimenRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 
 /**
  * @author       :ChenYangYi
@@ -40,12 +41,19 @@ fun Activity.navigateToActivity(c: Class<*>) {
  * 初始化Toolbar
  */
 fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "", isBack: Boolean = true) {
-    this.apply {
-        setSupportActionBar(mToolbar)
-        supportActionBar!!.title = mTitle
-        supportActionBar!!.setDisplayHomeAsUpEnabled(isBack)
-        mToolbar.setNavigationOnClickListener { onBackPressed() }
-    }
+    setSupportActionBar(mToolbar)
+    supportActionBar!!.title = mTitle
+    supportActionBar!!.setDisplayHomeAsUpEnabled(isBack)
+    mToolbar.setNavigationOnClickListener { onBackPressed() }
+}
+
+/**
+ * 初始化Toolbar
+ */
+fun Fragment.initToolbar(mToolbar: Toolbar, mTitle: String = "", isBack: Boolean = true) {
+    (activity as AppCompatActivity).setSupportActionBar(mToolbar)
+    (activity as AppCompatActivity).supportActionBar!!.title = mTitle
+    (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(isBack)
 }
 
 /**

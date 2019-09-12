@@ -16,4 +16,6 @@
     <dimen name="sp_17">17sp</dimen>
     <dimen name="sp_18">18sp</dimen>
     <dimen name="sp_19">19sp</dimen>
+
+    <dimen name="design_bottom_navigation_margin">6dp</dimen>
 </resources>

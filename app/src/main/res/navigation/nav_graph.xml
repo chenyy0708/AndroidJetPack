@@ -3,31 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/home">
-
+    app:startDestination="@+id/home_viewpager_fragment">
     <fragment
-        android:id="@+id/home"
-        android:name="com.minic.kt.ui.fragment.HomeFragment"
-        android:label="MainFragment"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/project"
-        android:name="com.minic.kt.ui.fragment.ProjectFragment"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/wechart"
-        android:name="com.minic.kt.ui.fragment.WeChartFragment"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/system"
-        android:name="com.minic.kt.ui.fragment.SystemFragment"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/me"
-        android:name="com.minic.kt.ui.fragment.MeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/home_viewpager_fragment"
+        android:name="com.minic.kt.ui.fragment.HomeViewPagerFragment"
+        tools:layout="@layout/fragment_home_view_pager" />
 </navigation>
