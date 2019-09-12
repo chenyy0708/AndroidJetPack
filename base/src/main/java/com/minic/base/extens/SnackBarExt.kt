@@ -48,3 +48,10 @@ fun Activity.showWarning(message: String) {
     warning(this.window.decorView, message, Snackbar.LENGTH_SHORT).show()
 }
 
+/**
+ * 警告
+ */
+fun Fragment.showWarning(message: String) {
+    warning(this.activity?.window!!.decorView, message, Snackbar.LENGTH_SHORT).show()
+}
+

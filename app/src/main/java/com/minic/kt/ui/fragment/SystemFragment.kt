@@ -3,17 +3,11 @@ package com.minic.kt.ui.fragment
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.minic.base.base.BaseFragment
-import com.minic.base.extens.comeOnStart
-import com.minic.base.net.exception.doError
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentHomeBinding
-import com.minic.kt.ui.activity.BROWSER_TITLE
-import com.minic.kt.ui.activity.BROWSER_URL
-import com.minic.kt.ui.activity.BrowserActivity
 import com.minic.kt.ui.fragment.adapter.HomeAdapter
 import com.minic.kt.ui.fragment.vm.HomeVM
 import com.minic.kt.ui.fragment.vm.HomeVMFactory
@@ -42,12 +36,6 @@ class SystemFragment : BaseFragment<FragmentHomeBinding>() {
             lifecycle.addObserver(it)
         }
         val homeAdapter = HomeAdapter()
-        homeAdapter.setOnItemClickListener { item, _ ->
-            mContext.comeOnStart(BrowserActivity::class.java) {
-                it.putExtra(BROWSER_TITLE, item.desc)
-                it.putExtra(BROWSER_URL, item.url)
-            }
-        }
         mBinding.vm = homeViewModel
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = homeAdapter

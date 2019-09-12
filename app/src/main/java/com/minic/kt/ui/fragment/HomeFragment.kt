@@ -3,15 +3,12 @@ package com.minic.kt.ui.fragment
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.minic.base.base.BaseFragment
-import com.minic.base.extens.comeOnStart
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentHomeBinding
-import com.minic.kt.ui.activity.BROWSER_TITLE
-import com.minic.kt.ui.activity.BROWSER_URL
-import com.minic.kt.ui.activity.BrowserActivity
 import com.minic.kt.ui.fragment.adapter.HomeAdapter
 import com.minic.kt.ui.fragment.vm.HomeVM
 import com.minic.kt.ui.fragment.vm.HomeVMFactory
@@ -41,16 +38,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
         val homeAdapter = HomeAdapter()
         homeAdapter.setOnItemClickListener { item, _ ->
-            mContext.comeOnStart(BrowserActivity::class.java) {
-                it.putExtra(BROWSER_TITLE, item.desc)
-                it.putExtra(BROWSER_URL, item.url)
-            }
+
         }
         mBinding.vm = homeViewModel
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = homeAdapter
         mBinding.swipeLayout.setColorSchemeColors(ContextCompat.getColor(mContext, R.color.colorPrimary))
         mBinding.tv.text = "首页"
+        mBinding.tv.setOnClickListener {
+            val direction = HomeViewPagerFragmentDirections.actionHomeViewpagerFragmentToBrowserFragment("https://www.ugee.com.cn/edu/index.html")
+            it.findNavController().navigate(direction)
+        }
     }
 
 }

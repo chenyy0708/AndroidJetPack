@@ -7,5 +7,23 @@
     <fragment
         android:id="@+id/home_viewpager_fragment"
         android:name="com.minic.kt.ui.fragment.HomeViewPagerFragment"
-        tools:layout="@layout/fragment_home_view_pager" />
+        tools:layout="@layout/fragment_home_view_pager">
+
+        <action
+            android:id="@+id/action_home_viewpager_fragment_to_browser_fragment"
+            app:destination="@id/browser_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/browser_fragment"
+        android:name="com.minic.kt.ui.activity.BrowserFragment"
+        tools:layout="@layout/fragment_browser" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
 </navigation>
