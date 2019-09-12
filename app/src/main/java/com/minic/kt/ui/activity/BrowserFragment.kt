@@ -7,7 +7,10 @@ import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
 import android.widget.ProgressBar
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupWithNavController
 import com.minic.base.extens.initToolbar
 import com.minic.base.extens.showWarning
 import com.minic.base.net.exception.showLoading
@@ -37,6 +40,7 @@ class BrowserFragment : BaseBrowserFragment<FragmentBrowserBinding>() {
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
         initToolbar(mBinding.includeToolbar.toolBar, "WebView")
+        mBinding.includeToolbar.toolBar.setupWithNavController(findNavController())
         showLoading()
         val url = args.url
         mBinding.webView?.loadUrl(url)
