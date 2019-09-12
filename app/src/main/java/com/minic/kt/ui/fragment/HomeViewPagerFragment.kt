@@ -29,6 +29,8 @@ class HomeViewPagerFragment : BaseFragment<FragmentHomeViewPagerBinding>() {
 
     override fun initData(savedInstanceState: Bundle?) {
         (activity as AppCompatActivity).setSupportActionBar(mBinding.includeToolbar.toolBar)
+        // 禁用ViewPager2的滑动事件
+        mBinding.viewPager.isUserInputEnabled = false
         mBinding.viewPager.adapter = WAPagerAdapter(this)
         mBinding.bottomNavView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
