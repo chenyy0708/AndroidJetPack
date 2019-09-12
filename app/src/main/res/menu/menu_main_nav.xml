@@ -1,47 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:checkable="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="首页" />
 
-    <group
-        android:id="@+id/other"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/android"
-            android:checkable="true"
-            android:checked="true"
-            android:icon="@mipmap/ic_launcher_round"
-            android:title="Android" />
+    <item
+        android:id="@+id/project"
+        android:checkable="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="项目" />
 
-        <item
-            android:id="@+id/ios"
-            android:checkable="true"
-            android:icon="@mipmap/ic_launcher_round"
-            android:title="iOS" />
+    <item
+        android:id="@+id/wechart"
+        android:checkable="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="公众号" />
 
-        <item
-            android:id="@+id/welfare"
-            android:checkable="true"
-            android:icon="@mipmap/ic_launcher_round"
-            android:title="福利" />
+    <item
+        android:id="@+id/system"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="体系" />
 
-        <item
-            android:id="@+id/video"
-            android:icon="@mipmap/ic_launcher_round"
-            android:title="休息视频" />
-
-        <item
-            android:id="@+id/resource"
-            android:icon="@mipmap/ic_launcher_round"
-            android:title="拓展资源" />
-
-        <item
-            android:id="@+id/web"
-            android:icon="@mipmap/ic_launcher_round"
-            android:title="前端" />
-
-
-        <item
-            android:id="@+id/all"
-            android:icon="@mipmap/ic_launcher_round"
-            android:title="全部" />
-    </group>
+    <item
+        android:id="@+id/me"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="我的" />
 </menu>

@@ -20,20 +20,20 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+class ProjectFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun getLayoutRes(): Int = R.layout.fragment_home
 
     override val kodein: Kodein = Kodein.lazy {
         extend(App.INSTANCE.kodein)
-        bind<HomeFragment>() with instance(this@HomeFragment)
+        bind<ProjectFragment>() with instance(this@ProjectFragment)
     }
     // 注入MainViewModel管理业务数据
     private lateinit var homeViewModel: HomeVM
 
     override fun initData(savedInstanceState: Bundle?) {
-        homeViewModel = HomeVM("Android").also {
-            it.lifecycleOwner = this@HomeFragment
+        homeViewModel = HomeVM("iOS").also {
+            it.lifecycleOwner = this@ProjectFragment
             lifecycle.addObserver(it)
         }
         val homeAdapter = HomeAdapter()
