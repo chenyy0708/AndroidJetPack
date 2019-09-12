@@ -18,16 +18,16 @@
 
     <fragment
         android:id="@+id/wechart"
-        android:name="com.minic.kt.ui.fragment.HomeFragment"
+        android:name="com.minic.kt.ui.fragment.WeChartFragment"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/system"
-        android:name="com.minic.kt.ui.fragment.HomeFragment"
+        android:name="com.minic.kt.ui.fragment.SystemFragment"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/me"
-        android:name="com.minic.kt.ui.fragment.HomeFragment"
+        android:name="com.minic.kt.ui.fragment.MeFragment"
         tools:layout="@layout/fragment_home" />
 </navigation>

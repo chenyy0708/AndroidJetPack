@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#484848</color>
-    <color name="colorPrimaryDark">#212121</color>
-    <color name="colorAccent">#000000</color>
+    <color name="colorPrimary">@android:color/holo_blue_bright</color>
+    <color name="colorPrimaryDark">@android:color/holo_blue_light</color>
+    <color name="colorAccent">@android:color/holo_blue_dark</color>
 
     <!-- 主字体颜色 -->
     <color name="main_font_color">#373D52</color>

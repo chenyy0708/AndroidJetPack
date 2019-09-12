@@ -22,13 +22,13 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 
 
-class ProjectFragment : BaseFragment<FragmentHomeBinding>() {
+class SystemFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun getLayoutRes(): Int = R.layout.fragment_home
 
     override val kodein: Kodein = Kodein.lazy {
         extend(App.INSTANCE.kodein)
-        bind<ProjectFragment>() with instance(this@ProjectFragment)
+        bind<SystemFragment>() with instance(this@SystemFragment)
     }
 
     // 注入MainViewModel管理业务数据
@@ -38,7 +38,7 @@ class ProjectFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun initData(savedInstanceState: Bundle?) {
         homeViewModel.also {
-            it.lifecycleOwner = this@ProjectFragment
+            it.lifecycleOwner = this@SystemFragment
             lifecycle.addObserver(it)
         }
         val homeAdapter = HomeAdapter()
@@ -52,7 +52,7 @@ class ProjectFragment : BaseFragment<FragmentHomeBinding>() {
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = homeAdapter
         mBinding.swipeLayout.setColorSchemeColors(ContextCompat.getColor(mContext, R.color.colorPrimary))
-        mBinding.tv.text = "项目"
+        mBinding.tv.text = "体系"
     }
 
 }

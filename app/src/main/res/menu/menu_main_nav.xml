@@ -3,28 +3,28 @@
     <item
         android:id="@+id/home"
         android:checkable="true"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/icon_home_pager_selected"
         android:title="首页" />
 
     <item
         android:id="@+id/project"
         android:checkable="true"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/icon_project_selected"
         android:title="项目" />
 
     <item
         android:id="@+id/wechart"
         android:checkable="true"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/icon_navigation_selected"
         android:title="公众号" />
 
     <item
         android:id="@+id/system"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/icon_knowledge_hierarchy_selected"
         android:title="体系" />
 
     <item
         android:id="@+id/me"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/icon_me_selected"
         android:title="我的" />
 </menu>

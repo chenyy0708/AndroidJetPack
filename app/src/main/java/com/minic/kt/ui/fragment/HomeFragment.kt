@@ -2,11 +2,10 @@ package com.minic.kt.ui.fragment
 
 import android.os.Bundle
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.minic.base.base.BaseFragment
 import com.minic.base.extens.comeOnStart
-import com.minic.base.net.exception.doError
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentHomeBinding
@@ -15,6 +14,7 @@ import com.minic.kt.ui.activity.BROWSER_URL
 import com.minic.kt.ui.activity.BrowserActivity
 import com.minic.kt.ui.fragment.adapter.HomeAdapter
 import com.minic.kt.ui.fragment.vm.HomeVM
+import com.minic.kt.ui.fragment.vm.HomeVMFactory
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -28,11 +28,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         extend(App.INSTANCE.kodein)
         bind<HomeFragment>() with instance(this@HomeFragment)
     }
+
     // 注入MainViewModel管理业务数据
-    private lateinit var homeViewModel: HomeVM
+    private val homeViewModel: HomeVM by viewModels {
+        HomeVMFactory("")
+    }
 
     override fun initData(savedInstanceState: Bundle?) {
-        homeViewModel = HomeVM("Android").also {
+        homeViewModel.also {
             it.lifecycleOwner = this@HomeFragment
             lifecycle.addObserver(it)
         }
@@ -43,23 +46,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 it.putExtra(BROWSER_URL, item.url)
             }
         }
-
         mBinding.vm = homeViewModel
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = homeAdapter
         mBinding.swipeLayout.setColorSchemeColors(ContextCompat.getColor(mContext, R.color.colorPrimary))
-        mBinding.swipeLayout.setOnRefreshListener {
-            homeViewModel.mList.value?.dataSource?.invalidate()
-        }
-        homeViewModel.throwable.observe(this, Observer {
-            doError(it)
-        })
-        homeViewModel.mList.observe(this, Observer {
-            homeAdapter.submitList(it)
-        })
-        homeViewModel.refreshComplete.observe(this, Observer {
-            mBinding.swipeLayout.isRefreshing = !it
-        })
+        mBinding.tv.text = "首页"
     }
 
 }
