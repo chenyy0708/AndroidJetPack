@@ -32,7 +32,6 @@ open class BaseApp : Application() {
         super.onCreate()
         // 动态切换Retrofit BaseUrl
         RetrofitUrlManager.getInstance().putDomain(UrlConstant.WAN_ANDROID, UrlConstant.WAN_ANDROID_URL)
-        RetrofitUrlManager.getInstance().putDomain(UrlConstant.GANK_IO, UrlConstant.GANK_IO_URL)
         // 初始化多状态布局
         LoadSir.beginBuilder()
                 .addCallback(LoadingCallback())

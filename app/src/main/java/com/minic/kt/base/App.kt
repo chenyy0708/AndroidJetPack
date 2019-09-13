@@ -1,8 +1,8 @@
 package com.minic.kt.base
 
 import com.minic.base.base.BaseApp
-import com.minic.kt.data.GankRepository
-import com.minic.kt.data.api.GankService
+import com.minic.kt.data.WAndroidRepository
+import com.minic.kt.data.api.WAndroidService
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.bind
@@ -21,11 +21,11 @@ class App : BaseApp(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         // 导入基类中的Kodein，存储公共的全局实例
         extend(baseKodein)
-        bind<GankService>() with singleton {
-            instance<Retrofit>().create(GankService::class.java)
+        bind<WAndroidService>() with singleton {
+            instance<Retrofit>().create(WAndroidService::class.java)
         }
-        bind<GankRepository>() with singleton {
-            GankRepository(instance())
+        bind<WAndroidRepository>() with singleton {
+            WAndroidRepository(instance())
         }
     }
 

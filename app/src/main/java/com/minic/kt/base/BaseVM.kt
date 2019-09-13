@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.minic.base.databinding.viewmodel.LifecycleViewModel
-import com.minic.kt.data.GankRepository
+import com.minic.kt.data.WAndroidRepository
 import kotlinx.coroutines.cancel
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -24,7 +24,7 @@ open class BaseVM : LifecycleViewModel(), KodeinAware {
     /**
      * Application中注入的Repository
      */
-    protected val gankRepository: GankRepository by instance()
+    protected val repository: WAndroidRepository by instance()
 
     override fun onDestroy(lifecycleOwner: LifecycleOwner) {
         super.onDestroy(lifecycleOwner)

@@ -2,7 +2,6 @@ package com.minic.kt.ext
 
 import com.minic.base.net.exception.CException
 import com.minic.kt.data.model.BResponse
-import com.minic.kt.data.model.BV2Response
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -24,27 +23,6 @@ suspend fun <T> BResponse<T>.awaitResponse(catchBlock: suspend (Throwable) -> Un
                     cont.resume(this.data)
                 } else {
                     cont.resumeWithException(CException(this.errorMsg))
-                }
-            }
-        }
-    } catch (e: Throwable) {
-        catchBlock(e)
-        return result
-    }
-    return result
-}
-
-suspend fun <T> BV2Response<T>.awaitV2Response(catchBlock: suspend (Throwable) -> Unit = {}): T? {
-    var result: T? = null
-    try {
-        result = suspendCancellableCoroutine<T> { cont ->
-            if (null == this) {
-                cont.resumeWithException(CException("No data"))
-            } else {
-                if (!this.error) {
-                    cont.resume(this.`results`)
-                } else {
-                    cont.resumeWithException(CException("Error"))
                 }
             }
         }

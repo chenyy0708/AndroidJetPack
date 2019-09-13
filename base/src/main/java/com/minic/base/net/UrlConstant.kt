@@ -11,8 +11,5 @@ class UrlConstant {
     companion object {
         const val WAN_ANDROID_URL: String = "https://www.wanandroid.com/"
         const val WAN_ANDROID: String = "wan_android"
-
-        const val GANK_IO_URL: String = "http://gank.io/api/"
-        const val GANK_IO: String = "gank_io"
     }
 }
