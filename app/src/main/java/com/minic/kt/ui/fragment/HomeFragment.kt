@@ -8,8 +8,10 @@ import com.drakeet.multitype.MultiTypeAdapter
 import com.minic.base.base.BaseFragment
 import com.minic.kt.R
 import com.minic.kt.base.App
+import com.minic.kt.data.model.gank.home.Article
 import com.minic.kt.data.model.gank.home.BannerData
 import com.minic.kt.databinding.FragmentHomeBinding
+import com.minic.kt.ui.fragment.adapter.viewbinder.ArticleViewBinder
 import com.minic.kt.ui.fragment.adapter.viewbinder.BannerViewBinder
 import com.minic.kt.ui.fragment.vm.HomeVM
 import com.minic.kt.ui.fragment.vm.HomeVMFactory
@@ -38,11 +40,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             lifecycle.addObserver(this)
         }
         adapter.register(BannerViewBinder())
+        adapter.register(ArticleViewBinder())
         adapter.items = items
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = adapter
         homeViewModel.banners.observe(this, Observer<MutableList<BannerData>> {
             items.add(it)
+            adapter.notifyDataSetChanged()
+        })
+        homeViewModel.article.observe(this, Observer<Article> {
+            items.addAll(it.datas)
             adapter.notifyDataSetChanged()
         })
     }

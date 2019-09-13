@@ -25,22 +25,7 @@ class SystemFragment : BaseFragment<FragmentTestBinding>() {
         extend(App.INSTANCE.kodein)
         bind<SystemFragment>() with instance(this@SystemFragment)
     }
-
-    // 注入MainViewModel管理业务数据
-    private val homeViewModel: HomeVM by viewModels {
-        HomeVMFactory("")
-    }
-
     override fun initData(savedInstanceState: Bundle?) {
-        homeViewModel.also {
-            it.lifecycleOwner = this@SystemFragment
-            lifecycle.addObserver(it)
-        }
-        val homeAdapter = HomeAdapter()
-        mBinding.vm = homeViewModel
-        mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
-        mBinding.recyclerView.adapter = homeAdapter
-        mBinding.swipeLayout.setColorSchemeColors(ContextCompat.getColor(mContext, R.color.colorPrimary))
         mBinding.tv.text = "体系"
     }
 

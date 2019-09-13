@@ -2,6 +2,7 @@ package com.minic.kt.data
 
 import com.minic.kt.data.api.WAndroidService
 import com.minic.kt.data.model.BResponse
+import com.minic.kt.data.model.gank.home.Article
 import com.minic.kt.data.model.gank.home.BannerData
 
 /**
@@ -11,8 +12,6 @@ import com.minic.kt.data.model.gank.home.BannerData
  * @github       :https://github.com/chenyy0708
  */
 class WAndroidRepository constructor(private val gankService: WAndroidService) {
-    /**
-     * Banner
-     */
     suspend fun banners(): BResponse<MutableList<BannerData>> = gankService.banners()
+    suspend fun article(page: Int): BResponse<Article> = gankService.article(page)
 }
