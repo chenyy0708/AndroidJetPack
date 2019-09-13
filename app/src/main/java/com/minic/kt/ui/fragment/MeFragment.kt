@@ -30,12 +30,6 @@ class MeFragment : BaseFragment<FragmentTestBinding>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        logD(msg = "我的")
-        mBinding.tv.setOnClickListener {
-            val direction = HomeViewPagerFragmentDirections.actionHomeViewpagerFragmentToBrowserFragment("https://www.ugee.com.cn/edu/index.html")
-            it.findNavController().navigate(direction)
-
-        }
     }
 
 }

@@ -8,8 +8,6 @@ import com.drakeet.multitype.MultiTypeAdapter
 import com.minic.base.base.BaseFragment
 import com.minic.kt.R
 import com.minic.kt.base.App
-import com.minic.kt.data.model.gank.home.Article
-import com.minic.kt.data.model.gank.home.BannerData
 import com.minic.kt.databinding.FragmentHomeBinding
 import com.minic.kt.ui.fragment.adapter.viewbinder.ArticleViewBinder
 import com.minic.kt.ui.fragment.adapter.viewbinder.BannerViewBinder
@@ -24,6 +22,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun getLayoutRes(): Int = R.layout.fragment_home
     private val adapter = MultiTypeAdapter()
     private val items = ArrayList<Any>()
+
+    private var page: Int = 0
 
     override val kodein: Kodein = Kodein.lazy {
         extend(App.INSTANCE.kodein)
@@ -44,17 +44,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         adapter.items = items
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = adapter
-        homeViewModel.banners.observe(this, Observer<MutableList<BannerData>> {
-            items.add(it)
-            adapter.notifyDataSetChanged()
-        })
-        homeViewModel.article.observe(this, Observer<Article> {
-            items.addAll(it.datas)
+        homeViewModel.mItems.observe(this, Observer {
+            items.clear()
+            items.addAll(it)
             adapter.notifyDataSetChanged()
             mBinding.refreshLayout.finishRefresh()
         })
+        homeViewModel.article.observe(this, Observer {
+            items.addAll(it.datas)
+            adapter.notifyItemInserted(items.size - it.datas.size)
+            if (page == it.pageCount) {
+                mBinding.refreshLayout.finishLoadMoreWithNoMoreData()
+            } else {
+                mBinding.refreshLayout.finishLoadMore()
+            }
+        })
         mBinding.refreshLayout.setOnRefreshListener {
+            page = 0
             homeViewModel.getData()
+        }
+        mBinding.refreshLayout.setOnLoadMoreListener {
+            page++
+            homeViewModel.getArticle(page)
         }
     }
 

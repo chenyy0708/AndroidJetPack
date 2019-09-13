@@ -10,6 +10,7 @@ data class ArticleData(
         val niceDate: String,
         val publishTime: String,
         val superChapterName: String,
+        val envelopePic: String,
         val tags: MutableList<TagData>,
         val title: String,
         val visible: Int,

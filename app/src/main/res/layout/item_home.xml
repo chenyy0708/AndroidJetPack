@@ -39,6 +39,7 @@
 
             <ImageView
                 android:id="@+id/iv"
+                imageUrl="@{item.envelopePic}"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="@dimen/dp_10"

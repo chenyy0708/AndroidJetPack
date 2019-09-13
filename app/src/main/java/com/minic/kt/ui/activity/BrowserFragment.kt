@@ -39,7 +39,7 @@ class BrowserFragment : BaseBrowserFragment<FragmentBrowserBinding>() {
 
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
-        initToolbar(mBinding.includeToolbar.toolBar, "WebView")
+        initToolbar(mBinding.includeToolbar.toolBar, args.title)
         mBinding.includeToolbar.toolBar.setupWithNavController(findNavController())
         showLoading()
         val url = args.url
