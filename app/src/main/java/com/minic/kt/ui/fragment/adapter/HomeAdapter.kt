@@ -18,7 +18,7 @@ import com.minic.kt.utils.ext.loadImage
  */
 class HomeAdapter : PagingAdapter<Android, ItemHomeBinding>(R.layout.item_home, mDiffCallback) {
     override fun bindTo(bind: ItemHomeBinding, item: Android) {
-        bind.item = item
+//        bind.item = item
         if (item.images != null && item.images.isNotEmpty()) {
             bind.iv.loadImage(item.images[0], dp2px(4f))
         } else {

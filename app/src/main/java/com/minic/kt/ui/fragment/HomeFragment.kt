@@ -51,7 +51,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         homeViewModel.article.observe(this, Observer<Article> {
             items.addAll(it.datas)
             adapter.notifyDataSetChanged()
+            mBinding.refreshLayout.finishRefresh()
         })
+        mBinding.refreshLayout.setOnRefreshListener {
+            homeViewModel.getData()
+        }
     }
 
 }

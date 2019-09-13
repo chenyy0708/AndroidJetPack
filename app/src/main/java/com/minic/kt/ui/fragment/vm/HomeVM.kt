@@ -22,6 +22,10 @@ class HomeVM(private val typeName: String) : BaseVM() {
 
     override fun onCreate(lifecycleOwner: LifecycleOwner) {
         super.onCreate(lifecycleOwner)
+        getData()
+    }
+
+    fun getData() {
         viewModelScope.launch {
             getBanner()
             getArticle(1)
