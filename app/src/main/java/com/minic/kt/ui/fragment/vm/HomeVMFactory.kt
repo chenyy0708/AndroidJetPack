@@ -1,7 +1,10 @@
 package com.minic.kt.ui.fragment.vm
 
+import android.os.Bundle
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.savedstate.SavedStateRegistryOwner
 
 /**
  * @ClassName: HomeVMFactory
@@ -9,9 +12,12 @@ import androidx.lifecycle.ViewModelProvider
  * @Author: ChenYy
  * @Date: 2019-05-14 17:03
  */
-class HomeVMFactory(private val typeName: String) : ViewModelProvider.NewInstanceFactory() {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return HomeVM(typeName) as T
+@Suppress("UNCHECKED_CAST")
+class HomeVMFactory(
+        owner: SavedStateRegistryOwner,
+        defaultArgs: Bundle? = null) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
+    override fun <T : ViewModel?> create(key: String, modelClass: Class<T>, handle: SavedStateHandle): T {
+        return HomeVM(handle) as T
     }
+
 }

@@ -2,6 +2,7 @@ package com.minic.kt.ui.fragment.vm
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.minic.kt.base.BaseVM
 import com.minic.kt.data.model.gank.home.Article
@@ -14,7 +15,7 @@ import kotlinx.coroutines.launch
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-class HomeVM(private val typeName: String) : BaseVM() {
+class HomeVM(private val handle: SavedStateHandle) : BaseVM() {
     val article: MutableLiveData<Article> = MutableLiveData()
 
     val mItems: MutableLiveData<MutableList<Any>> = MutableLiveData()

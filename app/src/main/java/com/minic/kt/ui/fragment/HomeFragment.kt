@@ -30,7 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         bind<HomeFragment>() with instance(this@HomeFragment)
     }
     private val homeViewModel: HomeVM by viewModels {
-        HomeVMFactory("")
+        HomeVMFactory(this, null)
     }
 
     override fun initData(savedInstanceState: Bundle?) {
@@ -44,12 +44,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         adapter.items = items
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = adapter
+        // 下拉刷新数据
         homeViewModel.mItems.observe(this, Observer {
             items.clear()
             items.addAll(it)
             adapter.notifyDataSetChanged()
             mBinding.refreshLayout.finishRefresh()
         })
+        // 上拉加载数据完成
         homeViewModel.article.observe(this, Observer {
             items.addAll(it.datas)
             adapter.notifyItemInserted(items.size - it.datas.size)
