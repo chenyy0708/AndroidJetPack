@@ -48,6 +48,7 @@ class MeFragment : BaseFragment<FragmentHomeBinding>() {
         mBinding.tv.setOnClickListener {
             val direction = HomeViewPagerFragmentDirections.actionHomeViewpagerFragmentToBrowserFragment("https://www.ugee.com.cn/edu/index.html")
             it.findNavController().navigate(direction)
+
         }
     }
 
