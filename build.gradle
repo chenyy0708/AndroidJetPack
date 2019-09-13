@@ -6,7 +6,7 @@ buildscript {
 
     repositories {
         google()
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
@@ -22,7 +22,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        jcenter()
         maven { url "https://jitpack.io" }
         maven { url "https://dl.bintray.com/tonnyl/maven" }
     }

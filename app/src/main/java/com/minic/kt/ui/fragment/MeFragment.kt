@@ -3,9 +3,11 @@ package com.minic.kt.ui.fragment
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.minic.base.base.BaseFragment
 import com.minic.base.extens.comeOnStart
+import com.minic.base.extens.logD
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentHomeBinding
@@ -42,6 +44,11 @@ class MeFragment : BaseFragment<FragmentHomeBinding>() {
         mBinding.recyclerView.adapter = homeAdapter
         mBinding.swipeLayout.setColorSchemeColors(ContextCompat.getColor(mContext, R.color.colorPrimary))
         mBinding.tv.text = "我的"
+        logD(msg = "我的")
+        mBinding.tv.setOnClickListener {
+            val direction = HomeViewPagerFragmentDirections.actionHomeViewpagerFragmentToBrowserFragment("https://www.ugee.com.cn/edu/index.html")
+            it.findNavController().navigate(direction)
+        }
     }
 
 }
