@@ -1,5 +1,8 @@
 package com.minic.base.extens
 
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+
 /**
  * @author       :ChenYangYi
  * @date         :2018/09/29/09:44
@@ -59,3 +62,5 @@ package com.minic.base.extens
 // */
 //fun <T> Flowable<T>.bindLifeCycle(owner: LifecycleOwner): FlowableSubscribeProxy<T> =
 //        this.applySchedulers().`as`(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(owner, Lifecycle.Event.ON_DESTROY)))
+
+//inline fun <T> LiveData<T>.reobserve(owner: LifecycleOwner, crossinline func: (T?) -> (Unit)) { removeObservers(owner) observe(owner,Observer<T> { t -> func(t) }) }

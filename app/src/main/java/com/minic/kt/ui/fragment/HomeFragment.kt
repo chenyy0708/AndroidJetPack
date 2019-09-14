@@ -39,7 +39,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         mBinding.vm = homeViewModel
         homeViewModel.apply {
             lifecycleOwner = viewLifecycleOwner
-            lifecycle.addObserver(this)
+            viewLifecycleOwner.lifecycle.addObserver(this)
         }
         adapter.register(BannerViewBinder())
         adapter.register(ArticleViewBinder())
