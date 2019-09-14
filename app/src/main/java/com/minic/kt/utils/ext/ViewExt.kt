@@ -1,6 +1,8 @@
 package com.minic.kt.utils.ext
 
 import android.view.View
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import com.minic.kt.base.App
 
 /**
@@ -27,3 +29,5 @@ fun View.visible() {
 fun View.invisible() {
     visibility = View.INVISIBLE
 }
+
+//inline fun <T> LiveData<T>.reobserve(owner: LifecycleOwner, crossinline func: (T?) -> (Unit)) { removeObservers(owner) observe(owner,Observer<T> { t -> func(t) }) }

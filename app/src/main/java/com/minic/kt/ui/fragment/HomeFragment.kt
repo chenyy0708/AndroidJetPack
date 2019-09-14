@@ -6,7 +6,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
 import com.minic.base.base.BaseFragment
-import com.minic.base.extens.logD
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentHomeBinding
@@ -24,6 +23,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val adapter = MultiTypeAdapter()
     private val items = ArrayList<Any>()
 
+    private var isLoadData = false
+
     private var page: Int = 0
 
     override val kodein: Kodein = Kodein.lazy {
@@ -37,7 +38,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initData(savedInstanceState: Bundle?) {
         mBinding.vm = homeViewModel
         homeViewModel.apply {
-            lifecycleOwner = this@HomeFragment
+            lifecycleOwner = viewLifecycleOwner
             lifecycle.addObserver(this)
         }
         adapter.register(BannerViewBinder())
@@ -46,14 +47,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = adapter
         // 下拉刷新数据
-        homeViewModel.mItems.observe(this, Observer {
+        homeViewModel.mItems.observe(viewLifecycleOwner, Observer {
+            if (isLoadData) return@Observer
             items.clear()
             items.addAll(it)
             adapter.notifyDataSetChanged()
             mBinding.refreshLayout.finishRefresh()
+            isLoadData = true
         })
         // 上拉加载数据完成
-        homeViewModel.article.observe(this, Observer {
+        homeViewModel.article.observe(viewLifecycleOwner, Observer {
             items.addAll(it.datas)
             adapter.notifyItemInserted(items.size - it.datas.size)
             if (page == it.pageCount) {
@@ -63,6 +66,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         })
         mBinding.refreshLayout.setOnRefreshListener {
+            isLoadData = false
             page = 0
             homeViewModel.getData()
         }
