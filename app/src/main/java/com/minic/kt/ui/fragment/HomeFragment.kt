@@ -2,10 +2,11 @@ package com.minic.kt.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
 import com.minic.base.base.BaseFragment
+import com.minic.base.extens.logD
+import com.minic.base.extens.observe
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentHomeBinding
@@ -46,25 +47,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         adapter.items = items
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = adapter
-        // 下拉刷新数据
-        homeViewModel.mItems.observe(viewLifecycleOwner, Observer {
-            if (isLoadData) return@Observer
+
+        viewLifecycleOwner.observe(homeViewModel.mItems) {
+            if (isLoadData) return@observe
             items.clear()
-            items.addAll(it)
+            items.addAll(it!!)
             adapter.notifyDataSetChanged()
             mBinding.refreshLayout.finishRefresh()
             isLoadData = true
-        })
-        // 上拉加载数据完成
-        homeViewModel.article.observe(viewLifecycleOwner, Observer {
-            items.addAll(it.datas)
-            adapter.notifyItemInserted(items.size - it.datas.size)
-            if (page == it.pageCount) {
-                mBinding.refreshLayout.finishLoadMoreWithNoMoreData()
-            } else {
-                mBinding.refreshLayout.finishLoadMore()
+        }
+        viewLifecycleOwner.observe(homeViewModel.article) {
+            it?.let {
+                items.addAll(it.datas)
+                adapter.notifyItemInserted(items.size - it.datas.size)
+                if (page == it.pageCount) {
+                    mBinding.refreshLayout.finishLoadMoreWithNoMoreData()
+                } else {
+                    mBinding.refreshLayout.finishLoadMore()
+                }
             }
-        })
+        }
         mBinding.refreshLayout.setOnRefreshListener {
             isLoadData = false
             page = 0

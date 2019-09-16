@@ -23,7 +23,9 @@ class HomeVM(private val handle: SavedStateHandle) : BaseVM() {
 
     override fun onCreate(lifecycleOwner: LifecycleOwner) {
         super.onCreate(lifecycleOwner)
-        getData()
+        if(!isInit) {
+            getData()
+        }
     }
 
     fun getData() {
