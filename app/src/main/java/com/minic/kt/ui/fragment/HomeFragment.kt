@@ -49,6 +49,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         mBinding.recyclerView.adapter = adapter
 
         viewLifecycleOwner.observe(homeViewModel.mItems) {
+            logD(tag = "sfwefw",msg = "刷新数据${it?.size}")
             if (isLoadData) return@observe
             items.clear()
             items.addAll(it!!)
@@ -57,6 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             isLoadData = true
         }
         viewLifecycleOwner.observe(homeViewModel.article) {
+            logD(tag = "sfwefw",msg = "加载数据${it?.datas?.size}")
             it?.let {
                 items.addAll(it.datas)
                 adapter.notifyItemInserted(items.size - it.datas.size)
