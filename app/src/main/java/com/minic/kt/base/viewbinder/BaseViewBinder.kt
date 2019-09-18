@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 import com.drakeet.multitype.ItemViewBinder
 import com.minic.kt.jetpack.paging.BindingHolder
 
 abstract class BaseViewBinder<V, VB : ViewDataBinding>(@LayoutRes private val layoutId: Int) : ItemViewBinder<V, BindingHolder<VB>>() {
 
     override fun onBindViewHolder(holder: BindingHolder<VB>, item: V) {
-        bindTo(holder.binding, item!!)
+        bindTo(holder,holder.binding, item!!)
     }
 
     override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup): BindingHolder<VB> {
@@ -22,5 +23,5 @@ abstract class BaseViewBinder<V, VB : ViewDataBinding>(@LayoutRes private val la
     /**
      * DataBind绑定Item
      */
-    abstract fun bindTo(bind: VB, item: V)
+    abstract fun bindTo(holder:RecyclerView.ViewHolder,bind: VB, item: V)
 }

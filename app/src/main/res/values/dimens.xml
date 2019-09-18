@@ -3,6 +3,7 @@
     <dimen name="elevation">1.5dp</dimen>
     <dimen name="radius">4dp</dimen>
 
+    <dimen name="dp_5">5dp</dimen>
     <dimen name="dp_8">8dp</dimen>
     <dimen name="dp_9">9dp</dimen>
     <dimen name="dp_10">10dp</dimen>

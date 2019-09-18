@@ -66,4 +66,5 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     implementation 'com.drakeet.multitype:multitype:4.0.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha04"
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 }

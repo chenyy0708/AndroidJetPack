@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.minic.kt.data.model.gank.home.ArticleData" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:paddingStart="@dimen/app_margin"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingEnd="@dimen/app_margin">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_avatar"
+            imageUrl="@{item.envelopePic}"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:scaleType="centerCrop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="@{item.author}"
+            android:textColor="@color/light_font_color"
+            android:textSize="@dimen/tv_12_sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+            app:layout_constraintLeft_toRightOf="@+id/iv_avatar"
+            app:layout_constraintTop_toTopOf="@+id/iv_avatar"
+            tools:text="杜甫" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/tv_title_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{item.title}"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_avatar"
+            app:layout_constraintRight_toLeftOf="@+id/iv_pic"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/tv_desc_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="@{item.niceDate}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_avatar"
+            tools:text="@tools:sample/date/mmddyy" />
+
+        <TextView
+            android:id="@+id/tv_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:textColor="@color/light_font_color"
+            android:textSize="@dimen/tv_11_sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_pic"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_avatar"
+            tools:text="置顶" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_5"
+            android:text="@{item.superChapterName + item.author}"
+            android:textColor="@color/light_font_color"
+            android:textSize="@dimen/tv_11_sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_tag"
+            app:layout_constraintLeft_toRightOf="@+id/tv_tag"
+            app:layout_constraintTop_toTopOf="@id/tv_tag"
+            tools:text="公众号·郭霖" />
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            imageUrl="@{item.envelopePic}"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:visibility="@{TextUtils.isEmpty(item.envelopePic) ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintLeft_toRightOf="@+id/tv_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_title"
+            tools:src="@mipmap/ic_launcher" />
+
+
+        <View
+            android:id="@+id/view_line"
+            style="@style/line"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_pic" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
