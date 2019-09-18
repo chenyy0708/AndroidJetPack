@@ -4,6 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.minic.base.databinding.viewmodel.SingleLiveEvent
 import com.minic.kt.base.BaseVM
 import com.minic.kt.data.model.gank.home.Article
 import com.minic.kt.ext.awaitResponse
@@ -16,9 +17,9 @@ import kotlinx.coroutines.launch
  * @github       :https://github.com/chenyy0708
  */
 class HomeVM(private val handle: SavedStateHandle) : BaseVM() {
-    val article: MutableLiveData<Article> = MutableLiveData()
+    val article: MutableLiveData<Article> = SingleLiveEvent()
 
-    val mItems: MutableLiveData<MutableList<Any>> = MutableLiveData()
+    val mItems: MutableLiveData<MutableList<Any>> = SingleLiveEvent()
     private val items = mutableListOf<Any>()
 
     override fun onCreate(lifecycleOwner: LifecycleOwner) {
