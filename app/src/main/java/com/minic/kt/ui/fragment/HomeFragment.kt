@@ -1,12 +1,15 @@
 package com.minic.kt.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
 import com.minic.base.base.BaseFragment
 import com.minic.base.extens.logD
-import com.minic.base.extens.observe
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentHomeBinding
@@ -37,19 +40,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        mBinding.vm = homeViewModel
         homeViewModel.apply {
             lifecycleOwner = viewLifecycleOwner
             viewLifecycleOwner.lifecycle.addObserver(this)
         }
-        adapter.register(BannerViewBinder())
-        adapter.register(ArticleViewBinder())
-        adapter.items = items
-        mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
-        mBinding.recyclerView.adapter = adapter
-
-        viewLifecycleOwner.observe(homeViewModel.mItems) {
-            logD(tag = "sfwefw",msg = "刷新数据${it?.size}")
+        homeViewModel.mItems.observe(viewLifecycleOwner) {
+            logD(tag = "C", msg = "刷新数据${it?.size}")
             if (isLoadData) return@observe
             items.clear()
             items.addAll(it!!)
@@ -57,8 +53,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             mBinding.refreshLayout.finishRefresh()
             isLoadData = true
         }
-        viewLifecycleOwner.observe(homeViewModel.article) {
-            logD(tag = "sfwefw",msg = "加载数据${it?.datas?.size}")
+        homeViewModel.article.observe(viewLifecycleOwner) {
+            logD(tag = "C", msg = "加载数据${it?.datas?.size}")
             it?.let {
                 items.addAll(it.datas)
                 adapter.notifyItemInserted(items.size - it.datas.size)
@@ -69,6 +65,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 }
             }
         }
+        mBinding.vm = homeViewModel
+        adapter.register(BannerViewBinder())
+        adapter.register(ArticleViewBinder())
+        adapter.items = items
+        mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
+        mBinding.recyclerView.adapter = adapter
+
         mBinding.refreshLayout.setOnRefreshListener {
             isLoadData = false
             page = 0

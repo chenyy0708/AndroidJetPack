@@ -10,7 +10,3 @@ import androidx.lifecycle.Observer
  * @github       :https://github.com/chenyy0708
  */
 
-fun <T : Any, L : LiveData<T>> LifecycleOwner.observe(liveData: L, body: (T?) -> Unit) {
-    liveData.removeObservers(this)
-    liveData.observe(this, Observer(body))
-}
