@@ -4,7 +4,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.minic.base.databinding.viewmodel.LifecycleViewModel
-import com.minic.base.extens.logD
 import com.minic.kt.data.WAndroidRepository
 import kotlinx.coroutines.cancel
 import org.kodein.di.Kodein
@@ -28,10 +27,6 @@ open class BaseVM : LifecycleViewModel(), KodeinAware {
     protected val repository: WAndroidRepository by instance()
 
     protected var isInit = false
-
-    override fun onCreate(lifecycleOwner: LifecycleOwner) {
-        super.onCreate(lifecycleOwner)
-    }
 
     override fun onStart(lifecycleOwner: LifecycleOwner) {
         super.onStart(lifecycleOwner)

@@ -16,44 +16,33 @@ import com.minic.base.extens.logD
 
 open class LifecycleViewModel : ViewModel(), IViewModel {
 
-    var lifecycleOwner: LifecycleOwner? = null
 
     @CallSuper
     override fun onCreate(lifecycleOwner: LifecycleOwner) {
-        logD(msg = "${javaClass.simpleName}onCreate")
-        this.lifecycleOwner = lifecycleOwner
     }
 
     @CallSuper
     override fun onStart(lifecycleOwner: LifecycleOwner) {
-        logD(msg = "${javaClass.simpleName}onStart")
     }
 
     @CallSuper
     override fun onResume(lifecycleOwner: LifecycleOwner) {
-        logD(msg = "${javaClass.simpleName}onResume")
     }
 
     @CallSuper
     override fun onPause(lifecycleOwner: LifecycleOwner) {
-        logD(msg = "${javaClass.simpleName}onPause")
-        viewModelScope
     }
 
     @CallSuper
     override fun onStop(lifecycleOwner: LifecycleOwner) {
-        logD(msg = "${javaClass.simpleName}onStop")
     }
 
     @CallSuper
     override fun onDestroy(lifecycleOwner: LifecycleOwner) {
-        this.lifecycleOwner = null
-        logD(msg = "${javaClass.simpleName}onDestroy")
     }
 
     @CallSuper
     override fun onLifecycleChanged(lifecycleOwner: LifecycleOwner,
                                     event: Lifecycle.Event) {
-        logD(msg = "${javaClass.simpleName}onLifecycleChanged")
     }
 }

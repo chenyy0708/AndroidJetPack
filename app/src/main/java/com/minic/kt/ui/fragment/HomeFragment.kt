@@ -6,7 +6,6 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
 import com.minic.base.base.BaseFragment
-import com.minic.base.extens.logD
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.data.model.gank.home.Article
@@ -29,19 +28,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     /**
      * 刷新
      */
-    private val refreshBlock: (MutableList<Any>) -> Unit = {
-        logD(tag = "sfwefw", msg = "刷新数据${it?.size}")
-        items.clear()
-        items.addAll(it!!)
-        adapter.notifyDataSetChanged()
-        mBinding.refreshLayout.finishRefresh()
+    private val refreshBlock: (MutableList<Any>?) -> Unit = {
+        it?.let {
+            items.clear()
+            items.addAll(it)
+            adapter.notifyDataSetChanged()
+            mBinding.refreshLayout.finishRefresh()
+        }
     }
 
     /**
      * 加载更多
      */
-    private val loadMoreBlock: (Article) -> Unit = {
-        logD(tag = "sfwefw", msg = "加载数据${it?.datas?.size}")
+    private val loadMoreBlock: (Article?) -> Unit = {
         it?.let {
             items.addAll(it.datas)
             adapter.notifyItemInserted(items.size - it.datas.size)
@@ -64,10 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initData(savedInstanceState: Bundle?) {
         initListener()
         mBinding.vm = homeViewModel
-        homeViewModel.apply {
-            lifecycleOwner = viewLifecycleOwner
-            viewLifecycleOwner.lifecycle.addObserver(this)
-        }
+        viewLifecycleOwner.lifecycle.addObserver(homeViewModel)
         adapter.register(BannerViewBinder())
         adapter.register(ArticleViewBinder())
         adapter.items = items
