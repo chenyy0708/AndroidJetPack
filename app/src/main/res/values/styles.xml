@@ -1,16 +1,9 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <!--适配侧边栏沉浸式-->
-    <style name="MainAppTheme" parent="AppTheme">
-        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="tv_title_style">
@@ -21,5 +14,19 @@
     <style name="tv_desc_style">
         <item name="android:textSize">@dimen/sp_13</item>
         <item name="android:textColor">@color/light_font_color</item>
+    </style>
+
+    <style name="Base.Theme.WanAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorBackground">@color/white</item>
+    </style>
+
+    <style name="Theme.WanAndroid" parent="Base.Theme.WanAndroid" />
+
+    <style name="Theme.WanAndroid.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>
