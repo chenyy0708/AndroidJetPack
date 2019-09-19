@@ -1,11 +1,14 @@
 package com.minic.kt.ui.fragment
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
 import com.minic.base.base.BaseFragment
+import com.minic.base.net.exception.showLoading
+import com.minic.base.net.exception.showSuccess
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.data.model.gank.home.Article
@@ -25,11 +28,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val items = ArrayList<Any>()
     private var page: Int = 0
 
+    override fun getStatusLayout(): View = mBinding.recyclerView
+
     /**
      * 刷新
      */
     private val refreshBlock: (MutableList<Any>?) -> Unit = {
         it?.let {
+            showSuccess()
             items.clear()
             items.addAll(it)
             adapter.notifyDataSetChanged()
@@ -61,6 +67,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
+        showLoading()
         initListener()
         mBinding.vm = homeViewModel
         viewLifecycleOwner.lifecycle.addObserver(homeViewModel)
