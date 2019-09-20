@@ -4,8 +4,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:fitsSystemWindows="true"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
         <include
             android:id="@+id/include_toolbar"
@@ -16,15 +16,18 @@
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="?attr/colorSurface"
             app:layout_constraintBottom_toTopOf="@+id/bottom_nav_view"
             app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav_view"
+            style="@style/Widget.MaterialComponents.BottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/white"
             app:elevation="1dp"
+            app:itemTextColor="?attr/colorOnSurface"
+            app:itemIconTint="?attr/colorOnSurface"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/menu_main_nav" />
 

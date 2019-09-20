@@ -1,26 +1,17 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="tv_title_style">
-        <item name="android:textSize">@dimen/sp_15</item>
-        <item name="android:textColor">@color/main_font_color</item>
-    </style>
-
-    <style name="tv_desc_style">
-        <item name="android:textSize">@dimen/sp_13</item>
-        <item name="android:textColor">@color/light_font_color</item>
+        <item name="colorPrimary">@android:color/holo_blue_bright</item>
+        <item name="colorPrimaryDark">@android:color/holo_blue_light</item>
+        <item name="colorAccent">@android:color/holo_blue_dark</item>
     </style>
 
     <style name="Base.Theme.WanAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorOnPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:colorBackground">@color/white</item>
+        <item name="colorPrimary">@android:color/holo_blue_bright</item>
+        <item name="colorOnPrimary">@android:color/holo_blue_bright</item>
+        <item name="colorOnSurface">@android:color/holo_blue_bright</item>
+        <item name="colorPrimaryDark">@android:color/holo_blue_light</item>
+        <item name="android:colorBackground">@android:color/white</item>
     </style>
 
     <style name="Theme.WanAndroid" parent="Base.Theme.WanAndroid" />

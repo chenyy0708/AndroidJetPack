@@ -56,7 +56,7 @@ class HomeVM(private val handle: SavedStateHandle) : BaseVM() {
         }
     }
 
-    suspend fun getArticle() {
+    private suspend fun getArticle() {
         repository.article(0).awaitResponse {
             throwable.value = it
         }?.apply {
