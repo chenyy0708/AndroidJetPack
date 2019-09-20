@@ -1,4 +1,4 @@
-package com.minic.kt.ui.activity
+package com.minic.kt.ui.fragment.common
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
@@ -9,7 +9,6 @@ import android.view.View
 import android.webkit.*
 import android.widget.ProgressBar
 import androidx.databinding.ViewDataBinding
-import com.minic.base.base.BaseActivity
 import com.minic.base.base.BaseFragment
 import com.minic.base.net.exception.showSuccess
 

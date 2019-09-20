@@ -1,4 +1,4 @@
-package com.minic.kt.ui.fragment
+package com.minic.kt.ui.fragment.home
 
 import android.os.Bundle
 import android.view.View
@@ -67,7 +67,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        showLoading()
         initListener()
         mBinding.vm = homeViewModel
         viewLifecycleOwner.lifecycle.addObserver(homeViewModel)
@@ -81,6 +80,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun initListener() {
         homeViewModel.mItems.observe(viewLifecycleOwner, refreshBlock)
         homeViewModel.article.observe(viewLifecycleOwner, loadMoreBlock)
+        homeViewModel.isRefreshData.observe(viewLifecycleOwner) { showLoading() }
         mBinding.refreshLayout.setOnRefreshListener {
             page = 0
             homeViewModel.getData()

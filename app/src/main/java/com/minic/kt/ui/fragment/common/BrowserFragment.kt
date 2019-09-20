@@ -1,4 +1,4 @@
-package com.minic.kt.ui.activity
+package com.minic.kt.ui.fragment.common
 
 import android.os.Bundle
 import android.view.Menu

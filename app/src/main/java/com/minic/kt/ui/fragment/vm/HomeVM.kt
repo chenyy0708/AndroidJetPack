@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
  */
 class HomeVM(private val handle: SavedStateHandle) : BaseVM() {
     val article: MutableLiveData<Article> = SingleLiveEvent()
+    val isRefreshData: MutableLiveData<Boolean> = SingleLiveEvent()
 
     val mItems: MutableLiveData<MutableList<Any>> = SingleLiveEvent()
     private val items = mutableListOf<Any>()
@@ -25,6 +26,7 @@ class HomeVM(private val handle: SavedStateHandle) : BaseVM() {
     override fun onCreate(lifecycleOwner: LifecycleOwner) {
         super.onCreate(lifecycleOwner)
         if(!isInit) {
+            isRefreshData.value = true
             getData()
         }
     }

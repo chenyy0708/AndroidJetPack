@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/browser_fragment"
-        android:name="com.minic.kt.ui.activity.BrowserFragment"
+        android:name="com.minic.kt.ui.fragment.common.BrowserFragment"
         tools:layout="@layout/fragment_browser" >
         <argument
             android:name="url"

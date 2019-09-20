@@ -1,4 +1,4 @@
-package com.minic.kt.ui.fragment
+package com.minic.kt.ui.fragment.home
 
 import android.os.Bundle
 import com.minic.base.base.BaseFragment

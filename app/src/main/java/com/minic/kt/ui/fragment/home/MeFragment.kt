@@ -1,4 +1,4 @@
-package com.minic.kt.ui.fragment
+package com.minic.kt.ui.fragment.home
 
 import android.os.Bundle
 import com.minic.base.base.BaseFragment
@@ -10,16 +10,16 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 
 
-class SystemFragment : BaseFragment<FragmentTestBinding>() {
+class MeFragment : BaseFragment<FragmentTestBinding>() {
 
     override fun getLayoutRes(): Int = R.layout.fragment_test
 
     override val kodein: Kodein = Kodein.lazy {
         extend(App.INSTANCE.kodein)
-        bind<SystemFragment>() with instance(this@SystemFragment)
+        bind<MeFragment>() with instance(this@MeFragment)
     }
+
     override fun initData(savedInstanceState: Bundle?) {
-        mBinding.tv.text = "体系"
     }
 
 }
