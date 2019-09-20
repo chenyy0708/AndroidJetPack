@@ -1,14 +1,18 @@
 <resources>
 
     <style name="Base.Theme.WanAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@android:color/black</item>
-        <item name="colorOnPrimary">@android:color/holo_orange_dark</item>
+        <!--MD控件的背景颜色-->
+        <item name="colorPrimary">@color/night_black</item>
+        <!--MD控件的文字颜色-->
+        <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorPrimaryDark">@android:color/darker_gray</item>
         <item name="colorOnSurface">@android:color/white</item>
         <item name="colorAccent">@android:color/holo_green_dark</item>
-        <item name="colorSurface">@android:color/black</item>
+        <!--部分控件的背景颜色，例如BottomNavigationView-->
+        <item name="colorSurface">@color/night_black</item>
         <item name="colorSecondary">@android:color/holo_orange_light</item>
-        <item name="android:colorBackground">@android:color/black</item>
+        <!--背景颜色-->
+        <item name="android:colorBackground">@color/night_black</item>
     </style>
 
     <style name="Theme.WanAndroid" parent="Base.Theme.WanAndroid" />
