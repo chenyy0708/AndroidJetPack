@@ -8,7 +8,7 @@
 
     <style name="Base.Theme.WanAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@android:color/holo_blue_bright</item>
-        <item name="colorOnPrimary">@android:color/holo_blue_bright</item>
+        <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorOnSurface">@android:color/holo_blue_bright</item>
         <item name="colorPrimaryDark">@android:color/holo_blue_light</item>
         <item name="android:colorBackground">@android:color/white</item>

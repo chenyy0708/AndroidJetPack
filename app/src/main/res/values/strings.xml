@@ -5,4 +5,11 @@
     <string name="share">分享</string>
     <string name="copy">复制</string>
     <string name="open_browser">从浏览器打开</string>
+
+    <string-array name="author_imgs">
+        <item>https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2809156533,927877682&amp;fm=26&amp;gp=0.jpg</item>
+        <item>https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2499107440,3201198713&amp;fm=26&amp;gp=0.jpg</item>
+        <item>https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2954407842,3286872892&amp;fm=26&amp;gp=0.jpg</item>
+        <item>https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3716438606,4272118910&amp;fm=26&amp;gp=0.jpg</item>
+    </string-array>
 </resources>

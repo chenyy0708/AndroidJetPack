@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="night_black" >#1a231e</color>
+<!--    <color name="night_black" >#1a231e</color>-->
+    <color name="night_black" >@android:color/black</color>
 
 </resources>

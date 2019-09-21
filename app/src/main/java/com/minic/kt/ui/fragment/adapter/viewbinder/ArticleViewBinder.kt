@@ -8,6 +8,8 @@ import com.minic.kt.base.viewbinder.BaseViewBinder
 import com.minic.kt.data.model.gank.home.ArticleData
 import com.minic.kt.databinding.ItemHomeArticleBinding
 import com.minic.kt.ui.fragment.HomeViewPagerFragmentDirections
+import com.minic.kt.utils.ext.loadImage
+import kotlin.random.Random
 
 
 class ArticleViewBinder : BaseViewBinder<ArticleData, ItemHomeArticleBinding>(R.layout.item_home_article) {
@@ -17,7 +19,9 @@ class ArticleViewBinder : BaseViewBinder<ArticleData, ItemHomeArticleBinding>(R.
             val direction = HomeViewPagerFragmentDirections.actionHomeViewpagerFragmentToBrowserFragment(item.link, item.title)
             it.findNavController().navigate(direction)
         }
-        bind.viewLine.visibility = if (adapter?.items.size == holder.adapterPosition) View.GONE else View.VISIBLE
+        bind.viewLine.visibility = if (adapter.items.size == holder.adapterPosition) View.GONE else View.VISIBLE
+        var array = holder.itemView.context.resources.getStringArray(R.array.author_imgs)
+        bind.ivAvatar.loadImage(array.random())
         bind.executePendingBindings()
     }
 }
