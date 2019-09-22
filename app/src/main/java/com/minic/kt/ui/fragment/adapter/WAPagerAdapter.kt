@@ -21,8 +21,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.minic.kt.ui.fragment.home.*
 
 const val HOME = 0
-const val WECHART = 1
-const val PROJECT = 2
+const val PROJECT = 1
+const val WECHART = 2
 const val SYSTEM = 3
 const val ME = 4
 

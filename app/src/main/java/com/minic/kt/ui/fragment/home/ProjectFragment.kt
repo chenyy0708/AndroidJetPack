@@ -30,7 +30,7 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>() {
         mBinding.vm = viewModule
         viewLifecycleOwner.lifecycle.addObserver(viewModule)
         viewModule.mList.observe(viewLifecycleOwner) { list ->
-            mBinding.viewPager.adapter = ProjectPagerAdapter(this, list.map { ProjectChildFragment.newInstance(it.courseId) }.toMutableList())
+            mBinding.viewPager.adapter = ProjectPagerAdapter(this, list.map { ProjectChildFragment.newInstance(it.id) }.toMutableList())
             TabLayoutMediator(mBinding.tabLayout, mBinding.viewPager) { tab, position ->
                 tab.text = list[position].name
             }.attach()
