@@ -18,27 +18,11 @@ package com.minic.kt.ui.fragment.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.minic.kt.ui.fragment.home.*
 
-const val HOME = 0
-const val WECHART = 1
-const val PROJECT = 2
-const val SYSTEM = 3
-const val ME = 4
-
-class WAPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
-
-    private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
-            HOME to { HomeFragment() },
-            PROJECT to { ProjectFragment() },
-            WECHART to { WeChartFragment() },
-            SYSTEM to { SystemFragment() },
-            ME to { MeFragment() }
-    )
-
-    override fun getItemCount() = tabFragmentsCreators.size
+class ProjectPagerAdapter(fragment: Fragment, val mFragments: MutableList<Fragment>) : FragmentStateAdapter(fragment) {
+    override fun getItemCount() = mFragments.size
 
     override fun createFragment(position: Int): Fragment {
-        return tabFragmentsCreators[position]?.invoke() ?: throw IndexOutOfBoundsException()
+        return mFragments[position]
     }
 }

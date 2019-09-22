@@ -2,30 +2,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:colorBackground"
-        android:orientation="vertical">
+        android:background="?android:colorBackground">
 
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/refresh_layout"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <FrameLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:itemCount="5"
-                    tools:listitem="@layout/item_home_article" />
-            </FrameLayout>
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </LinearLayout>
+                android:layout_height="match_parent"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_home_article" />
+        </FrameLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     <data>
 

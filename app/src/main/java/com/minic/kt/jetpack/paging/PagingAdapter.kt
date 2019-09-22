@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * @ClassName: PagingAdapter
@@ -33,13 +34,13 @@ abstract class PagingAdapter<V, VB : ViewDataBinding>(@LayoutRes private val lay
 
     override fun onBindViewHolder(holder: BindingHolder<VB>, position: Int) {
         val item = getItem(position)
-        bindTo(holder.binding, item!!)
+        bindTo(holder,holder.binding, item!!)
     }
 
     /**
      * DataBind绑定Item
      */
-    abstract fun bindTo(bind: VB, item: V)
+    abstract fun bindTo(holder:RecyclerView.ViewHolder,bind: VB, item: V)
 
     fun setOnItemClickListener(onItemClickListener: ItemClickListener<V>) {
         this.onItemClickListener = onItemClickListener

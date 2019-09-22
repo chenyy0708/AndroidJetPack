@@ -15,5 +15,6 @@ data class ArticleData(
         val title: String,
         val visible: Int,
         val zan: Int,
-        val userId: Int
+        val userId: Int,
+        var isTopping: Boolean = false
 )

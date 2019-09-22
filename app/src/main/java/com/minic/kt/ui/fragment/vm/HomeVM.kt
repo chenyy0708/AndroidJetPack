@@ -25,7 +25,7 @@ class HomeVM(private val handle: SavedStateHandle) : BaseVM() {
 
     override fun onCreate(lifecycleOwner: LifecycleOwner) {
         super.onCreate(lifecycleOwner)
-        if(!isInit) {
+        if (!isInit) {
             isRefreshData.value = true
             getData()
         }
@@ -52,6 +52,8 @@ class HomeVM(private val handle: SavedStateHandle) : BaseVM() {
         repository.articleTop().awaitResponse {
             throwable.value = it
         }?.apply {
+            // 置顶数据
+            forEach { it.isTopping = true }
             items.addAll(this)
         }
     }
