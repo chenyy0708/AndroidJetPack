@@ -19,6 +19,7 @@ package com.minic.kt.ui.fragment.adapter
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.minic.kt.ui.fragment.home.*
+import com.minic.kt.ui.fragment.home.system.SystemFragment
 
 class WAPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 

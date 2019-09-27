@@ -13,7 +13,8 @@
             style="@style/Widget.MaterialComponents.TabLayout.Colored"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:tabMode="scrollable"
+            app:tabGravity="center"
+            app:tabMode="auto"
             app:tabSelectedTextColor="?attr/colorOnPrimary" />
 
         <androidx.viewpager2.widget.ViewPager2
@@ -21,13 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
-
-    <data>
-
-        <variable
-            name="vm"
-            type="com.minic.kt.ui.fragment.vm.HomeProjectVM" />
-    </data>
 
 </layout>
 

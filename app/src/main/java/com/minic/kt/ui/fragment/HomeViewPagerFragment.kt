@@ -31,7 +31,6 @@ class HomeViewPagerFragment : BaseFragment<FragmentHomeViewPagerBinding>() {
         }
 
     override fun initData(savedInstanceState: Bundle?) {
-        initToolbar(mBinding.includeToolbar.toolBar, mTitle = "WanAndroid", isBack = false)
         mBinding.viewPager.apply {
             adapter = WAPagerAdapter(this@HomeViewPagerFragment).apply {
                 // 默认加载全部的

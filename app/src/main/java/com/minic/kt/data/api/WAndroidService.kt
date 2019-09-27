@@ -3,10 +3,7 @@ package com.minic.kt.data.api
 import com.minic.base.net.UrlConstant
 import com.minic.kt.data.model.BResponse
 import com.minic.kt.data.model.gank.PagingData
-import com.minic.kt.data.model.gank.home.Article
-import com.minic.kt.data.model.gank.home.ArticleData
-import com.minic.kt.data.model.gank.home.BannerData
-import com.minic.kt.data.model.gank.home.ProjectTree
+import com.minic.kt.data.model.gank.home.*
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -54,4 +51,11 @@ interface WAndroidService {
     @Headers(RetrofitUrlManager.DOMAIN_NAME_HEADER + UrlConstant.WAN_ANDROID)
     @GET("project/list/{page}/json")
     suspend fun projectList(@Path("page") page: Int, @Query("cid") cid: Int): BResponse<PagingData<ArticleData>>
+
+    /**
+     * 体系首页
+     */
+    @Headers(RetrofitUrlManager.DOMAIN_NAME_HEADER + UrlConstant.WAN_ANDROID)
+    @GET("tree/json")
+    suspend fun systemTree(): BResponse<MutableList<SystemTree>>
 }
