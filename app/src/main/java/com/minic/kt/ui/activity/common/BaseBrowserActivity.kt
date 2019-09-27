@@ -1,4 +1,4 @@
-package com.minic.kt.ui.fragment.common
+package com.minic.kt.ui.activity.common
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap

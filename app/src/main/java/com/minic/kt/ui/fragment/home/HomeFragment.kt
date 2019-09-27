@@ -3,6 +3,7 @@ package com.minic.kt.ui.fragment.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
@@ -16,7 +17,6 @@ import com.minic.kt.databinding.FragmentHomeBinding
 import com.minic.kt.ui.fragment.adapter.viewbinder.ArticleViewBinder
 import com.minic.kt.ui.fragment.adapter.viewbinder.BannerViewBinder
 import com.minic.kt.ui.fragment.vm.HomeVM
-import com.minic.kt.ui.fragment.vm.HomeVMFactory
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -62,9 +62,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         extend(App.INSTANCE.kodein)
         bind<HomeFragment>() with instance(this@HomeFragment)
     }
-    private val homeViewModel: HomeVM by viewModels {
-        HomeVMFactory(this, null)
-    }
+    private val homeViewModel: HomeVM by viewModels()
 
     override fun initData(savedInstanceState: Bundle?) {
         initListener()

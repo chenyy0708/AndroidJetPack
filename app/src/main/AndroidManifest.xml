@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.fragment.common.BrowserActivity" />
+        <activity android:name="com.minic.kt.ui.activity.common.BrowserActivity" />
 
     </application>
 

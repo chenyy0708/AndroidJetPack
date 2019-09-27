@@ -20,6 +20,7 @@ class MeFragment : BaseFragment<FragmentTestBinding>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
+        mBinding.tv.text = "我的"
     }
 
 }

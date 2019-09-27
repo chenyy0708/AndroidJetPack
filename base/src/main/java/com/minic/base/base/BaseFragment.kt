@@ -80,7 +80,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
         mBinding = DataBindingUtil.bind(rootView)!!
         // 绑定LifeCycle
         mBinding.apply {
-            lifecycleOwner = viewLifecycleOwner
+            lifecycleOwner = this@BaseFragment
         }
     }
 

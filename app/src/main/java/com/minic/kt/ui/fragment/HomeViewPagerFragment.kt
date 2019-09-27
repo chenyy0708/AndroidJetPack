@@ -1,12 +1,15 @@
 package com.minic.kt.ui.fragment
 
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.minic.base.base.BaseFragment
 import com.minic.base.extens.initToolbar
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentHomeViewPagerBinding
 import com.minic.kt.ui.fragment.adapter.WAPagerAdapter
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -29,9 +32,18 @@ class HomeViewPagerFragment : BaseFragment<FragmentHomeViewPagerBinding>() {
 
     override fun initData(savedInstanceState: Bundle?) {
         initToolbar(mBinding.includeToolbar.toolBar, mTitle = "WanAndroid", isBack = false)
-        mBinding.viewPager.adapter = WAPagerAdapter(this)?.apply {
-            mBinding.viewPager.offscreenPageLimit = itemCount
-            mBinding.viewPager.isUserInputEnabled = false
+        mBinding.viewPager.apply {
+            adapter = WAPagerAdapter(this@HomeViewPagerFragment).apply {
+                // 默认加载全部的
+                offscreenPageLimit = itemCount
+            }
+            // 静止手势滑动
+            isUserInputEnabled = false
+            // 显示第一个Page
+            lifecycleScope.launch {
+                delay(50)
+                currentItem = 0
+            }
         }
         mBinding.bottomNavView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
