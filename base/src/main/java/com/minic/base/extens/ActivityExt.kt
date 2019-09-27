@@ -52,9 +52,13 @@ fun AppCompatActivity.initToolbar(mToolbar: Toolbar, mTitle: String = "", isBack
  * 初始化Toolbar
  */
 fun Fragment.initToolbar(mToolbar: Toolbar, mTitle: String = "", isBack: Boolean = true) {
-    (activity as AppCompatActivity).setSupportActionBar(mToolbar)
-    (activity as AppCompatActivity).supportActionBar!!.title = mTitle
-    (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(isBack)
+    if (activity is AppCompatActivity) {
+        (activity as AppCompatActivity)?.apply {
+            setSupportActionBar(mToolbar)
+            supportActionBar!!.title = mTitle
+            supportActionBar!!.setDisplayHomeAsUpEnabled(isBack)
+        }
+    }
 }
 
 inline fun <reified T : Activity> Context.openActivity(

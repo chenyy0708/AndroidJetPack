@@ -1,8 +1,8 @@
 package com.minic.kt.ui.fragment
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.minic.base.base.BaseFragment
+import com.minic.base.extens.initToolbar
 import com.minic.kt.R
 import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentHomeViewPagerBinding
@@ -28,12 +28,11 @@ class HomeViewPagerFragment : BaseFragment<FragmentHomeViewPagerBinding>() {
         }
 
     override fun initData(savedInstanceState: Bundle?) {
-        (activity as AppCompatActivity).setSupportActionBar(mBinding.includeToolbar.toolBar)
-        // 禁用ViewPager2的滑动事件
-        mBinding.viewPager.offscreenPageLimit = 5
-        mBinding.viewPager.isUserInputEnabled = false
-        mBinding.viewPager.adapter = WAPagerAdapter(this)
-        mBinding.viewPager.currentItem = 0
+        initToolbar(mBinding.includeToolbar.toolBar, mTitle = "WanAndroid", isBack = false)
+        mBinding.viewPager.adapter = WAPagerAdapter(this)?.apply {
+            mBinding.viewPager.offscreenPageLimit = itemCount
+            mBinding.viewPager.isUserInputEnabled = false
+        }
         mBinding.bottomNavView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> mBinding.viewPager.currentItem = 0
