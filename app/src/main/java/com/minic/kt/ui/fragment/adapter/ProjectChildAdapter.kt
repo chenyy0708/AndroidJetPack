@@ -1,13 +1,13 @@
 package com.minic.kt.ui.fragment.adapter
 
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.minic.base.extens.openActivity
 import com.minic.kt.R
 import com.minic.kt.data.model.gank.home.ArticleData
 import com.minic.kt.databinding.ItemHomeProjectChildBinding
 import com.minic.kt.jetpack.paging.PagingAdapter
-import com.minic.kt.ui.fragment.HomeViewPagerFragmentDirections
+import com.minic.kt.ui.fragment.common.BrowserActivity
 import com.minic.kt.utils.ext.loadImage
 
 
@@ -21,8 +21,10 @@ class ProjectChildAdapter : PagingAdapter<ArticleData, ItemHomeProjectChildBindi
     override fun bindTo(holder: RecyclerView.ViewHolder, bind: ItemHomeProjectChildBinding, item: ArticleData) {
         bind.item = item
         bind.root.setOnClickListener {
-            val direction = HomeViewPagerFragmentDirections.actionHomeViewpagerFragmentToBrowserFragment(item.link, item.title)
-            it.findNavController().navigate(direction)
+            holder.itemView.context.openActivity<BrowserActivity>(
+                    "url" to item.link,
+                    "title" to item.title
+            )
         }
         val array = holder.itemView.context.resources.getStringArray(R.array.author_imgs)
         bind.ivAvatar.loadImage(array.random())

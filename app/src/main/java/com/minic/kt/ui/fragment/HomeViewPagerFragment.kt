@@ -33,6 +33,7 @@ class HomeViewPagerFragment : BaseFragment<FragmentHomeViewPagerBinding>() {
         mBinding.viewPager.offscreenPageLimit = 5
         mBinding.viewPager.isUserInputEnabled = false
         mBinding.viewPager.adapter = WAPagerAdapter(this)
+        mBinding.viewPager.currentItem = 0
         mBinding.bottomNavView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> mBinding.viewPager.currentItem = 0

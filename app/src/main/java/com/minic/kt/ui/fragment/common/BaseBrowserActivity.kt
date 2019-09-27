@@ -9,16 +9,16 @@ import android.view.View
 import android.webkit.*
 import android.widget.ProgressBar
 import androidx.databinding.ViewDataBinding
-import com.minic.base.base.BaseFragment
+import com.minic.base.base.BaseActivity
 import com.minic.base.net.exception.showSuccess
 
 /**
- * @ClassName: BaseBrowserFragment
+ * @ClassName: BaseBrowserActivity
  * @Description:
  * @Author: ChenYy
  * @Date: 2019-05-14 16:46
  */
-abstract class BaseBrowserFragment<VB : ViewDataBinding> : BaseFragment<VB>() {
+abstract class BaseBrowserActivity<VB : ViewDataBinding> : BaseActivity<VB>() {
     abstract fun getWebView(): WebView
     abstract fun getProgressBar(): ProgressBar?
 
