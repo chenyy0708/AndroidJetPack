@@ -45,12 +45,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_8"
             android:text="@{item.niceDate}"
-
             android:textAppearance="?attr/textAppearanceListItemSmall"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_avatar"
             android:textSize="@dimen/tv_13_sp"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_avatar"
             tools:text="@tools:sample/date/mmddyy" />
 
         <TextView
@@ -60,9 +58,8 @@
             android:text="@{item.superChapterName + item.author}"
             android:textAppearance="?attr/textAppearanceListItemSmall"
             android:textSize="@dimen/tv_11_sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_tag"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_tag"
             app:layout_constraintLeft_toRightOf="@+id/tv_tag"
-            app:layout_constraintTop_toTopOf="@id/tv_tag"
             tools:text="公众号·郭霖" />
 
 
