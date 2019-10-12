@@ -61,6 +61,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
         // 注册多状态布局
         mLoadService = LoadSir.getDefault().register(getStatusLayout())
         initData(savedInstanceState)
+
     }
 
     /**
