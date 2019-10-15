@@ -49,7 +49,9 @@ class ProjectChildFragment : BaseFragment<FragmentProjectChildBinding>() {
         mBinding.recyclerView.layoutManager = LinearLayoutManager(mContext)
         mBinding.recyclerView.adapter = adapter
         viewModel?.mList?.observe(viewLifecycleOwner) { adapter.submitList(it) }
+
         viewModel?.refreshComplete?.observe(viewLifecycleOwner) { mBinding.swipeLayout.isRefreshing = !it }
+
     }
 
     private fun initListener() {

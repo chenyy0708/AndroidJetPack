@@ -1,0 +1,14 @@
+@startuml
+
+class RecyclerView
+
+abstract LayoutManager
+
+abstract ItemAnimator
+
+ItemAnimator <|--  DefaultItemAnimator
+
+RecyclerView  --* LayoutManager : 包含
+RecyclerView  --* DefaultItemAnimator : 包含
+
+@enduml
