@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
     // androidx
     api "androidx.appcompat:appcompat:1.1.0"
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
     api "com.google.android.material:material:$materialVersion"
     api "androidx.legacy:legacy-support-v4:1.0.0"
     api "androidx.cardview:cardview:$supportVersion"
@@ -50,7 +50,6 @@ dependencies {
     api "androidx.navigation:navigation-ui-ktx:$nav_version"
     // ViewModel and LiveData
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
@@ -69,7 +68,5 @@ dependencies {
     api 'com.github.chenyy0708:LoadSir:2.0.0'
     // Lottie动画
     api "com.airbnb.android:lottie:$lottieVersion"
-    api('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
-        exclude group: 'org.json', module: 'json'
-    }
+    api 'com.github.ihsanbal:LoggingInterceptor:3.0.0'
 }
