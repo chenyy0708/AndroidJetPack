@@ -1,4 +1,4 @@
-include ':app', ':base', ':commonres'
+include ':app', ':base', ':commonres', ':image_loader'
 //setBinding(new Binding([gradle: this]))
 //evaluate(new File(
 //        settingsDir.parentFile,

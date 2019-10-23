@@ -54,6 +54,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':base')
     implementation project(':commonres')
+    implementation project(':image_loader')
     kapt "androidx.databinding:databinding-compiler:$gradle_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
