@@ -7,23 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.minic.base.base.BaseFragment
 import com.minic.base.net.exception.doError
 import com.minic.kt.R
-import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentProjectChildBinding
 import com.minic.kt.ui.fragment.adapter.ProjectChildAdapter
 import com.minic.kt.ui.fragment.vm.ProjectChildVM
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
 
 
 class ProjectChildFragment : BaseFragment<FragmentProjectChildBinding>() {
     override fun getLayoutRes(): Int = R.layout.fragment_project_child
     override fun getStatusLayout(): View = mBinding.recyclerView
-
-    override val kodein: Kodein = Kodein.lazy {
-        extend(App.INSTANCE.kodein)
-        bind<ProjectChildFragment>() with instance(this@ProjectChildFragment)
-    }
 
     var viewModel: ProjectChildVM? = null
 

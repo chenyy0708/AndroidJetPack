@@ -11,21 +11,12 @@ import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentProjectBinding
 import com.minic.kt.ui.fragment.adapter.ProjectPagerAdapter
 import com.minic.kt.ui.fragment.vm.HomeProjectVM
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-
 
 class ProjectFragment : BaseFragment<FragmentProjectBinding>() {
 
     override fun getLayoutRes(): Int = R.layout.fragment_project
 
     private val viewModule: HomeProjectVM by viewModels()
-
-    override val kodein: Kodein = Kodein.lazy {
-        extend(App.INSTANCE.kodein)
-        bind<ProjectFragment>() with instance(this@ProjectFragment)
-    }
 
     override fun initData(savedInstanceState: Bundle?) {
         mBinding.vm = viewModule

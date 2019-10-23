@@ -11,8 +11,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import org.kodein.di.KodeinAware
-import org.kodein.di.KodeinTrigger
 
 /**
  * @author       :ChenYangYi
@@ -20,8 +18,7 @@ import org.kodein.di.KodeinTrigger
  * @description  :Fragment基类
  * @github       :https://github.com/chenyy0708
  */
-abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
-        KodeinAware {
+abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
 
     /**
      * DataBind
@@ -37,11 +34,6 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
      * 上下文
      */
     protected lateinit var mContext: Context
-
-    /**
-     * 注入框架
-     */
-    override val kodeinTrigger = KodeinTrigger()
 
     /**
      * 多状态布局管理类
@@ -60,7 +52,6 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(),
         super.onViewCreated(view, savedInstanceState)
         initBinding(view)
         mContext = this.activity!!
-        kodeinTrigger.trigger()
         // 注册多状态布局
         mLoadService = LoadSir.getDefault().register(getStatusLayout())
         initData(savedInstanceState)

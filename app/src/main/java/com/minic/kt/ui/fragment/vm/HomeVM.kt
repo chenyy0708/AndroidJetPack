@@ -5,11 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.minic.base.databinding.viewmodel.SingleLiveEvent
 import com.minic.kt.base.BaseVM
+import com.minic.kt.data.WARepository
 import com.minic.kt.data.model.gank.home.Article
 import com.minic.kt.ext.awaitResponse
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.kodein.di.android.subKodein
 
 /**
  * @author       :ChenYangYi
@@ -42,7 +41,7 @@ class HomeVM : BaseVM() {
     }
 
     private suspend fun getBanner() {
-        repository.banners().awaitResponse {
+        WARepository.banners().awaitResponse {
             throwable.value = it
         }?.apply {
             items.add(this)
@@ -50,7 +49,7 @@ class HomeVM : BaseVM() {
     }
 
     private suspend fun getArticleTop() {
-        repository.articleTop().awaitResponse {
+        WARepository.articleTop().awaitResponse {
             throwable.value = it
         }?.apply {
             // 置顶数据
@@ -60,7 +59,7 @@ class HomeVM : BaseVM() {
     }
 
     private suspend fun getArticle() {
-        repository.article(0).awaitResponse {
+        WARepository.article(0).awaitResponse {
             throwable.value = it
         }?.apply {
             items.addAll(this.datas)
@@ -70,7 +69,7 @@ class HomeVM : BaseVM() {
 
     fun getArticle(page: Int) {
         viewModelScope.launch {
-            repository.article(page).awaitResponse {
+            WARepository.article(page).awaitResponse {
                 throwable.value = it
             }?.apply {
                 article.value = this

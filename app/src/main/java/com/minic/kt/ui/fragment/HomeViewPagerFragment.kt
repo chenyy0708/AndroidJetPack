@@ -10,9 +10,6 @@ import com.minic.kt.databinding.FragmentHomeViewPagerBinding
 import com.minic.kt.ui.fragment.adapter.WAPagerAdapter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
 
 /**
  * @ClassName: HomeViewPagerFragment
@@ -23,12 +20,6 @@ import org.kodein.di.generic.instance
 class HomeViewPagerFragment : BaseFragment<FragmentHomeViewPagerBinding>() {
 
     override fun getLayoutRes(): Int = R.layout.fragment_home_view_pager
-
-    override val kodein: Kodein
-        get() = Kodein.lazy {
-            extend(App.INSTANCE.kodein)
-            bind<HomeViewPagerFragment>() with instance(this@HomeViewPagerFragment)
-        }
 
     override fun initData(savedInstanceState: Bundle?) {
         mBinding.viewPager.apply {

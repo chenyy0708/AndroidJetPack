@@ -1,14 +1,6 @@
 package com.minic.kt.base
 
 import com.minic.base.base.BaseApp
-import com.minic.kt.data.WAndroidRepository
-import com.minic.kt.data.api.WAndroidService
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.singleton
-import retrofit2.Retrofit
 
 /**
  * @author       :ChenYangYi
@@ -16,24 +8,11 @@ import retrofit2.Retrofit
  * @description  :
  * @github       :https://github.com/chenyy0708
  */
-class App : BaseApp(), KodeinAware {
-
-    override val kodein: Kodein = Kodein.lazy {
-        // 导入基类中的Kodein，存储公共的全局实例
-        extend(baseKodein)
-        bind<WAndroidService>() with singleton {
-            instance<Retrofit>().create(WAndroidService::class.java)
-        }
-        bind<WAndroidRepository>() with singleton {
-            WAndroidRepository(instance())
-        }
-    }
-
+class App : BaseApp() {
     override fun onCreate() {
         INSTANCE = this
         super.onCreate()
     }
-
 
     companion object {
         lateinit var INSTANCE: App

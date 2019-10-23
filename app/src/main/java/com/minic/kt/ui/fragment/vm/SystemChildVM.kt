@@ -4,6 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewModelScope
 import com.minic.base.databinding.viewmodel.SingleLiveEvent
 import com.minic.kt.base.BaseVM
+import com.minic.kt.data.WARepository
 import com.minic.kt.data.model.gank.home.SystemTree
 import com.minic.kt.ext.awaitResponse
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ class SystemChildVM : BaseVM() {
     override fun onCreate(lifecycleOwner: LifecycleOwner) {
         super.onCreate(lifecycleOwner)
         viewModelScope.launch {
-            repository.systemTree().awaitResponse()?.let { systemData.value = it }
+            WARepository.systemTree().awaitResponse()?.let { systemData.value = it }
         }
     }
 }

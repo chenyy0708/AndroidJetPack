@@ -10,9 +10,7 @@ import com.minic.base.extens.initToolbar
 import com.minic.base.extens.showWarning
 import com.minic.base.net.exception.showLoading
 import com.minic.kt.R
-import com.minic.kt.base.App
 import com.minic.kt.databinding.FragmentBrowserBinding
-import org.kodein.di.Kodein
 
 /**
  * @ClassName: BrowserActivity
@@ -21,11 +19,6 @@ import org.kodein.di.Kodein
  * @Date: 2019-09-12 18:14
  */
 class BrowserActivity : BaseBrowserActivity<FragmentBrowserBinding>() {
-    override val kodein: Kodein
-        get() = Kodein.lazy {
-            extend(App.INSTANCE.kodein)
-        }
-
     override fun getLayoutRes(): Int = R.layout.fragment_browser
 
     override fun getStatusLayout(): View = mBinding.webView

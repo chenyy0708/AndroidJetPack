@@ -59,12 +59,8 @@ dependencies {
     // Retrofit OkHttp
     api "com.squareup.retrofit2:retrofit:$retrofitVersion"
     api "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    api 'me.jessyan:retrofit-url-manager:1.4.0'
     // 协程
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
-    // di
-    api "org.kodein.di:kodein-di-generic-jvm:$kodein"
-    api "org.kodein.di:kodein-di-framework-android-x:$kodein"
     // 侧滑返回
     api 'cn.bingoogolapple:bga-swipebacklayout:1.1.9@aar'
     // SnackBar
@@ -72,10 +68,8 @@ dependencies {
     // 多状态布局
     api 'com.github.chenyy0708:LoadSir:2.0.0'
     // Lottie动画
-    api('com.airbnb.android:lottie:2.5.4') {
-        exclude group: "com.android.support"
-    }
-    implementation('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
+    api "com.airbnb.android:lottie:$lottieVersion"
+    api('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
         exclude group: 'org.json', module: 'json'
     }
 }

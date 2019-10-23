@@ -9,12 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import org.kodein.di.Copy
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.KodeinTrigger
-import org.kodein.di.android.kodein
-import org.kodein.di.android.retainedKodein
 
 /**
  * @author       :ChenYangYi
@@ -22,8 +16,7 @@ import org.kodein.di.android.retainedKodein
  * @description  :Activity基类
  * @github       :https://github.com/chenyy0708
  */
-abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
-        KodeinAware {
+abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(){
 
     /**
      * DataBind
@@ -36,28 +29,14 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(),
     protected lateinit var mContext: Context
 
     /**
-     * 注入框架
-     */
-    protected val parentKodein by kodein()
-    override val kodeinTrigger = KodeinTrigger()
-
-    /**
      * 多状态布局管理类
      */
     open lateinit var mLoadService: LoadService<Any>
-
-    /**
-     * 导入Application中所有的单例使用
-     */
-    override val kodein: Kodein by retainedKodein {
-        extend(parentKodein, copy = Copy.All)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBinding()
         mContext = this
-        kodeinTrigger.trigger()
         // 注册多状态布局
         mLoadService = LoadSir.getDefault().register(getStatusLayout())
         initData(savedInstanceState)
