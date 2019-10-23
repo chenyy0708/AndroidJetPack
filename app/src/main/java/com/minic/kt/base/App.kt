@@ -1,6 +1,8 @@
 package com.minic.kt.base
 
 import com.minic.base.base.BaseApp
+import com.minic.imageload.ImageFrom
+import com.minic.kt.utils.GlideImageLoader
 
 /**
  * @author       :ChenYangYi
@@ -12,6 +14,7 @@ class App : BaseApp() {
     override fun onCreate() {
         INSTANCE = this
         super.onCreate()
+        ImageFrom.setImageLoader(GlideImageLoader())
     }
 
     companion object {

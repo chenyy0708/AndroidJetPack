@@ -3,12 +3,12 @@ package com.minic.kt.ui.fragment.adapter.viewbinder
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.minic.base.extens.openActivity
+import com.minic.imageload.loadIV
 import com.minic.kt.R
 import com.minic.kt.base.viewbinder.BaseViewBinder
 import com.minic.kt.data.model.gank.home.ArticleData
 import com.minic.kt.databinding.ItemHomeArticleBinding
 import com.minic.kt.ui.activity.common.BrowserActivity
-import com.minic.kt.utils.ext.loadImage
 
 
 class ArticleViewBinder : BaseViewBinder<ArticleData, ItemHomeArticleBinding>(R.layout.item_home_article) {
@@ -22,7 +22,7 @@ class ArticleViewBinder : BaseViewBinder<ArticleData, ItemHomeArticleBinding>(R.
         }
         bind.viewLine.visibility = if (adapter.items.size == holder.adapterPosition) View.GONE else View.VISIBLE
         var array = holder.itemView.context.resources.getStringArray(R.array.author_imgs)
-        bind.ivAvatar.loadImage(array.random())
+        bind.ivAvatar.loadIV(array.random())
         bind.executePendingBindings()
     }
 }

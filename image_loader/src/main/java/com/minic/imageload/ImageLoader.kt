@@ -11,5 +11,7 @@ import android.widget.ImageView
  */
 interface ImageLoader {
 
-    fun load(context: Context,url:String,imageView: ImageView)
+    fun load(context: Context, url: String, imageView: ImageView)
+
+    fun load(context: Context, url: String, options: ImageLoaderOptions, imageView: ImageView)
 }

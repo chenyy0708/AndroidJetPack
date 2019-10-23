@@ -3,12 +3,12 @@ package com.minic.kt.ui.fragment.adapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.minic.base.extens.openActivity
+import com.minic.imageload.loadIV
 import com.minic.kt.R
 import com.minic.kt.data.model.gank.home.ArticleData
 import com.minic.kt.databinding.ItemHomeProjectChildBinding
 import com.minic.kt.jetpack.paging.PagingAdapter
 import com.minic.kt.ui.activity.common.BrowserActivity
-import com.minic.kt.utils.ext.loadImage
 
 
 /**
@@ -27,7 +27,7 @@ class ProjectChildAdapter : PagingAdapter<ArticleData, ItemHomeProjectChildBindi
             )
         }
         val array = holder.itemView.context.resources.getStringArray(R.array.author_imgs)
-        bind.ivAvatar.loadImage(array.random())
+        bind.ivAvatar.loadIV(array.random())
         bind.executePendingBindings()
     }
 }

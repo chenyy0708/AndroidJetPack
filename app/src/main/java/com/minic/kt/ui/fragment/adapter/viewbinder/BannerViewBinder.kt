@@ -3,11 +3,11 @@ package com.minic.kt.ui.fragment.adapter.viewbinder
 import android.content.Context
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.minic.imageload.loadIV
 import com.minic.kt.R
 import com.minic.kt.base.viewbinder.BaseViewBinder
 import com.minic.kt.data.model.gank.home.BannerData
 import com.minic.kt.databinding.ItemHomeBannerBinding
-import com.minic.kt.utils.ext.loadImage
 import com.youth.banner.loader.ImageLoader
 
 
@@ -22,7 +22,7 @@ class BannerViewBinder : BaseViewBinder<MutableList<BannerData>, ItemHomeBannerB
     class GlideImageLoader : ImageLoader() {
         override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
             if (path is BannerData) {
-                imageView?.loadImage(path.imagePath)
+                imageView?.loadIV(path.imagePath)
             }
         }
     }
