@@ -1,7 +1,7 @@
 package com.minic.imageload
 
-import android.content.Context
 import android.widget.ImageView
+import com.minic.imageload.ImageLoaderOptions.Companion.NORMAL_VALUE
 
 
 /**
@@ -11,9 +11,19 @@ import android.widget.ImageView
  */
 
 fun ImageView.loadIV(url: String) {
-    ImageFrom.getImageLoader().load(context, url, this)
+    ImageFrom.getImageLoader().load(context, url, ImageFrom.getDefaultOptions()
+            ?: ImageLoaderOptions(), this)
 }
 
-fun ImageView.loadIV(url: String, options: ImageLoaderOptions) {
-    ImageFrom.getImageLoader().load(context, url, options, this)
+fun ImageView.loadIV(url: String,
+                     placeHolder: Int = NORMAL_VALUE,
+                     radius: Int = NORMAL_VALUE,
+                     isSkipMemoryCache: Boolean = false,
+                     isSkipDiskCache: Boolean = false) {
+    ImageFrom.getImageLoader().load(context, url, ImageLoaderOptions().apply {
+        this.placeHolder = placeHolder
+        this.radius = radius
+        this.isSkipMemoryCache = isSkipMemoryCache
+        this.isSkipDiskCache = isSkipDiskCache
+    }, this)
 }

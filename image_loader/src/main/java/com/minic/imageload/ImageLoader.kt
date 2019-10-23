@@ -11,7 +11,22 @@ import android.widget.ImageView
  */
 interface ImageLoader {
 
+    /**
+     * 加载图片
+     *
+     * @param context 上下文
+     * @param url 图片Url
+     * @param imageView ImageView
+     */
     fun load(context: Context, url: String, imageView: ImageView)
 
+    /**
+     * 加载图片
+     *
+     * @param context 上下文
+     * @param url 图片Url
+     * @param options 图片加载配置
+     * @param imageView ImageView
+     */
     fun load(context: Context, url: String, options: ImageLoaderOptions, imageView: ImageView)
 }

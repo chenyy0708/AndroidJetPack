@@ -15,6 +15,7 @@ object ImageFrom {
     private var options: ImageLoaderOptions? = null
 
     init {
+        // 默认的图片加载配置
         options = ImageLoaderOptions().apply {
         }
     }
@@ -23,13 +24,22 @@ object ImageFrom {
         return mImageLoader ?: object : ImageLoader {
             override fun load(context: Context, url: String, imageView: ImageView) {
             }
-
             override fun load(context: Context, url: String, options: ImageLoaderOptions, imageView: ImageView) {
             }
         }
     }
 
-    fun setImageLoader(imageLoader: ImageLoader) {
+    fun setImageLoader(imageLoader: ImageLoader):ImageFrom {
         this.mImageLoader = imageLoader
+        return this
+    }
+
+    fun setImageLoaderOptions(options: ImageLoaderOptions):ImageFrom {
+        this.options = options
+        return this
+    }
+
+    fun getDefaultOptions():ImageLoaderOptions? {
+        return options
     }
 }

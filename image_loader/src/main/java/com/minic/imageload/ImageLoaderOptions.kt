@@ -8,14 +8,21 @@ package com.minic.imageload
  */
 class ImageLoaderOptions {
     companion object {
+        // 没有设置值，默认实现
         const val NORMAL_VALUE = -1
     }
 
+    // 占位图
     var placeHolder = NORMAL_VALUE
+    // 加载失败
     var errorHolder = NORMAL_VALUE
+    // 跳过内存缓存
     var isSkipMemoryCache = false
+    // 跳过磁盘缓存
     var isSkipDiskCache = false
+    // 圆形
     var isCircle = false
+    // 圆角
     var radius = NORMAL_VALUE
     var topLeftRadius = NORMAL_VALUE
     var topRightRadius = NORMAL_VALUE
