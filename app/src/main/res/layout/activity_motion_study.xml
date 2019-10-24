@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/mMotionLayout"
+        android:layout_width="match_parent"
+        app:motionDebug="SHOW_PATH"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/motion_study_screen">
+
+
+        <TextView
+            android:text="0"
+            android:textColor="@color/white"
+            android:id="@+id/image_tab_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:background="@android:color/holo_red_dark" />
+
+        <TextView
+            android:text="0"
+            android:textColor="@color/white"
+            android:id="@+id/image_tab_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark" />
+
+        <TextView
+            android:text="0"
+            android:textColor="@color/white"
+            android:id="@+id/image_tab_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/image_menu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

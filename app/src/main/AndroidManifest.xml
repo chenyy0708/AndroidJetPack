@@ -49,6 +49,7 @@
         </activity>
 
         <activity android:name="com.minic.kt.ui.activity.common.BrowserActivity" />
+        <activity android:name=".ui.activity.test.MotionLayoutActivity" />
 
     </application>
 
