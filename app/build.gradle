@@ -61,6 +61,7 @@ dependencies {
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$smartrefresh_layout_version"
     implementation "com.scwang.smartrefresh:SmartRefreshHeader:$smartrefresh_layout_version"
     implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation 'jp.wasabeef:glide-transformations:4.1.0'
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation 'com.youth.banner:banner:1.4.10'
     implementation 'com.drakeet.multitype:multitype:4.0.0'
