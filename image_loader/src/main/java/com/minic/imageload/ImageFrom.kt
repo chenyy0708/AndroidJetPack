@@ -1,7 +1,9 @@
 package com.minic.imageload
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.widget.ImageView
+import androidx.lifecycle.LiveData
 
 /**
  * 描述: 图片加载配置类
@@ -21,12 +23,10 @@ object ImageFrom {
     }
 
     fun getImageLoader(): ImageLoader {
-        return mImageLoader ?: object : ImageLoader {
-            override fun load(context: Context, url: String, imageView: ImageView) {
-            }
-            override fun load(context: Context, url: String, options: ImageLoaderOptions, imageView: ImageView) {
-            }
+        if(mImageLoader == null) {
+            throw Throwable("ImageLoader Can not be null ")
         }
+        return mImageLoader!!
     }
 
     fun setImageLoader(imageLoader: ImageLoader):ImageFrom {

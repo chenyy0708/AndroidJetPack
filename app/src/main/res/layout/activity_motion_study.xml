@@ -6,35 +6,35 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/mMotionLayout"
         android:layout_width="match_parent"
-        app:motionDebug="SHOW_PATH"
         android:layout_height="match_parent"
-        app:layoutDescription="@xml/motion_study_screen">
+        app:layoutDescription="@xml/motion_study_screen"
+        app:motionDebug="SHOW_PATH">
 
 
         <TextView
-            android:text="0"
-            android:textColor="@color/white"
             android:id="@+id/image_tab_1"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@android:color/holo_red_dark"
+            android:text="0"
 
-            android:background="@android:color/holo_red_dark" />
+            android:textColor="@color/white" />
 
         <TextView
-            android:text="0"
-            android:textColor="@color/white"
             android:id="@+id/image_tab_2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@android:color/holo_red_dark" />
+            android:background="@android:color/holo_red_dark"
+            android:text="0"
+            android:textColor="@color/white" />
 
         <TextView
-            android:text="0"
-            android:textColor="@color/white"
             android:id="@+id/image_tab_3"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@android:color/holo_red_dark" />
+            android:background="@android:color/holo_red_dark"
+            android:text="0"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/image_menu"
@@ -47,5 +47,10 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
 
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/iv_default"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

@@ -1,7 +1,9 @@
 package com.minic.imageload
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.widget.ImageView
+import androidx.lifecycle.LiveData
 
 
 /**
@@ -29,4 +31,35 @@ interface ImageLoader {
      * @param imageView ImageView
      */
     fun load(context: Context, url: String, options: ImageLoaderOptions, imageView: ImageView)
+
+    /**
+     * 加载图片Bitmap
+     *
+     * @param context 上下文
+     * @param url 图片Url
+     * @param options 图片加载配置
+     * @param imageView ImageView
+     */
+    fun loadBitmap(context: Context, url: String, options: ImageLoaderOptions): LiveData<Bitmap>
+
+    /**
+     * 加载图片Bitmap
+     *
+     * @param context 上下文
+     * @param url 图片Url
+     * @param options 图片加载配置
+     * @param imageView ImageView
+     */
+    fun loadBitmap(context: Context, url: String): LiveData<Bitmap>
+
+    /**
+     * 加载图片进度
+     *
+     * @param context 上下文
+     * @param url 图片Url
+     * @param options 图片加载配置
+     * @param imageView ImageView
+     */
+    fun <T> loadProgress(context: Context, url: String): LiveData<ProgressDownLoad<T>>
+
 }

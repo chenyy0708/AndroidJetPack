@@ -1,7 +1,9 @@
 package com.minic.kt.ui.activity.test
 
 import android.os.Bundle
+import androidx.lifecycle.observe
 import com.minic.base.base.BaseActivity
+import com.minic.imageload.ImageFrom
 import com.minic.kt.R
 import com.minic.kt.databinding.ActivityMotionStudyBinding
 import kotlinx.android.synthetic.main.activity_motion_study.*
@@ -27,6 +29,9 @@ class MotionLayoutActivity : BaseActivity<ActivityMotionStudyBinding>() {
                 mMotionLayout.transitionToEnd()
             }
             isOpen = !isOpen
+        }
+        ImageFrom.getImageLoader().loadBitmap(this, "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1328874460,2431333110&fm=26&gp=0.jpg").observe(this) {
+            iv_default.setImageBitmap(it)
         }
     }
 
