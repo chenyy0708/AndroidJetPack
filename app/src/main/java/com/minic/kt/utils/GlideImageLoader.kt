@@ -93,6 +93,7 @@ class GlideImageLoader : ImageLoader {
         when (options.scaleType) {
             ImageLoaderOptions.CENTER_CROP -> transforms.add(CenterCrop())
             ImageLoaderOptions.FIT_CENTER -> transforms.add(FitCenter())
+            else -> transforms.add(CenterCrop())
         }
         //全圆角/纯圆形/四个方向有部分圆角
         if (options.radius > 0) { // 全圆角

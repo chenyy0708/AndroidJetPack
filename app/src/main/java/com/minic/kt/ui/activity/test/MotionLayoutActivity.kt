@@ -1,5 +1,6 @@
 package com.minic.kt.ui.activity.test
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.lifecycle.observe
 import com.minic.base.base.BaseActivity
@@ -36,7 +37,8 @@ class MotionLayoutActivity : BaseActivity<ActivityMotionStudyBinding>() {
                 ImageLoaderOptions().apply {
                     topLeftRadius = dp2px(10f)
                     topRightRadius = dp2px(10f)
-                    scaleType = ImageLoaderOptions.CENTER_CROP
+                    bottomLeftRadius = dp2px(10f)
+                    bottomRightRadius = dp2px(10f)
                 },iv_default)
     }
 
