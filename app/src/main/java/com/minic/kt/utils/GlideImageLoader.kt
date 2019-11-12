@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.Transformation
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -19,8 +20,6 @@ import com.minic.imageload.ImageFrom
 import com.minic.imageload.ImageLoader
 import com.minic.imageload.ImageLoaderOptions
 import com.minic.imageload.ProgressDownLoad
-import com.minic.kt.base.GlideApp
-import com.minic.kt.base.GlideRequest
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
@@ -41,7 +40,7 @@ class GlideImageLoader : ImageLoader {
 
     override fun loadBitmap(context: Context, url: String, options: ImageLoaderOptions): LiveData<Bitmap> {
         val liveData = MutableLiveData<Bitmap>()
-        GlideApp.with(context)
+        Glide.with(context)
                 .asBitmap()
                 .load(url)
                 .into(object : CustomTarget<Bitmap>() {
@@ -62,32 +61,31 @@ class GlideImageLoader : ImageLoader {
 
     override fun load(context: Context, url: String, options: ImageLoaderOptions, imageView: ImageView) {
         val requestOptions = RequestOptions()
-        GlideApp.with(context)
+                .applyPlaceErrorHolder(options)
+                .applyCacheStrategy(options)
+                .applyBitmapTransforms(options)
+        Glide.with(context)
                 .load(url)
-                .applyOption(requestOptions, options)
-                .applyCacheStrategy(requestOptions, options)
-                .applyBitmapTransforms(requestOptions, options)
                 .apply(requestOptions)
                 .into(imageView)
     }
 
     @SuppressLint("CheckResult")
-    fun GlideRequest<*>.applyOption(requestOptions: RequestOptions, options: ImageLoaderOptions): GlideRequest<*> {
-        requestOptions.placeholder(options.placeHolder)
-        requestOptions.error(options.errorHolder)
-        apply(requestOptions)
+    fun RequestOptions.applyPlaceErrorHolder(options: ImageLoaderOptions): RequestOptions {
+        placeholder(options.placeHolder)
+        error(options.errorHolder)
         return this
     }
 
     @SuppressLint("CheckResult")
-    fun GlideRequest<*>.applyCacheStrategy(requestOptions: RequestOptions, options: ImageLoaderOptions): GlideRequest<*> {
-        requestOptions.skipMemoryCache(options.isSkipMemoryCache)
-        requestOptions.diskCacheStrategy(if (options.isSkipDiskCache) DiskCacheStrategy.NONE else DiskCacheStrategy.ALL)
+    fun RequestOptions.applyCacheStrategy(options: ImageLoaderOptions): RequestOptions {
+        skipMemoryCache(options.isSkipMemoryCache)
+        diskCacheStrategy(if (options.isSkipDiskCache) DiskCacheStrategy.NONE else DiskCacheStrategy.ALL)
         return this
     }
 
     @SuppressLint("CheckResult")
-    fun GlideRequest<*>.applyBitmapTransforms(requestOptions: RequestOptions, options: ImageLoaderOptions): GlideRequest<*> {
+    fun RequestOptions.applyBitmapTransforms(options: ImageLoaderOptions): RequestOptions {
         val transforms = mutableListOf<Transformation<Bitmap>>()
         // 缩放类型
         when (options.scaleType) {
@@ -120,9 +118,8 @@ class GlideImageLoader : ImageLoader {
         }
         // 应用于Glide
         if (transforms.isNotEmpty()) {
-            requestOptions.transform(MultiTransformation<Bitmap>(transforms))
+            transform(MultiTransformation<Bitmap>(transforms))
         }
-
         return this
     }
 
