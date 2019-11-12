@@ -122,6 +122,7 @@ class GlideImageLoader : ImageLoader {
         if (transforms.isNotEmpty()) {
             requestOptions.transform(MultiTransformation<Bitmap>(transforms))
         }
+
         return this
     }
 
