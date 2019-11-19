@@ -1,8 +1,6 @@
 package com.minic.kt.ui.activity.test
 
-import android.graphics.Color
 import android.os.Bundle
-import androidx.lifecycle.observe
 import com.minic.base.base.BaseActivity
 import com.minic.imageload.ImageFrom
 import com.minic.imageload.ImageLoaderOptions
@@ -39,7 +37,9 @@ class MotionLayoutActivity : BaseActivity<ActivityMotionStudyBinding>() {
                     topRightRadius = dp2px(10f)
                     bottomLeftRadius = dp2px(10f)
                     bottomRightRadius = dp2px(10f)
-                },iv_default)
+                    placeHolder = R.drawable.icon_navigation_not_selected
+                    errorHolder = R.drawable.icon_me_not_selected
+                }, iv_default)
     }
 
     override fun getLayoutRes(): Int = R.layout.activity_motion_study
