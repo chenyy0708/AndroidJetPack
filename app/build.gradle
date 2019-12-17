@@ -48,6 +48,33 @@ android {
     }
 
 
+    //自定义一个任务，实现打包meisha渠道自动上传到fir
+    task assembleWithFir{
+        dependsOn 'assembleDebug'
+        doLast{
+            def appname="薄荷健康"
+            def apppackage=project.android.defaultConfig.applicationId
+            def appversion=project.android.defaultConfig.versionName
+            def appbuild=project.android.defaultConfig.versionCode
+            def apitoken="368967b71745181a78ea8cb01ab237c5"
+            def apklogo="app/src/main/res/drawable/icon.png"
+            def apkpath = applicationVariants.first().outputs.first().outputFile
+            //调用python脚本  这个脚本需要放在app工程目录下，不要放在project目录下
+            def process="python UploadToFir.py ${appname} ${apppackage} ${appversion} ${appbuild} ${apitoken} ${apklogo} ${apkpath}".execute()
+            //打印Python脚本日志，便于出错调试
+            ByteArrayOutputStream result = new ByteArrayOutputStream()
+            def inputStream = process.getInputStream()
+            byte[] buffer = new byte[1024]
+            int length
+            while ((length = inputStream.read(buffer)) != -1) {
+                result.write(buffer, 0, length)
+            }
+            println(result.toString("utf-8"))
+            int exitValue = process.waitFor()
+            println "上传结束 with value $exitValue"
+        }
+    }
+
 }
 
 dependencies {
