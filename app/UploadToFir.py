@@ -20,9 +20,14 @@ def uploadtofir():
         appversion = sys.argv[3]  # app版本号
         appbuild = sys.argv[4]  # app build号
         apitoken = sys.argv[5]  # fir token
-        apklogo = sys.argv[6]  # 等待上传的APK logo路径
-        apkpath = sys.argv[7]  # 等待上传的APK路径
+        apklogov1 = sys.argv[6]  # 等待上传的APK logo路径
+        apklogov2 = sys.argv[7]  # 等待上传的APK logo路径
+        apkpathv1 = sys.argv[8]  # 等待上传的APK路径
+        apkpathv2 = sys.argv[9]  # 等待上传的APK路径
 
+        # mac环境不知为何gradle传参给python字符长度太长导致字符串被切割成两份，破解
+        apklogo = apklogov1 + " " +  apklogov2
+        apkpath = apkpathv1 + " " +  apkpathv2
         # 第一步：获取fir上传凭证
         print("get fir upload certificate")
         icondict = {}  # 后面上传图标和apk需要使用的参数，这里保存下来
@@ -55,7 +60,7 @@ def uploadtofir():
 
         # 第三步：上传APK logo
         try:
-            print("uploading apk......" + apklogo)
+            print("uploading apklogo......")
             apklogofile = {'file': open(apklogo, 'rb')}
             param = {"key": icondict["key"],
                      "token": icondict["token"]}
