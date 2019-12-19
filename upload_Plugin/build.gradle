@@ -1,0 +1,15 @@
+apply plugin: 'java-library'
+apply plugin: 'groovy'
+
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.chenyy0708'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation gradleApi()//gradle sdk
+    implementation localGroovy()//groovy sdk
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
