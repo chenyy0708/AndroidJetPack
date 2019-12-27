@@ -10,10 +10,17 @@ package com.minic.base.extens
 //fun <T> LifecycleOwner.quickLaunch(block: RequestCarrier<T>.() -> Unit) {
 //    val requestCarrier = RequestCarrier<T>()
 //    block(requestCarrier)
+//
+//    if (requestCarrier.request == null) {
+//        Helper.showLog("请求request不能为空!")
+//        return
+//    }
 //    requestCarrier.request?.subscribeOn(Schedulers.io())
 //            ?.observeOn(AndroidSchedulers.mainThread())
 //            ?.subscribe(Consumer {
-//                it?.let { requestCarrier.success?.invoke(it) }
+//                it?.let {
+//                    requestCarrier.success?.invoke(it)
+//                }
 //            }, HttpErrorConsumer {
 //                requestCarrier.fail?.invoke(it)
 //            })?.addToOwner(this)
