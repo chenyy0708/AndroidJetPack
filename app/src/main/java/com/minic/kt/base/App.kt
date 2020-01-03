@@ -3,6 +3,9 @@ package com.minic.kt.base
 import com.minic.base.base.BaseApp
 import com.minic.imageload.ImageFrom
 import com.minic.kt.utils.GlideImageLoader
+import com.minic.push.base.CPushManager
+import com.minic.push.oppo.OPPOPush
+import com.minic.push.xiaomi.XMPush
 
 /**
  * @author       :ChenYangYi
@@ -15,6 +18,11 @@ class App : BaseApp() {
         INSTANCE = this
         super.onCreate()
         ImageFrom.setImageLoader(GlideImageLoader())
+        CPushManager.getInstance()
+                .addPush(OPPOPush())
+                .addPush(XMPush())
+                .initPush(this)
+
     }
 
     companion object {
